@@ -31,5 +31,26 @@ with app.app_context():
     except Exception as e:
         print(f"App initialization note: {e}")
 
+# WSGI Middleware to restore original request path on Vercel
+class VercelWSGIMiddleware:
+    def __init__(self, wsgi_app):
+        self.wsgi_app = wsgi_app
+
+    def __call__(self, environ, start_response):
+        # Retrieve actual path requested by the browser
+        matched_path = (
+            environ.get('HTTP_X_MATCHED_PATH') or 
+            environ.get('HTTP_X_VERCEL_MATCHED_PATH') or 
+            environ.get('HTTP_X_INVOKE_PATH')
+        )
+        if matched_path and matched_path not in ('/api/index', '/api', '/api/index.py'):
+            environ['PATH_INFO'] = matched_path
+        elif environ.get('PATH_INFO') in ('/api/index', '/api', '/api/index.py', ''):
+            environ['PATH_INFO'] = '/'
+            
+        return self.wsgi_app(environ, start_response)
+
+app.wsgi_app = VercelWSGIMiddleware(app.wsgi_app)
+
 # Expose app for Vercel WSGI
 application = app
