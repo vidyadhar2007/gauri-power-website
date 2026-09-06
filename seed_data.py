@@ -3,10 +3,10 @@ from datetime import datetime, timezone, timedelta, date
 from app import create_app
 from models import db, User, DealerProfile, CustomerProfile, Product, QuotationRequest, Quotation, Order, Invoice, Notification
 
-app = create_app()
-
-def seed_database():
-    with app.app_context():
+def seed_database(app_instance=None):
+    if app_instance is None:
+        app_instance = create_app()
+    with app_instance.app_context():
         db.create_all()
 
         # Check if already seeded

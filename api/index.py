@@ -32,7 +32,7 @@ with app.app_context():
         db.create_all()
         if not Product.query.first():
             from seed_data import seed_database
-            seed_database()
+            seed_database(app)
     except Exception as e:
         print(f"App initialization note: {e}")
 
