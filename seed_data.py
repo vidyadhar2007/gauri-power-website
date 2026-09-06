@@ -31,7 +31,7 @@ def seed_database():
                 'cooling_type': 'Oil Cooled (Heavy-Duty Radiators Fitted)',
                 'duty_cycle': '100% Continuous Duty Cycle',
                 'is_featured': True,
-                'image_url': 'images/product_balanced_3500kva.jpg',
+                'image_url': 'images/product_oil_cooled_3phase_servo.jpg',
                 'salient_features': [
                     'Zero copper track wear with self-lubricating graphite carbon rollers (8-10 yrs life)',
                     'Heavy rectangular electrolytic copper strips (>= 24 mm² section)',
@@ -68,7 +68,7 @@ def seed_database():
                 'cooling_type': 'Air Cooled (Forced Low-Noise Industrial Exhaust Fans)',
                 'duty_cycle': '100% Continuous Duty Rating',
                 'is_featured': True,
-                'image_url': 'images/product_avr_750kva.jpg',
+                'image_url': 'images/product_air_cooled_servo.jpg',
                 'salient_features': [
                     'Zero oil requirement - clean, fire-safe indoor installation',
                     'High-torque low-inertia AC synchronous servomotor drive',
@@ -103,7 +103,7 @@ def seed_database():
                 'cooling_type': 'ONAN (Oil Natural Air Natural)',
                 'duty_cycle': '100% Continuous Substation Duty',
                 'is_featured': True,
-                'image_url': 'images/product_servo_stabilizer_large.jpg',
+                'image_url': 'images/product_ht_servo_regulator.jpg',
                 'salient_features': [
                     'Centralized plant voltage stabilization directly at 11kV or 33kV incoming feeder',
                     'Drastic reduction in plant motor burnouts and equipment failure',
@@ -173,24 +173,25 @@ def seed_database():
                 'cooling_type': 'Air Cooled / Natural Convection',
                 'duty_cycle': '100% Continuous Rating',
                 'is_featured': False,
-                'image_url': 'images/product_residential_commercial.jpg',
+                'image_url': 'images/product_single_phase_servo.jpg',
                 'salient_features': [
                     'Microprocessor closed-loop control system',
                     'Fast response with electronic braking preventing hunting and overshoot',
                     'High & low voltage cut-off protection with programmable time delay',
-                    'Pure sine wave output with zero distortion',
-                    'Compact aesthetic design suitable for indoor lab and office placement'
+                    'Built-in spike suppressor and electromagnetic surge protection',
+                    'Manual bypass switch option for continuous line throughput'
                 ],
                 'technical_specs': {
-                    'Input Voltage': '160V - 260V / 140V - 280V / 90V - 280V (Single Phase, 50 Hz)',
-                    'Output Voltage': '230V +/- 1% (Adjustable 220V - 240V)',
-                    'Waveform Distortion': 'Nil',
-                    'Frequency': '47 Hz - 53 Hz',
-                    'Display': 'Digital voltmeter & ammeter with status indicators'
+                    'Input Range': '160V - 260V / 140V - 280V / 90V - 280V (Single Phase)',
+                    'Output Voltage': '230V +/- 1% (50 Hz)',
+                    'Capacity': '3 kVA to 50 kVA',
+                    'Efficiency': '> 98.5%',
+                    'Dielectric Strength': '2,500 V AC for 1 minute'
                 },
                 'applications': [
-                    'Analytical & Medical Laboratories', 'Printing Presses & Photocopiers',
-                    'Commercial Telecom & Broadcast Towers', 'Residential Villas & Commercial Offices'
+                    'Sensitive Medical Equipment & MRI/X-Ray Units', 'Analytical Lab Equipment',
+                    'Telecommunication Hubs', 'Luxury Residences & Audio/Video Suites',
+                    'Offset Printing Presses'
                 ]
             },
             {
@@ -206,7 +207,7 @@ def seed_database():
                 'cooling_type': 'Oil Cooled (Radiator Tanked)',
                 'duty_cycle': '100% Continuous',
                 'is_featured': False,
-                'image_url': 'images/product_avr_550kva.jpg',
+                'image_url': 'images/product_unbalanced_servo.jpg',
                 'salient_features': [
                     'Three independent motorized drive systems for R, Y, and B phases',
                     'Delivers balanced 415V line-to-line output even with 100% load imbalance',

@@ -6,7 +6,12 @@ from config import Config
 from models import db, User, Notification
 
 def create_app(config_class=Config):
-    app = Flask(__name__)
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    app = Flask(
+        __name__,
+        static_folder=os.path.join(base_dir, 'static'),
+        static_url_path='/static'
+    )
     app.config.from_object(config_class)
 
     try:
