@@ -1,6 +1,6 @@
 import os
 from datetime import datetime, timezone
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask_login import LoginManager, current_user
 from config import Config
 from models import db, User, Notification
@@ -67,6 +67,19 @@ def create_app(config_class=Config):
             'factory_address': app.config['FACTORY_ADDRESS'],
             'unread_notifications_count': unread_count
         }
+
+    # Explicit static assets handler for serverless environments
+    @app.route('/static/<path:filename>')
+    def serve_static_assets(filename):
+        return send_from_directory(app.static_folder, filename)
+
+    # Vercel entrypoint path fallbacks
+    @app.route('/api/index')
+    @app.route('/api')
+    @app.route('/api/index.py')
+    def vercel_entry_fallback():
+        from routes_public import home
+        return home()
 
     @app.errorhandler(404)
     def not_found_error(error):
