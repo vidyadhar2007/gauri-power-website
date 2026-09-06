@@ -41,37 +41,47 @@
         </div>
 
         <!-- HIGHLIGHTED DISPATCH: Transmitted to Company MD Contact Number 8178980216 -->
-        <div class="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-300 text-left space-y-4 shadow-md">
-            <div class="flex items-start space-x-3.5">
-                <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xl flex-shrink-0 shadow">
+        <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-50 via-teal-50/80 to-emerald-100/60 border-2 border-emerald-400 text-left space-y-4 shadow-xl relative overflow-hidden">
+            <div class="flex items-start space-x-4">
+                <div class="w-14 h-14 rounded-2xl bg-[#25D366] text-white flex items-center justify-center text-2xl flex-shrink-0 shadow-lg animate-bounce">
                     <i class="fa-brands fa-whatsapp"></i>
                 </div>
-                <div class="space-y-1">
-                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded border border-emerald-200">
-                        MD Desk Dispatch
-                    </span>
-                    <h2 class="font-heading text-lg font-bold text-industrial-900">
-                        Quotation Request Routed to MD: <span class="font-mono text-emerald-700">+91-81789-80216</span>
+                <div class="space-y-1.5 flex-1">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-[10px] font-mono font-black uppercase tracking-wider text-emerald-900 bg-emerald-200/90 px-3 py-1 rounded-full border border-emerald-300 shadow-2xs">
+                            <i class="fa-solid fa-paper-plane mr-1 text-emerald-700"></i>MD WhatsApp Routing
+                        </span>
+                        <span class="text-[11px] font-mono font-bold text-emerald-700 bg-white/90 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                            +91-81789-80216
+                        </span>
+                    </div>
+                    <h2 class="font-heading text-xl sm:text-2xl font-black text-industrial-950">
+                        Send Your Request Directly to MD on WhatsApp
                     </h2>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Your technical inquiry is forwarded directly to Gauri Power's MD at <b>+91-81789-80216</b>. For expedited commercial clearance or instant technical discussion, tap below to chat directly on WhatsApp.
+                    <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                        Your complete technical quotation request has been formatted into an instant WhatsApp message for Gauri Power's <b>Managing Director (MD) at +91-81789-80216</b>. Tap below to send your specifications directly for immediate commercial review!
                     </p>
                 </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+            <div class="flex flex-col sm:flex-row items-center gap-3 pt-3">
                 <!-- Large Green WhatsApp Action Button -->
-                <a href="{{ whatsapp_url }}" target="_blank" rel="noopener noreferrer" class="w-full sm:flex-1 py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-lg hover:shadow-xl transition-all flex items-center justify-center space-x-2.5 text-center">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Connect with MD on WhatsApp (+91-81789-80216)</span>
+                <a id="sendWhatsAppBtn" href="{{ whatsapp_url }}" target="_blank" rel="noopener noreferrer" class="w-full sm:flex-1 py-4 px-6 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold text-sm shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-3 text-center">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Send Request to MD on WhatsApp (+91-81789-80216)</span>
                 </a>
 
                 <!-- Direct Phone Call Button -->
-                <a href="tel:+918178980216" class="w-full sm:w-auto py-3.5 px-5 rounded-xl bg-industrial-900 hover:bg-industrial-800 text-white font-bold text-xs shadow transition-all flex items-center justify-center space-x-2 text-center whitespace-nowrap">
-                    <i class="fa-solid fa-phone text-electric-cyan text-xs"></i>
+                <a href="tel:+918178980216" class="w-full sm:w-auto py-4 px-6 rounded-2xl bg-industrial-900 hover:bg-industrial-800 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center space-x-2 text-center whitespace-nowrap">
+                    <i class="fa-solid fa-phone text-electric-cyan text-sm"></i>
                     <span>Call MD: +91-81789-80216</span>
                 </a>
             </div>
+            
+            <p class="text-[11px] text-emerald-800/80 font-medium text-center sm:text-left flex items-center space-x-1.5">
+                <i class="fa-solid fa-circle-info text-emerald-600"></i>
+                <span>All technical specs, capacity ({{ rfq.selected_capacity }}), voltages, and RFQ #{{ rfq.request_number }} are pre-filled automatically.</span>
+            </p>
         </div>
 
         <!-- WE WILL SEND THE QUOTATION IN A PDF FORM (Dedicated Notice) -->
@@ -189,4 +199,23 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-prompt WhatsApp transmission after 1 second
+    setTimeout(function() {
+        const waLink = "{{ whatsapp_url|safe }}";
+        if (waLink && !sessionStorage.getItem('wa_sent_{{ rfq.request_number }}')) {
+            sessionStorage.setItem('wa_sent_{{ rfq.request_number }}', 'true');
+            const win = window.open(waLink, '_blank');
+            if (!win) {
+                const btn = document.getElementById('sendWhatsAppBtn');
+                if (btn) {
+                    btn.classList.add('ring-4', 'ring-emerald-400', 'scale-105');
+                }
+            }
+        }
+    }, 1000);
+});
+</script>
 {% endblock %}

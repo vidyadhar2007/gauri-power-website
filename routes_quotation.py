@@ -227,23 +227,27 @@ def new_rfq():
 def rfq_success(request_number):
     rfq = QuotationRequest.query.filter_by(request_number=request_number).first_or_404()
 
-    # Formulate pre-filled WhatsApp message for company contact number 8178980216
+    # Formulate pre-filled WhatsApp message for MD contact number 8178980216
     client_type = getattr(rfq, 'customer_type', None) or ('Authorized Dealer' if (rfq.user and rfq.user.is_dealer) else 'End Customer')
     wa_msg = (
-        f"Hello Gauri Power Team,\n\n"
-        f"I have submitted an official quotation request on your website.\n\n"
-        f"📌 *RFQ Ref:* {rfq.request_number}\n"
+        f"⚡ *NEW QUOTATION REQUEST - GAURI POWER* ⚡\n\n"
+        f"Hello MD Sir,\n"
+        f"I have submitted an official quotation request on the Gauri Power website. Here are the requirement details:\n\n"
+        f"📋 *RFQ Ref:* {rfq.request_number}\n"
         f"👤 *Client Type:* {client_type}\n"
         f"🏢 *Company:* {rfq.company_name}\n"
         f"🧑 *Contact Person:* {rfq.customer_name}\n"
         f"📞 *Phone:* {rfq.contact_number}\n"
         f"✉️ *Email:* {rfq.email}\n"
         f"📍 *Site Location:* {rfq.address_line}, {rfq.city}, {rfq.state}\n"
-        f"⚡ *Equipment:* {rfq.product_category}\n"
+        f"⚙️ *Equipment:* {rfq.product_category}\n"
         f"📊 *Capacity:* {rfq.selected_capacity}\n"
-        f"🔌 *Voltage:* In: {rfq.input_voltage} | Out: {rfq.output_voltage}\n\n"
-        f"Please review our technical requirements and share the official quotation in PDF format. Thank you!"
+        f"🔌 *Voltage Window:* In: {rfq.input_voltage} | Out: {rfq.output_voltage}\n"
     )
+    if rfq.additional_requirements:
+        wa_msg += f"📝 *Notes:* {rfq.additional_requirements}\n"
+    wa_msg += f"\nKindly review our specifications and prepare the official commercial quotation in PDF format. Thank you!"
+    
     whatsapp_url = f"https://wa.me/918178980216?text={quote_plus(wa_msg)}"
 
     return render_template(
