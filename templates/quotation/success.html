@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% block title %}Thank You | Quotation Request Received | Gauri Power{% endblock %}
+{% block content %}
+<div class="py-16 sm:py-20 bg-slate-50 min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl w-full bg-white p-6 sm:p-10 lg:p-12 rounded-3xl shadow-2xl border border-slate-200 text-center space-y-8">
+        
+        <!-- Celebration & Header -->
+        <div class="space-y-4">
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 text-3xl shadow-inner border border-emerald-200">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div class="space-y-2">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-950 border border-amber-300">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span>STATUS: PENDING SALES REVIEW</span>
+                </div>
+                <h1 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                    Thank You! Your Quotation Request Has Been Received
+                </h1>
+                <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+                    Your electrical specifications have been officially recorded in our queue. Our sales and engineering team at Ropar works has received your requirement.
+                </p>
+            </div>
+        </div>
+
+        <!-- Official RFQ Reference Card -->
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 space-y-3 text-center">
+            <p class="text-xs text-slate-500 uppercase tracking-wider font-bold">Your Official Quotation Reference Number</p>
+            <div class="flex items-center justify-center space-x-3">
+                <span class="font-mono text-2xl sm:text-3xl font-black text-industrial-900 bg-white px-5 py-2.5 rounded-xl border border-slate-300 shadow-sm" id="rfqId">
+                    {{ rfq.request_number }}
+                </span>
+                <button type="button" onclick="navigator.clipboard.writeText('{{ rfq.request_number }}'); alert('Copied RFQ Reference Number to clipboard!');" class="p-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm transition-colors" title="Copy to clipboard">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+            <p class="text-[11px] text-slate-500">
+                Logged on: <b>{{ rfq.created_at.strftime('%d %B %Y at %I:%M %p') }}</b> | Client Type: <b>{{ rfq.customer_type or 'End Customer' }}</b>
+            </p>
+        </div>
+
+        <!-- HIGHLIGHTED DISPATCH: Transmitted to Company MD Contact Number 8178980216 -->
+        <div class="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-300 text-left space-y-4 shadow-md">
+            <div class="flex items-start space-x-3.5">
+                <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xl flex-shrink-0 shadow">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="space-y-1">
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded border border-emerald-200">
+                        MD Desk Dispatch
+                    </span>
+                    <h2 class="font-heading text-lg font-bold text-industrial-900">
+                        Quotation Request Routed to MD: <span class="font-mono text-emerald-700">+91-81789-80216</span>
+                    </h2>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Your technical inquiry is forwarded directly to Gauri Power's MD at <b>+91-81789-80216</b>. For expedited commercial clearance or instant technical discussion, tap below to chat directly on WhatsApp.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                <!-- Large Green WhatsApp Action Button -->
+                <a href="{{ whatsapp_url }}" target="_blank" rel="noopener noreferrer" class="w-full sm:flex-1 py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-lg hover:shadow-xl transition-all flex items-center justify-center space-x-2.5 text-center">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Connect with MD on WhatsApp (+91-81789-80216)</span>
+                </a>
+
+                <!-- Direct Phone Call Button -->
+                <a href="tel:+918178980216" class="w-full sm:w-auto py-3.5 px-5 rounded-xl bg-industrial-900 hover:bg-industrial-800 text-white font-bold text-xs shadow transition-all flex items-center justify-center space-x-2 text-center whitespace-nowrap">
+                    <i class="fa-solid fa-phone text-electric-cyan text-xs"></i>
+                    <span>Call MD: +91-81789-80216</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- WE WILL SEND THE QUOTATION IN A PDF FORM (Dedicated Notice) -->
+        <div class="p-6 sm:p-7 rounded-2xl bg-slate-900 text-white text-left space-y-4 border border-slate-800 shadow-xl relative overflow-hidden">
+            <!-- Subtle glow background -->
+            <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-electric-cyan/15 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex items-start space-x-3.5 relative z-10">
+                <div class="w-12 h-12 rounded-xl bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 flex items-center justify-center text-xl flex-shrink-0 shadow">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <div class="space-y-1">
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-power-amber bg-power-amber/10 px-2 py-0.5 rounded border border-power-amber/20">
+                        Formal Commercial Proposal
+                    </span>
+                    <h2 class="font-heading text-lg font-bold text-white">
+                        We Will Send Your Official Quotation in PDF Form
+                    </h2>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Our electrical engineers will evaluate your required capacity (<b>{{ rfq.selected_capacity }}</b>) and voltage swing (<b>{{ rfq.input_voltage }}</b>). We formulate an official quotation with complete technical schedules, vector group parameters, loss guarantees, and stamped letterhead in <b>PDF format</b>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Next Steps Progression -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-slate-800 text-xs text-slate-300 relative z-10">
+                <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-start space-x-2.5">
+                    <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-sm flex-shrink-0"></i>
+                    <div>
+                        <strong class="text-white block text-[11px]">1. Transmitted</strong>
+                        <span class="text-[10px] text-slate-400">Routed to MD +91-81789-80216</span>
+                    </div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-start space-x-2.5">
+                    <i class="fa-solid fa-gears text-power-amber mt-0.5 text-sm flex-shrink-0"></i>
+                    <div>
+                        <strong class="text-white block text-[11px]">2. Engineering Review</strong>
+                        <span class="text-[10px] text-slate-400">Copper current density &amp; sizing</span>
+                    </div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-start space-x-2.5">
+                    <i class="fa-solid fa-file-arrow-down text-electric-cyan mt-0.5 text-sm flex-shrink-0"></i>
+                    <div>
+                        <strong class="text-white block text-[11px]">3. PDF Quotation</strong>
+                        <span class="text-[10px] text-slate-400">Emailed &amp; available in Portal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submitted Technical Specifications Summary Table -->
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 text-left space-y-3">
+            <h4 class="font-heading text-xs font-black uppercase tracking-wider text-industrial-900 border-b border-slate-200 pb-2 flex items-center justify-between">
+                <span>Summary of Submitted Technical Requirements</span>
+                <span class="text-electric-cyan font-mono text-[11px]">{{ rfq.product_category }}</span>
+            </h4>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+                <div>
+                    <span class="text-slate-500 block text-[11px]">Client Classification:</span>
+                    <strong class="text-industrial-900">{{ rfq.customer_type or 'End Customer' }}</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-[11px]">Contact Person:</span>
+                    <strong class="text-industrial-900">{{ rfq.customer_name }}</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-[11px]">Company / Plant:</span>
+                    <strong class="text-industrial-900">{{ rfq.company_name }}</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-[11px]">Contact Number:</span>
+                    <strong class="text-industrial-900">{{ rfq.contact_number }}</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-[11px]">Corporate Email:</span>
+                    <strong class="text-industrial-900">{{ rfq.email }}</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-[11px]">Installation Site:</span>
+                    <strong class="text-industrial-900">{{ rfq.address_line }}, {{ rfq.city }} ({{ rfq.state }})</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-[11px]">Required Capacity:</span>
+                    <strong class="text-electric-cyan font-black">{{ rfq.selected_capacity }}</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-[11px]">Input Voltage:</span>
+                    <strong class="text-industrial-900">{{ rfq.input_voltage }}</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-[11px]">Output Voltage:</span>
+                    <strong class="text-industrial-900">{{ rfq.output_voltage }}</strong>
+                </div>
+            </div>
+
+            {% if rfq.additional_requirements %}
+            <div class="pt-2 border-t border-slate-200/80 text-xs">
+                <span class="text-slate-500 block text-[11px]">Specifications &amp; Application Notes:</span>
+                <p class="text-slate-700 font-mono text-[11px] mt-0.5 bg-white p-2.5 rounded-lg border border-slate-200">{{ rfq.additional_requirements }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Portal Navigation & Action Links -->
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
+            <a href="{{ url_for('portal.request_detail', request_number=rfq.request_number) }}" class="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-bold text-white bg-industrial-900 hover:bg-industrial-800 transition-colors shadow">
+                <i class="fa-solid fa-file-invoice mr-1.5 text-electric-cyan"></i>View Request in Portal
+            </a>
+            <a href="{{ url_for('portal.dashboard') }}" class="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                <i class="fa-solid fa-gauge mr-1.5 text-slate-500"></i>Portal Dashboard
+            </a>
+            <a href="{{ url_for('public.products') }}" class="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-semibold text-slate-500 hover:text-industrial-900 transition-colors">
+                Browse Products &rarr;
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

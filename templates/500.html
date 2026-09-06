@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}System Error | Gauri Power{% endblock %}
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-24 text-center">
+    <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-slate-800 text-power-amber text-4xl mb-6 shadow-xl border border-slate-700">
+        <i class="fa-solid fa-server"></i>
+    </div>
+    <h1 class="font-heading text-4xl font-extrabold text-industrial-900 mb-4">500 - Internal Server Error</h1>
+    <p class="text-slate-600 text-base mb-8 max-w-lg mx-auto">Our engineering server encountered a temporary glitch while processing your request. Please try again or contact our technical sales desk directly.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+        <a href="{{ url_for('public.home') }}" class="px-6 py-3 bg-industrial-800 text-white rounded-lg font-semibold hover:bg-industrial-900 transition-colors shadow">
+            Return to Homepage
+        </a>
+        <a href="{{ url_for('public.contact') }}" class="px-6 py-3 bg-electric-cyan text-industrial-900 rounded-lg font-bold hover:bg-electric-hover transition-colors shadow">
+            Contact Technical Desk
+        </a>
+    </div>
+</div>
+{% endblock %}

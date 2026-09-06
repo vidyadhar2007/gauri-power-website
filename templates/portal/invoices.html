@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Commercial Invoices | Gauri Power{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-heading text-3xl font-extrabold text-white">Commercial Invoices & Tax Documents</h1>
+        <p class="text-slate-300 text-xs mt-1">GST Tax Invoices and Proforma documentation for confirmed equipment orders.</p>
+    </div>
+</div>
+
+<div class="py-10 bg-slate-50 min-h-[80vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {% if invoices %}
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-industrial-900 text-white">
+                            <th class="py-3.5 px-4 font-bold">Invoice Number</th>
+                            <th class="py-3.5 px-4 font-bold">Order Reference</th>
+                            <th class="py-3.5 px-4 font-bold">Base Amount</th>
+                            <th class="py-3.5 px-4 font-bold">GST (18%)</th>
+                            <th class="py-3.5 px-4 font-bold">Total (INR)</th>
+                            <th class="py-3.5 px-4 font-bold">Invoice Date</th>
+                            <th class="py-3.5 px-4 font-bold">Payment Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        {% for inv in invoices %}
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3.5 px-4 font-mono font-bold text-industrial-900">{{ inv.invoice_number }}</td>
+                            <td class="py-3.5 px-4 font-mono text-slate-600">{{ inv.order.order_number }}</td>
+                            <td class="py-3.5 px-4 text-slate-800">INR {{ "{:,.2f}".format(inv.amount) }}</td>
+                            <td class="py-3.5 px-4 text-slate-600">INR {{ "{:,.2f}".format(inv.tax_amount) }}</td>
+                            <td class="py-3.5 px-4 font-bold text-industrial-900">INR {{ "{:,.2f}".format(inv.total_amount) }}</td>
+                            <td class="py-3.5 px-4 text-slate-500">{{ inv.created_at.strftime('%d %b %Y') }}</td>
+                            <td class="py-3.5 px-4">
+                                <span class="px-2.5 py-1 rounded text-[11px] font-bold {% if inv.payment_status == 'Paid' %}bg-emerald-100 text-emerald-800{% else %}bg-amber-100 text-amber-900{% endif %}">
+                                    {{ inv.payment_status }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 space-y-3">
+            <i class="fa-solid fa-receipt text-4xl text-slate-400"></i>
+            <h3 class="font-heading text-lg font-bold text-industrial-900">No commercial invoices generated</h3>
+            <p class="text-xs text-slate-500">Official tax invoices are generated when production orders reach the dispatch stage.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

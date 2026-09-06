@@ -1,0 +1,428 @@
+{% extends 'base.html' %}
+{% block title %}AI Engineering Assistant & Sizing Copilot | Gauri Power{% endblock %}
+{% block meta_description %}Interactive Gauri Power AI Technical Assistant: calculate servo stabilizer kVA sizing, explore vacuum circuit breaker (VCB) specifications, and obtain instant engineering recommendations.{% endblock %}
+
+{% block content %}
+<!-- AI Assistant Page Container -->
+<div class="bg-[#070D18] min-h-screen text-slate-100 py-10 relative overflow-hidden">
+    <!-- Ambient Background Lighting -->
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#00ADB5_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none"></div>
+    <div class="absolute -right-40 -top-40 w-[35rem] h-[35rem] bg-electric-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-40 top-1/2 w-[30rem] h-[30rem] bg-power-amber/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
+        <!-- Header Banner -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-800">
+            <div>
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-bold text-electric-cyan uppercase tracking-widest mb-3">
+                    <span class="w-2 h-2 rounded-full bg-electric-cyan animate-ping"></span>
+                    <i class="fa-solid fa-microchip mr-1"></i>
+                    <span>AI Engineering Copilot</span>
+                    <span>&bull;</span>
+                    <span class="text-slate-400">Indian Industrial Grid Grounded</span>
+                </div>
+                <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+                    Gauri Power <span class="text-transparent bg-clip-text bg-gradient-to-r from-power-amber via-amber-300 to-yellow-200">AI Technical Assistant</span>
+                </h1>
+                <p class="text-slate-400 text-sm sm:text-base max-w-2xl mt-2 leading-relaxed">
+                    Interactive engineering calculations, automated servo stabilizer capacity sizing, vacuum circuit breaker (VCB) specifications, and quotation assistance.
+                </p>
+            </div>
+
+            <!-- Quick Action Badges -->
+            <div class="flex flex-wrap items-center gap-3">
+                <a href="{{ url_for('quotation.new_rfq') }}" class="inline-flex items-center px-5 py-3 rounded-xl text-xs font-black uppercase tracking-wider text-industrial-950 bg-gradient-to-r from-power-amber to-amber-400 hover:from-amber-400 hover:to-power-amber shadow-lg transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-bolt mr-2 text-industrial-950"></i>Submit RFQ Form
+                </a>
+                <a href="tel:{{ company_phones[0] }}" class="inline-flex items-center px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-colors">
+                    <i class="fa-solid fa-phone mr-2 text-electric-cyan"></i>Call Sales Desk
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Two-Column Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT COLUMN: Sizing Wizard & Technical Highlights (5 Cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                <!-- Interactive Sizing Calculator Card -->
+                <div class="bg-industrial-900/90 rounded-2xl border border-slate-800 shadow-2xl p-6 backdrop-blur-md">
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-5">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-9 h-9 rounded-xl bg-power-amber/15 border border-power-amber/30 flex items-center justify-center text-power-amber text-base">
+                                <i class="fa-solid fa-calculator"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-white text-base">kVA Sizing Calculator</h3>
+                                <p class="text-[11px] text-slate-400">Instant Capacity &amp; Model Selection</p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-mono px-2 py-0.5 bg-slate-800 text-electric-cyan rounded border border-slate-700">IEC / IS 1180</span>
+                    </div>
+
+                    <form id="sizingForm" class="space-y-4 text-xs" onsubmit="return false;">
+                        <!-- System Voltage Selection -->
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1.5">System Voltage &amp; Phase</label>
+                            <select id="calcPhase" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white text-xs focus:outline-none focus:border-electric-cyan transition-colors">
+                                <option value="415" data-phase="3">3-Phase (415 Volts AC - Standard Industrial)</option>
+                                <option value="230" data-phase="1">1-Phase (230 Volts AC - Single Phase)</option>
+                                <option value="11000" data-phase="3">HT Grid (11 kV / 11,000 Volts)</option>
+                                <option value="33000" data-phase="3">HT Grid (33 kV / 33,000 Volts)</option>
+                            </select>
+                        </div>
+
+                        <!-- Load Input Type (Current vs kW) -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-slate-300 font-semibold mb-1.5">Full Load Current (Amps)</label>
+                                <input type="number" id="calcAmps" value="350" min="1" max="10000" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white text-xs focus:outline-none focus:border-electric-cyan font-mono transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-slate-300 font-semibold mb-1.5">Power Factor (cos &phi;)</label>
+                                <input type="number" id="calcPF" value="0.85" step="0.05" min="0.5" max="1.0" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white text-xs focus:outline-none focus:border-electric-cyan font-mono transition-colors">
+                            </div>
+                        </div>
+
+                        <!-- Motor Load Safety Buffer Slider -->
+                        <div class="space-y-1.5 pt-1">
+                            <div class="flex justify-between text-slate-300">
+                                <span class="font-semibold">Motor Inrush / Safety Margin:</span>
+                                <span class="text-power-amber font-mono font-bold" id="marginLabel">25%</span>
+                            </div>
+                            <input type="range" id="calcMargin" min="0" max="50" value="25" step="5" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-power-amber">
+                            <p class="text-[10px] text-slate-500 italic">Recommended: 20-30% buffer for inductive motors &amp; welding loads</p>
+                        </div>
+
+                        <!-- Calculation Output Result Box -->
+                        <div class="mt-4 p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-3">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="text-slate-400">Calculated Operating Load:</span>
+                                <span class="text-white font-mono font-bold text-sm" id="calcRawKVA">251.5 kVA</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs border-t border-slate-800/80 pt-2">
+                                <span class="text-power-amber font-bold">Recommended Gauri Power Rating:</span>
+                                <span class="text-emerald-400 font-mono font-black text-base" id="calcRecommendedKVA">300 kVA</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 border-t border-slate-800/80 pt-2 flex items-start space-x-2">
+                                <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 flex-shrink-0"></i>
+                                <span id="calcEquipDescription">Gauri Power Balanced Servo Stabilizer with Linear Rectangular Copper Strip &amp; Graphite Rollers.</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                <button type="button" id="btnAskAIConfig" class="text-center py-2 px-3 text-[11px] font-bold rounded-lg bg-electric-cyan/15 hover:bg-electric-cyan/25 text-electric-cyan border border-electric-cyan/30 transition-colors">
+                                    <i class="fa-solid fa-robot mr-1"></i>Ask AI About This
+                                </button>
+                                <a id="btnRFQPrefill" href="{{ url_for('quotation.new_rfq') }}?capacity=300+kVA" class="text-center py-2 px-3 text-[11px] font-bold rounded-lg bg-power-amber hover:bg-amber-400 text-industrial-950 transition-colors">
+                                    <i class="fa-solid fa-bolt mr-1"></i>Get RFQ for 300 kVA
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Engineering Highlights -->
+                <div class="bg-industrial-900/90 rounded-2xl border border-slate-800 shadow-2xl p-6 backdrop-blur-md space-y-4">
+                    <h4 class="font-heading font-bold text-white text-sm uppercase tracking-wider flex items-center">
+                        <i class="fa-solid fa-shield-halved text-electric-cyan mr-2"></i>Why Gauri Power Make?
+                    </h4>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">
+                            <span class="font-bold text-power-amber block mb-1">1. Linear Copper Strip Regulators (&ge; 24 mm&sup2;)</span>
+                            <p class="text-slate-400 leading-relaxed">Unlike conventional toroidal dimmers using thin wire, Gauri Power wound strips handle continuous heavy motor loads without thermal degradation.</p>
+                        </div>
+                        <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">
+                            <span class="font-bold text-emerald-400 block mb-1">2. Graphite Carbon Roller Assemblies</span>
+                            <p class="text-slate-400 leading-relaxed">Zero replacement for 8–10 years. Rollers glide smoothly over stripped tracks without causing wear &amp; tear or spark damage.</p>
+                        </div>
+                        <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">
+                            <span class="font-bold text-electric-cyan block mb-1">3. >99% Overall Efficiency</span>
+                            <p class="text-slate-400 leading-relaxed">Losses limited to 0.5% – 1.5%, saving heavy power costs every hour compared to 5%–8% conventional losses.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Full-Screen Interactive AI Chat Terminal (7 Cols) -->
+            <div class="lg:col-span-7">
+                <div class="bg-industrial-900/95 rounded-2xl border border-slate-800 shadow-2xl flex flex-col h-[740px] overflow-hidden backdrop-blur-md">
+                    <!-- Chat Terminal Header -->
+                    <div class="p-4 bg-gradient-to-r from-industrial-950 via-slate-900 to-industrial-950 border-b border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-electric-cyan/20 border border-electric-cyan/40 flex items-center justify-center text-electric-cyan text-lg">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <h3 class="font-heading font-bold text-white text-base">Gauri Power Engineering AI</h3>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-power-amber text-industrial-950">Active Copilot</span>
+                                </div>
+                                <p class="text-[11px] text-emerald-400 flex items-center mt-0.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse mr-1.5"></span>
+                                    Online &bull; Servo Stabilizer &amp; VCB Technical Desk
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-2">
+                            <button type="button" id="btnPageChatReset" title="Clear Conversation" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors text-xs flex items-center">
+                                <i class="fa-solid fa-rotate-right mr-1.5"></i>Clear
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chat Terminal Message History Area -->
+                    <div id="pageChatArea" class="flex-1 p-6 overflow-y-auto space-y-4 bg-slate-950/50 text-xs">
+                        <!-- Welcome Message -->
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 rounded-xl bg-electric-cyan/15 border border-electric-cyan/30 text-electric-cyan flex items-center justify-center flex-shrink-0 text-sm mt-0.5">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div class="bg-industrial-800/90 border border-slate-700/80 p-4 rounded-2xl rounded-tl-none text-slate-200 leading-relaxed max-w-[90%] shadow-lg">
+                                <h4 class="font-bold text-white text-sm mb-1.5">Greetings from Gauri Power Engineering Desk!</h4>
+                                <p>I am trained on Gauri Power's official servo voltage stabilizer manufacturing catalogues, vacuum circuit breaker (VCB) switchgear specifications, and IS/IEC industrial standards.</p>
+                                <p class="mt-2 text-slate-300">Ask me anything about:</p>
+                                <ul class="list-disc list-inside mt-1 space-y-1 text-slate-400">
+                                    <li>Capacity &amp; kVA sizing calculations for plant motor loads</li>
+                                    <li>Linear copper strip regulator technology vs conventional toroidal dimmers</li>
+                                    <li>Heavy-duty Servo Voltage Stabilizers (up to 6000 kVA) and 11kV/33kV Vacuum Circuit Breakers (VCB)</li>
+                                    <li>Guidance on submitting single-line diagrams for custom official RFQs</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Initial Suggestion Chips -->
+                        <div id="pageChatSuggestions" class="flex flex-wrap gap-2 pl-11 pt-1">
+                            <button type="button" class="page-chat-chip text-xs px-3 py-1.5 rounded-full bg-industrial-800/80 hover:bg-electric-cyan/20 border border-slate-700 hover:border-electric-cyan text-slate-300 hover:text-electric-cyan font-semibold transition-all">
+                                ⚡ Calculate kVA Sizing Formula
+                            </button>
+                            <button type="button" class="page-chat-chip text-xs px-3 py-1.5 rounded-full bg-industrial-800/80 hover:bg-electric-cyan/20 border border-slate-700 hover:border-electric-cyan text-slate-300 hover:text-electric-cyan font-semibold transition-all">
+                                🏆 Gauri Power vs Conventional Make
+                            </button>
+                            <button type="button" class="page-chat-chip text-xs px-3 py-1.5 rounded-full bg-industrial-800/80 hover:bg-electric-cyan/20 border border-slate-700 hover:border-electric-cyan text-slate-300 hover:text-electric-cyan font-semibold transition-all">
+                                📋 How to Submit RFQ for Quotation
+                            </button>
+                            <button type="button" class="page-chat-chip text-xs px-3 py-1.5 rounded-full bg-industrial-800/80 hover:bg-electric-cyan/20 border border-slate-700 hover:border-electric-cyan text-slate-300 hover:text-electric-cyan font-semibold transition-all">
+                                🏭 Factory Locations &amp; 5-Yr Warranty
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Typing Indicator -->
+                    <div id="pageTypingIndicator" class="hidden px-6 py-2.5 bg-slate-950/80 flex items-center space-x-2 text-xs text-slate-400">
+                        <div class="w-6 h-6 rounded-lg bg-electric-cyan/10 text-electric-cyan flex items-center justify-center flex-shrink-0 text-[10px]">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="flex space-x-1">
+                            <div class="w-1.5 h-1.5 rounded-full bg-electric-cyan animate-bounce"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-electric-cyan animate-bounce [animation-delay:0.2s]"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-electric-cyan animate-bounce [animation-delay:0.4s]"></div>
+                        </div>
+                        <span class="text-[11px] text-electric-cyan italic">Gauri Power AI is computing response...</span>
+                    </div>
+
+                    <!-- Chat Terminal Input Footer -->
+                    <div class="p-4 bg-industrial-950 border-t border-slate-800">
+                        <form id="pageChatForm" class="flex items-center space-x-3">
+                            <input type="text" id="pageChatInput" placeholder="Ask a question (e.g. Sizing for 200 kW load, OLTC features, copper strip specs)..." autocomplete="off" class="flex-1 px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-electric-cyan transition-all">
+                            <button type="submit" class="px-5 py-3 rounded-xl bg-gradient-to-r from-power-amber to-amber-400 hover:from-amber-400 hover:to-power-amber text-industrial-950 font-black text-xs uppercase tracking-wider shadow-lg transition-all flex items-center space-x-2 flex-shrink-0">
+                                <span>Ask AI</span>
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                            </button>
+                        </form>
+                        <div class="flex items-center justify-between text-[11px] text-slate-500 mt-2 px-1">
+                            <span>Press <b>Enter</b> to send message</span>
+                            <span>Gauri Power Engineering AI &bull; Strict IS 1180 &amp; IS 2026 Grounded</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Interactive Sizing & Full-Page Chat Script -->
+<script>
+    (function() {
+        // --- 1. SIZING CALCULATOR LOGIC ---
+        const phaseSelect = document.getElementById('calcPhase');
+        const ampsInput = document.getElementById('calcAmps');
+        const pfInput = document.getElementById('calcPF');
+        const marginSlider = document.getElementById('calcMargin');
+        const marginLabel = document.getElementById('marginLabel');
+        const rawKVALabel = document.getElementById('calcRawKVA');
+        const recKVALabel = document.getElementById('calcRecommendedKVA');
+        const equipDesc = document.getElementById('calcEquipDescription');
+        const btnRFQPrefill = document.getElementById('btnRFQPrefill');
+        const btnAskAIConfig = document.getElementById('btnAskAIConfig');
+
+        const standardRatings = [25, 63, 100, 160, 200, 250, 300, 400, 500, 550, 630, 750, 800, 1000, 1250, 1500, 2000, 2500, 3500, 5000, 6000];
+
+        function recalculate() {
+            const voltage = parseFloat(phaseSelect.value) || 415;
+            const amps = parseFloat(ampsInput.value) || 0;
+            const pf = parseFloat(pfInput.value) || 0.85;
+            const margin = parseFloat(marginSlider.value) || 0;
+            marginLabel.textContent = margin + '%';
+
+            let rawKVA = 0;
+            if (voltage === 230) {
+                rawKVA = (voltage * amps) / 1000;
+            } else {
+                rawKVA = (1.73205 * voltage * amps) / 1000;
+            }
+
+            const totalKVA = rawKVA * (1 + margin / 100);
+            rawKVALabel.textContent = rawKVA.toFixed(1) + ' kVA (Base)';
+
+            let chosenRating = standardRatings.find(r => r >= totalKVA);
+            if (!chosenRating) {
+                chosenRating = Math.ceil(totalKVA / 500) * 500;
+            }
+
+            recKVALabel.textContent = chosenRating + ' kVA';
+
+            if (voltage >= 11000) {
+                equipDesc.textContent = `Gauri Power HT Servo Voltage Stabilizer (${chosenRating} kVA, ${voltage/1000} kV class) with high-dielectric withstand.`;
+            } else if (chosenRating > 1000) {
+                equipDesc.textContent = `Gauri Power Heavy Industrial Servo Controller (${chosenRating} kVA) with motorized Linear Copper Strip and graphite carbon rollers.`;
+            } else {
+                equipDesc.textContent = `Gauri Power Balanced Automatic Servo Voltage Stabilizer (${chosenRating} kVA) wound with minimum 24 mm² rectangular copper strip.`;
+            }
+
+            btnRFQPrefill.href = `{{ url_for('quotation.new_rfq') }}?capacity=${chosenRating}+kVA&input_voltage=340-460V&output_voltage=415V`;
+            btnRFQPrefill.innerHTML = `<i class="fa-solid fa-bolt mr-1"></i>Get RFQ for ${chosenRating} kVA`;
+        }
+
+        phaseSelect.addEventListener('change', recalculate);
+        ampsInput.addEventListener('input', recalculate);
+        pfInput.addEventListener('input', recalculate);
+        marginSlider.addEventListener('input', recalculate);
+
+        recalculate();
+
+        // --- 2. FULL-PAGE CHAT TERMINAL LOGIC ---
+        const pageChatArea = document.getElementById('pageChatArea');
+        const pageChatForm = document.getElementById('pageChatForm');
+        const pageChatInput = document.getElementById('pageChatInput');
+        const pageTypingIndicator = document.getElementById('pageTypingIndicator');
+        const btnPageChatReset = document.getElementById('btnPageChatReset');
+
+        function appendUserBubble(text) {
+            const row = document.createElement('div');
+            row.className = 'flex items-end justify-end space-x-2';
+            row.innerHTML = `
+                <div class="bg-industrial-800 text-white p-3.5 rounded-2xl rounded-tr-none shadow-md max-w-[85%] leading-relaxed border border-slate-700">
+                    <p>${escapeHTML(text)}</p>
+                </div>
+            `;
+            pageChatArea.appendChild(row);
+            pageChatArea.scrollTop = pageChatArea.scrollHeight;
+        }
+
+        function appendBotBubble(htmlReply, suggestions) {
+            const row = document.createElement('div');
+            row.className = 'flex items-start space-x-3';
+            row.innerHTML = `
+                <div class="w-8 h-8 rounded-xl bg-electric-cyan/15 border border-electric-cyan/30 text-electric-cyan flex items-center justify-center flex-shrink-0 text-sm mt-0.5">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="bg-industrial-800/90 border border-slate-700/80 p-4 rounded-2xl rounded-tl-none text-slate-200 leading-relaxed max-w-[90%] shadow-lg">
+                    <div>${htmlReply}</div>
+                </div>
+            `;
+            pageChatArea.appendChild(row);
+
+            if (suggestions && suggestions.length > 0) {
+                const chipsDiv = document.createElement('div');
+                chipsDiv.className = 'flex flex-wrap gap-2 pl-11 pt-1';
+                suggestions.forEach(sugg => {
+                    const chip = document.createElement('button');
+                    chip.type = 'button';
+                    chip.className = 'page-chat-chip text-xs px-3 py-1.5 rounded-full bg-industrial-800/80 hover:bg-electric-cyan/20 border border-slate-700 hover:border-electric-cyan text-slate-300 hover:text-electric-cyan font-semibold transition-all';
+                    chip.textContent = sugg;
+                    chipsDiv.appendChild(chip);
+                });
+                pageChatArea.appendChild(chipsDiv);
+            }
+
+            bindPageChips();
+            pageChatArea.scrollTop = pageChatArea.scrollHeight;
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        async function sendPageMessage(msg) {
+            if (!msg) return;
+            appendUserBubble(msg);
+            pageChatInput.value = '';
+
+            pageTypingIndicator.classList.remove('hidden');
+            pageChatArea.scrollTop = pageChatArea.scrollHeight;
+
+            try {
+                const res = await fetch('/api/v1/chatbot', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: msg })
+                });
+                const data = await res.json();
+                pageTypingIndicator.classList.add('hidden');
+
+                if (data.status === 'success') {
+                    appendBotBubble(data.reply, data.suggestions);
+                } else {
+                    appendBotBubble('Sorry, I encountered an error retrieving technical data. Please try again or submit an RFQ.', ['Submit RFQ', 'Call Sales Desk']);
+                }
+            } catch (err) {
+                pageTypingIndicator.classList.add('hidden');
+                appendBotBubble('Technical communication error. Please contact our sales engineers directly at <b>+91-81789-80216</b>.', ['Call +91-81789-80216']);
+            }
+        }
+
+        pageChatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const msg = pageChatInput.value.trim();
+            if (msg) sendPageMessage(msg);
+        });
+
+        function bindPageChips() {
+            const chips = pageChatArea.querySelectorAll('.page-chat-chip');
+            chips.forEach(chip => {
+                chip.onclick = () => {
+                    sendPageMessage(chip.textContent.trim());
+                };
+            });
+        }
+
+        bindPageChips();
+
+        btnAskAIConfig.addEventListener('click', () => {
+            const voltage = phaseSelect.options[phaseSelect.selectedIndex].text;
+            const amps = ampsInput.value;
+            const rec = recKVALabel.textContent;
+            const query = `Please explain the recommended configuration for a ${rec} rating with ${amps} Amps load on ${voltage}.`;
+            sendPageMessage(query);
+        });
+
+        btnPageChatReset.addEventListener('click', () => {
+            pageChatArea.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-xl bg-electric-cyan/15 border border-electric-cyan/30 text-electric-cyan flex items-center justify-center flex-shrink-0 text-sm mt-0.5">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-industrial-800/90 border border-slate-700/80 p-4 rounded-2xl rounded-tl-none text-slate-200 leading-relaxed max-w-[90%] shadow-lg">
+                        <h4 class="font-bold text-white text-sm mb-1">Conversation cleared.</h4>
+                        <p>How can I assist you with servo stabilizer or VCB switchgear engineering today?</p>
+                    </div>
+                </div>
+            `;
+            pageChatInput.focus();
+        });
+    })();
+</script>
+{% endblock %}

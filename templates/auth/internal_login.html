@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Authorized Personnel Login | Gauri Power{% endblock %}
+{% block content %}
+<div class="min-h-[80vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 bg-industrial-900">
+    <div class="max-w-md w-full space-y-8 bg-industrial-800 p-8 sm:p-10 rounded-3xl shadow-2xl border border-slate-700">
+        <div class="text-center space-y-2">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-slate-900 text-power-amber border border-slate-700 mb-2">
+                <i class="fa-solid fa-shield-halved text-2xl"></i>
+            </div>
+            <h2 class="font-heading text-2xl font-extrabold text-white">Authorized Personnel Only</h2>
+            <p class="text-xs text-slate-400">Sales Engineering Department & Factory Administration Access</p>
+        </div>
+
+        <div class="p-3.5 bg-rose-950/40 rounded-xl border border-rose-800/80 text-[11px] text-rose-300 flex items-start space-x-2">
+            <i class="fa-solid fa-triangle-exclamation mt-0.5 flex-shrink-0 text-rose-400"></i>
+            <span>This system is restricted to verified Gauri Power staff members. Access logs are recorded for audit compliance.</span>
+        </div>
+
+        <form class="space-y-5" method="POST" action="{{ url_for('auth.internal_login') }}">
+            <div>
+                <label for="email" class="block text-xs font-bold text-slate-300 mb-1">Company Staff Email</label>
+                <div class="relative">
+                    <input id="email" name="email" type="email" required placeholder="sales@gauripower.in" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-600 bg-industrial-900 text-white text-xs focus:outline-none focus:border-power-amber">
+                    <i class="fa-solid fa-id-badge absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+                </div>
+            </div>
+
+            <div>
+                <label for="password" class="block text-xs font-bold text-slate-300 mb-1">Staff Security Password</label>
+                <div class="relative">
+                    <input id="password" name="password" type="password" required placeholder="••••••••" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-600 bg-industrial-900 text-white text-xs focus:outline-none focus:border-power-amber">
+                    <i class="fa-solid fa-key absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 px-4 rounded-xl text-xs font-bold text-industrial-900 bg-gradient-to-r from-power-amber to-amber-400 hover:from-amber-400 hover:to-power-amber shadow-lg transition-transform transform hover:-translate-y-0.5">
+                <i class="fa-solid fa-lock-open mr-1.5"></i>Authenticate & Access Sales Desk
+            </button>
+        </form>
+
+        <!-- Quick Demo Credentials for Reviewers -->
+        <div class="border-t border-slate-700 pt-4 space-y-2">
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center">Staff Demo Credentials (Click to Autofill)</p>
+            <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <button type="button" onclick="autofillStaff('sales@gauripower.in', 'Sales@123')" class="p-2 rounded-lg bg-industrial-900 hover:bg-slate-700 text-slate-300 font-medium text-left border border-slate-700 truncate">
+                    <span class="font-bold text-power-amber block">Sales Staff</span>
+                    sales@gauripower.in
+                </button>
+                <button type="button" onclick="autofillStaff('admin@gauripower.in', 'Admin@123')" class="p-2 rounded-lg bg-industrial-900 hover:bg-slate-700 text-slate-300 font-medium text-left border border-slate-700 truncate">
+                    <span class="font-bold text-electric-cyan block">Administrator</span>
+                    admin@gauripower.in
+                </button>
+            </div>
+        </div>
+
+        <div class="text-center pt-2">
+            <a href="{{ url_for('auth.login') }}" class="text-xs text-slate-400 hover:text-white">
+                &larr; Return to Customer & Dealer Sign In
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function autofillStaff(email, pwd) {
+        document.getElementById('email').value = email;
+        document.getElementById('password').value = pwd;
+    }
+</script>
+{% endblock %}

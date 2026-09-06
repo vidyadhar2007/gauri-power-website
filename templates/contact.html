@@ -1,0 +1,335 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us & Registered Works | Gauri Power{% endblock %}
+{% block meta_description %}Contact Gauri Power: Heavy duty industrial servo voltage stabilizer manufacturer and authorized dealer in Vacuum Circuit Breakers (VCB) with registered works at Ropar, Punjab. Direct technical sales desk.{% endblock %}
+
+{% block content %}
+<!-- Premium Industrial Hero Banner -->
+<div class="relative bg-[#060D17] text-white py-16 sm:py-20 overflow-hidden">
+    <!-- Ambient Lighting & Grid -->
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#00ADB5_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none"></div>
+    <div class="absolute -right-40 -top-40 w-[35rem] h-[35rem] bg-electric-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-40 -bottom-40 w-[30rem] h-[30rem] bg-power-amber/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl space-y-4">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-bold text-electric-cyan uppercase tracking-widest shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-electric-cyan animate-ping"></span>
+                <span>Direct Factory Access</span>
+                <span>&bull;</span>
+                <span class="text-slate-300">Works &amp; Office: Ropar (Punjab)</span>
+            </div>
+            
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+                Connect With Our <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-power-amber via-amber-300 to-yellow-200">Engineering &amp; Sales Desk</span>
+            </h1>
+            
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+                Speak directly with electrical engineers and manufacturing works for stabilizer sizing, VCB switchgear specifications, factory inspection visits, or commercial quotation requests.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Main Contact Workspace -->
+<div class="py-16 bg-slate-50/80 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            <!-- LEFT COLUMN: Facility Cards & RFQ Portal (5 Cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                
+                <!-- Single Master Card: Registered Office & Integrated Works -->
+                <div class="bg-white rounded-2xl border-t-4 border-t-electric-cyan border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 p-6 sm:p-7 space-y-6">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-12 h-12 rounded-xl bg-electric-cyan/15 border border-electric-cyan/30 flex items-center justify-center text-electric-cyan text-xl flex-shrink-0 shadow-sm">
+                                <i class="fa-solid fa-building-shield"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-electric-cyan bg-electric-cyan/10 px-2 py-0.5 rounded border border-electric-cyan/20">Works &amp; Corporate Office &bull; Punjab</span>
+                                <h3 class="font-heading text-xl font-bold text-industrial-900 mt-1">Registered Office &amp; Works</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address Block -->
+                    <div class="flex items-start space-x-3 text-xs text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200/90 leading-relaxed">
+                        <i class="fa-solid fa-location-dot text-electric-cyan text-lg mt-0.5 flex-shrink-0"></i>
+                        <div>
+                            <span class="font-bold text-industrial-900 block text-xs mb-1 uppercase tracking-wide">Official Facility Address:</span>
+                            <span class="text-slate-800 font-medium text-sm block">{{ head_office.address }}</span>
+                            <span class="text-slate-600 font-medium text-xs block mt-0.5">{{ head_office.city }} - {{ head_office.pincode }}, {{ head_office.state }}, {{ head_office.country }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Telephone Contact Buttons -->
+                    <div class="space-y-2.5">
+                        <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Direct Phone Lines:</span>
+                        
+                        <!-- Phone 1 -->
+                        <a href="tel:+918178980216" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-electric-cyan/10 border border-slate-200 hover:border-electric-cyan text-industrial-900 transition-all group shadow-2xs">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-electric-cyan/15 flex items-center justify-center text-electric-cyan text-sm flex-shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wide block">MD</span>
+                                    <span class="font-mono font-black text-sm text-industrial-900 group-hover:text-electric-cyan transition-colors">+91-81789-80216</span>
+                                </div>
+                            </div>
+                            <span class="text-[11px] font-bold text-slate-400 group-hover:text-electric-cyan flex items-center pr-1 transition-colors">
+                                Call MD <i class="fa-solid fa-arrow-right ml-1.5 text-[10px]"></i>
+                            </span>
+                        </a>
+
+                        <!-- Phone 2 -->
+                        <a href="tel:+917814943673" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-electric-cyan/10 border border-slate-200 hover:border-electric-cyan text-industrial-900 transition-all group shadow-2xs">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-electric-cyan/15 flex items-center justify-center text-electric-cyan text-sm flex-shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wide block">Technical Head</span>
+                                    <span class="font-mono font-black text-sm text-industrial-900 group-hover:text-electric-cyan transition-colors">+91-78149-43673</span>
+                                </div>
+                            </div>
+                            <span class="text-[11px] font-bold text-slate-400 group-hover:text-electric-cyan flex items-center pr-1 transition-colors">
+                                Call Technical Head <i class="fa-solid fa-arrow-right ml-1.5 text-[10px]"></i>
+                            </span>
+                        </a>
+                    </div>
+
+                    <!-- Email Button -->
+                    <a href="mailto:{{ company_email }}" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-industrial-900 transition-all group">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center text-sm flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wide block">Official Email</span>
+                                <span class="font-mono font-bold text-xs text-slate-800">{{ company_email }}</span>
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-400 group-hover:text-industrial-900 flex items-center pr-1 transition-colors">
+                            Write Email &rarr;
+                        </span>
+                    </a>
+
+                    <!-- Facility Operations Badges -->
+                    <div class="space-y-2 pt-2 border-t border-slate-100">
+                        <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Integrated Plant Capabilities:</span>
+                        <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-700">
+                            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center space-x-2">
+                                <i class="fa-solid fa-microchip text-electric-cyan text-xs flex-shrink-0"></i>
+                                <span>Servo Stabilizer Assembly</span>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center space-x-2">
+                                <i class="fa-solid fa-bolt text-power-amber text-xs flex-shrink-0"></i>
+                                <span>70 kV Dielectric Test Bay</span>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center space-x-2">
+                                <i class="fa-solid fa-arrows-spin text-power-amber text-xs flex-shrink-0"></i>
+                                <span>Copper Strip Winding</span>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center space-x-2">
+                                <i class="fa-solid fa-truck-ramp-box text-electric-cyan text-xs flex-shrink-0"></i>
+                                <span>Heavy Crane Bay &amp; Logistics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Operating Hours -->
+                    <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                        <span><i class="fa-regular fa-clock mr-1.5 text-slate-400"></i>Mon - Sat: 9:00 AM - 6:30 PM</span>
+                        <span class="text-emerald-600 font-bold flex items-center"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>Works Active</span>
+                    </div>
+
+                    <p class="text-xs text-slate-500 italic pt-1 border-t border-slate-100">
+                        * Factory visits &amp; pre-dispatch customer witness testing arranged upon prior appointment with our technical desk.
+                    </p>
+                </div>
+
+                <!-- Card 3: Direct RFQ Portal Banner -->
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-industrial-950 via-slate-900 to-industrial-950 text-white space-y-4 border border-power-amber/40 shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-28 h-28 bg-power-amber/15 rounded-full blur-xl pointer-events-none"></div>
+                    
+                    <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-md bg-power-amber/20 border border-power-amber/40 text-[10px] font-black uppercase tracking-wider text-power-amber">
+                        <i class="fa-solid fa-bolt mr-1"></i>Need Formal Pricing?
+                    </div>
+
+                    <h4 class="font-heading text-lg font-bold text-white tracking-tight">
+                        Submit an Official Request For Quotation (RFQ)
+                    </h4>
+                    
+                    <p class="text-xs text-slate-300 leading-relaxed font-normal">
+                        Bypass general inquiries to submit precise plant voltage swings, load ratings, and attach electrical single-line diagrams. Sales engineers issue a comprehensive commercial proposal with downloadable PDF.
+                    </p>
+
+                    <div class="pt-1">
+                        <a href="{{ url_for('quotation.new_rfq') }}" class="w-full inline-flex items-center justify-center px-5 py-3 text-xs font-black uppercase tracking-wider rounded-xl text-industrial-950 bg-gradient-to-r from-power-amber to-amber-400 hover:from-amber-400 hover:to-power-amber shadow-lg transition-all transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-file-signature mr-2 text-industrial-950 text-sm"></i>Launch RFQ Submission Portal
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Interactive Engineering Inquiry Form (7 Cols) -->
+            <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-xl space-y-6">
+                <div>
+                    <div class="inline-flex items-center space-x-2 text-xs font-bold text-electric-cyan uppercase tracking-wider mb-2">
+                        <span class="w-6 h-0.5 bg-electric-cyan"></span>
+                        <span>Direct Communication</span>
+                    </div>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-industrial-900 tracking-tight">
+                        Send Us an Engineering Inquiry
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1.5 leading-relaxed">
+                        Provide your plant application or equipment specifications. Our senior electrical sales engineers will respond within 24 business hours.
+                    </p>
+                </div>
+
+                <form method="POST" action="{{ url_for('public.contact') }}" class="space-y-4">
+                    <!-- Inquiry Type Selection Chips -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Primary Equipment / Inquiry Subject</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                            <label class="flex items-center p-2.5 rounded-xl border border-slate-200 hover:border-electric-cyan cursor-pointer bg-slate-50/50 has-[:checked]:bg-electric-cyan/10 has-[:checked]:border-electric-cyan has-[:checked]:text-industrial-900 transition-all">
+                                <input type="radio" name="inquiry_type" value="Automatic Servo Voltage Stabilizer" checked class="accent-electric-cyan mr-2">
+                                <span class="font-semibold text-[11px]">Servo Stabilizer</span>
+                            </label>
+                            <label class="flex items-center p-2.5 rounded-xl border border-slate-200 hover:border-electric-cyan cursor-pointer bg-slate-50/50 has-[:checked]:bg-electric-cyan/10 has-[:checked]:border-electric-cyan has-[:checked]:text-industrial-900 transition-all">
+                                <input type="radio" name="inquiry_type" value="HT Servo Voltage Stabilizer" class="accent-electric-cyan mr-2">
+                                <span class="font-semibold text-[11px]">HT Stabilizer (11kV)</span>
+                            </label>
+                            <label class="flex items-center p-2.5 rounded-xl border border-slate-200 hover:border-electric-cyan cursor-pointer bg-slate-50/50 has-[:checked]:bg-electric-cyan/10 has-[:checked]:border-electric-cyan has-[:checked]:text-industrial-900 transition-all">
+                                <input type="radio" name="inquiry_type" value="Indoor VCB Switchgear Panel" class="accent-electric-cyan mr-2">
+                                <span class="font-semibold text-[11px]">Indoor VCB Panel</span>
+                            </label>
+                            <label class="flex items-center p-2.5 rounded-xl border border-slate-200 hover:border-electric-cyan cursor-pointer bg-slate-50/50 has-[:checked]:bg-electric-cyan/10 has-[:checked]:border-electric-cyan has-[:checked]:text-industrial-900 transition-all">
+                                <input type="radio" name="inquiry_type" value="Compact RMU & 33kV Indoor VCB" class="accent-electric-cyan mr-2">
+                                <span class="font-semibold text-[11px]">Compact RMU &amp; 33kV VCB</span>
+                            </label>
+                            <label class="flex items-center p-2.5 rounded-xl border border-slate-200 hover:border-electric-cyan cursor-pointer bg-slate-50/50 has-[:checked]:bg-electric-cyan/10 has-[:checked]:border-electric-cyan has-[:checked]:text-industrial-900 transition-all">
+                                <input type="radio" name="inquiry_type" value="Dealership Inquiry" class="accent-electric-cyan mr-2">
+                                <span class="font-semibold text-[11px]">Dealership Inquiry</span>
+                            </label>
+                            <label class="flex items-center p-2.5 rounded-xl border border-slate-200 hover:border-electric-cyan cursor-pointer bg-slate-50/50 has-[:checked]:bg-electric-cyan/10 has-[:checked]:border-electric-cyan has-[:checked]:text-industrial-900 transition-all">
+                                <input type="radio" name="inquiry_type" value="Technical Service & Warranty" class="accent-electric-cyan mr-2">
+                                <span class="font-semibold text-[11px]">Service &amp; Warranty</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Contact Name & Email -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Your Full Name *</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-xs">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <input type="text" name="name" required placeholder="e.g., Rajesh Kumar" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-electric-cyan bg-slate-50/40 focus:bg-white transition-all">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-xs">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <input type="email" name="email" required placeholder="name@company.com" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-electric-cyan bg-slate-50/40 focus:bg-white transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phone & Company -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Mobile / Phone Number *</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-xs">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <input type="tel" name="phone" required placeholder="+91 XXXXX XXXXX" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-electric-cyan bg-slate-50/40 focus:bg-white transition-all">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Company / Plant Name</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-xs">
+                                    <i class="fa-solid fa-building"></i>
+                                </div>
+                                <input type="text" name="company" placeholder="e.g., Premier Steel Works" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-electric-cyan bg-slate-50/40 focus:bg-white transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message / Requirements -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Your Message or Technical Requirements *</label>
+                        <textarea name="message" rows="4" required placeholder="Please describe your equipment capacity (kVA), plant input voltage swing, load type (motors, furnace, machinery), or any special site requirements..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-electric-cyan bg-slate-50/40 focus:bg-white transition-all leading-relaxed"></textarea>
+                    </div>
+
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-industrial-900 hover:bg-industrial-800 text-white rounded-xl text-xs font-bold shadow-lg transition-all flex items-center justify-center space-x-2">
+                            <span>Submit Engineering Inquiry</span>
+                            <i class="fa-solid fa-paper-plane text-electric-cyan"></i>
+                        </button>
+                        <p class="text-[11px] text-slate-500 flex items-center">
+                            <i class="fa-solid fa-shield-halved text-emerald-600 mr-1.5"></i>
+                            Strictly confidential industrial communication.
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Bottom Trust Credentials Strip -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-center space-x-3.5 shadow-2xs">
+                <div class="w-10 h-10 rounded-lg bg-electric-cyan/10 text-electric-cyan flex items-center justify-center text-base flex-shrink-0">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-xs text-industrial-900">24-Hr Response</div>
+                    <div class="text-[11px] text-slate-500">Sales engineering review</div>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-center space-x-3.5 shadow-2xs">
+                <div class="w-10 h-10 rounded-lg bg-power-amber/10 text-power-amber flex items-center justify-center text-base flex-shrink-0">
+                    <i class="fa-solid fa-industry"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-xs text-industrial-900">Works &amp; Office (PB)</div>
+                    <div class="text-[11px] text-slate-500">Registered manufacturing</div>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-center space-x-3.5 shadow-2xs">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center text-base flex-shrink-0">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-xs text-industrial-900">5 Years Warranty</div>
+                    <div class="text-[11px] text-slate-500">Comprehensive India coverage</div>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white border border-slate-200 flex items-center space-x-3.5 shadow-2xs">
+                <div class="w-10 h-10 rounded-lg bg-teal-500/10 text-teal-600 flex items-center justify-center text-base flex-shrink-0">
+                    <i class="fa-solid fa-certificate"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-xs text-industrial-900">IS 1180 &amp; BEE</div>
+                    <div class="text-[11px] text-slate-500">100% Routine tested</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

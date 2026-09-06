@@ -1,0 +1,815 @@
+{% extends 'base.html' %}
+{% block title %}Quality Assurance & Routine Testing Protocols | Servo Stabilizers & VCB Switchgear | Gauri Power{% endblock %}
+{% block meta_description %}Rigorous quality control and routine testing protocols at Gauri Power: 4-tier stabilizer manufacturing QA, 100% IS 9815 routine testing, virgin oil BDV lab (>60 kV), and authorized 11kV/33kV VCB pre-dispatch testing (vacuum bottle integrity, micro-ohm contact resistance, and millisecond timing analysis).{% endblock %}
+
+{% block content %}
+<!-- Premium Hero Banner -->
+<div class="relative bg-[#060D17] text-white py-16 sm:py-20 overflow-hidden">
+    <!-- Ambient Lighting & Grid -->
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#00ADB5_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none"></div>
+    <div class="absolute -right-40 -top-40 w-[35rem] h-[35rem] bg-electric-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-40 -bottom-40 w-[30rem] h-[30rem] bg-power-amber/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl space-y-4">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-bold text-electric-cyan uppercase tracking-widest shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-electric-cyan animate-ping"></span>
+                <span>Dual Quality Framework</span>
+                <span>&bull;</span>
+                <span class="text-slate-300">IS 9815 &bull; IS 2026 &bull; IEC 62271-100</span>
+            </div>
+
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+                Total Quality Assurance &amp; <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-power-amber via-amber-300 to-yellow-200">Routine Testing Protocols</span>
+            </h1>
+
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+                Gauri Power operates under a dual-pillar quality assurance architecture: comprehensive in-house manufacturing inspection for heavy-duty <b>Servo Voltage Stabilizers</b> at our Ropar works, combined with stringent pre-dispatch bench verification for authorized <b>11 kV &amp; 33 kV Vacuum Circuit Breaker (VCB)</b> switchgear.
+            </p>
+        </div>
+
+        <!-- Metric Statistics Strip -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 pt-8 border-t border-slate-800">
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-electric-cyan font-mono">100%</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">Routine Tested Pre-Dispatch</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-emerald-400 font-mono">&gt; 60 kV</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">Virgin Mineral Oil BDV (Stabilizers)</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-power-amber font-mono">&le; 40 &mu;&Omega;</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">VCB Main Pole Contact Resistance</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-teal-300 font-mono">&lt; 50 ms</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">VCB Fault Interruption Speed</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Section Navigator Bar -->
+<div class="bg-industrial-900 border-b border-slate-800 sticky top-16 z-30 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center overflow-x-auto py-3 space-x-3 text-xs font-mono no-scrollbar">
+            <a href="#stabilizer-qa" class="flex-shrink-0 px-3.5 py-1.5 rounded-lg bg-electric-cyan/15 text-electric-cyan font-bold hover:bg-electric-cyan/25 transition-colors flex items-center">
+                <i class="fa-solid fa-bolt mr-2 text-xs"></i>01. Servo Stabilizer Production QA
+            </a>
+            <a href="#stabilizer-tests" class="flex-shrink-0 px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-colors flex items-center">
+                <i class="fa-solid fa-flask mr-2 text-xs"></i>02. Stabilizer Routine Lab Tests
+            </a>
+            <a href="#oil-lab" class="flex-shrink-0 px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-colors flex items-center">
+                <i class="fa-solid fa-droplet mr-2 text-xs"></i>03. Dielectric Oil Laboratory
+            </a>
+            <a href="#vcb-qa" class="flex-shrink-0 px-3.5 py-1.5 rounded-lg bg-power-amber/15 text-power-amber font-bold hover:bg-power-amber/25 transition-colors flex items-center">
+                <i class="fa-solid fa-shield-halved mr-2 text-xs"></i>04. VCB Dealership QA Bench
+            </a>
+            <a href="#vcb-tests" class="flex-shrink-0 px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-colors flex items-center">
+                <i class="fa-solid fa-stopwatch mr-2 text-xs"></i>05. VCB Timing &amp; Bottle Tests
+            </a>
+            <a href="#standards-matrix" class="flex-shrink-0 px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-colors flex items-center">
+                <i class="fa-solid fa-table mr-2 text-xs"></i>06. Compliance Matrix
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- PILLAR 01: SERVO VOLTAGE STABILIZER MANUFACTURING QA (ROPAR WORKS)   -->
+<!-- ===================================================================== -->
+<div id="stabilizer-qa" class="py-20 bg-slate-50/80 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <div class="inline-flex items-center space-x-2 text-xs font-bold text-electric-cyan uppercase tracking-wider">
+                <span class="w-8 h-0.5 bg-electric-cyan"></span>
+                <span>IN-HOUSE MANUFACTURING EXCELLENCE &bull; ROPAR WORKS</span>
+                <span class="w-8 h-0.5 bg-electric-cyan"></span>
+            </div>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                Servo Stabilizer 4-Tier Quality Gating Architecture
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Every heavy-duty industrial stabilizer built in our Ropar works passes four sequential quality gates. Equipment cannot advance to the next manufacturing stage without signed quality release certificates.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- Tier 1 -->
+            <div class="bg-white rounded-2xl border-t-4 border-t-electric-cyan border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between space-y-5">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-electric-cyan bg-electric-cyan/10 px-2.5 py-1 rounded border border-electric-cyan/20">
+                            Quality Gate 01
+                        </span>
+                        <div class="w-10 h-10 rounded-xl bg-electric-cyan/15 text-electric-cyan flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-microscope"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-industrial-900">Inward Raw Material Metallurgy</h3>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">100% Traceable Mill Certificates</p>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Every raw material consignment is chemically and electrically verified before release to the shop floor:
+                    </p>
+
+                    <div class="space-y-2 border-t border-slate-100 pt-3 text-xs text-slate-700">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Electrolytic Copper (&ge; 99.9% Pure):</b> Conductivity verified &gt; 100% IACS with micro-ohm resistance tests.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Prime CRGO Steel (M4 / Laser-Scribed):</b> Epstein bridge testing verifying specific core losses &lt; 0.85 W/kg.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Insulation Materials:</b> Nomex 410 &amp; pre-compressed pressboard tested for Class F/H thermal withstand.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-t border-slate-100 text-[11px] text-slate-500 font-semibold flex items-center">
+                    <i class="fa-solid fa-shield text-electric-cyan mr-1.5"></i>Zero Scrap / Zero Reconditioned Policy
+                </div>
+            </div>
+
+            <!-- Tier 2 -->
+            <div class="bg-white rounded-2xl border-t-4 border-t-power-amber border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between space-y-5">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-power-amber bg-power-amber/10 px-2.5 py-1 rounded border border-power-amber/20">
+                            Quality Gate 02
+                        </span>
+                        <div class="w-10 h-10 rounded-xl bg-power-amber/15 text-power-amber flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-industrial-900">Strip Winding &amp; Roller Track</h3>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">Tension Control &amp; Step-Lap Joints</p>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Precision engineering during coil winding and core assembly guarantees mechanical and thermal resilience:
+                    </p>
+
+                    <div class="space-y-2 border-t border-slate-100 pt-3 text-xs text-slate-700">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Rectangular Copper Strip (&ge; 24 mm&sup2;):</b> Verified cross-section for maximum motor inrush withstand.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Graphite Roller Track Alignment:</b> CNC track uniformity check ensuring continuous contact with zero wear.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>45&deg; Mitred Step-Lap Core:</b> Precision stacking eliminating air gaps and keeping acoustic noise &lt; 50 dB.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-t border-slate-100 text-[11px] text-slate-500 font-semibold flex items-center">
+                    <i class="fa-solid fa-compass-drafting text-power-amber mr-1.5"></i>Continuous Rolling Contact Inspection
+                </div>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="bg-white rounded-2xl border-t-4 border-t-emerald-500 border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between space-y-5">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-600 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20">
+                            Quality Gate 03
+                        </span>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-industrial-900">Vacuum Baking &amp; Oil Tanking</h3>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">Moisture Extraction Under Vacuum</p>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Core-coil assemblies undergo controlled thermal baking and de-aerated oil filling under deep vacuum:
+                    </p>
+
+                    <div class="space-y-2 border-t border-slate-100 pt-3 text-xs text-slate-700">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Thermostatic Baking (105&deg;C):</b> Multi-stage oven drying cycle purging moisture from cellulose insulation.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Deep Vacuum Impregnation (&lt; 0.1 mbar):</b> Vacuum filling prevents micro air bubbles and corona discharge.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>24-Hour Tank Pressure Test:</b> Enclosure tested at 0.5 kg/cm&sup2; pressure guaranteeing zero oil seepages.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-t border-slate-100 text-[11px] text-slate-500 font-semibold flex items-center">
+                    <i class="fa-solid fa-droplet text-emerald-600 mr-1.5"></i>Moisture-Free Dielectric Sealing
+                </div>
+            </div>
+
+            <!-- Tier 4 -->
+            <div class="bg-white rounded-2xl border-t-4 border-t-teal-500 border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between space-y-5">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-600 bg-teal-500/10 px-2.5 py-1 rounded border border-teal-500/20">
+                            Quality Gate 04
+                        </span>
+                        <div class="w-10 h-10 rounded-xl bg-teal-500/15 text-teal-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-industrial-900">100% In-House Routine Testing</h3>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">High Voltage &amp; Certified FTC</p>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Full electrical test bay execution strictly adhering to IS 9815 and IS 2026 before dispatch release:
+                    </p>
+
+                    <div class="space-y-2 border-t border-slate-100 pt-3 text-xs text-slate-700">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>HV Withstand Test:</b> 28 kV / 70 kV power frequency dielectric withstand for 60 seconds.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Regulation Accuracy &amp; Speed:</b> Verified &plusmn; 1% (or &plusmn; 0.5%) output across complete line swing.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Factory Test Certificate (FTC):</b> Serialized NPL-traceable documentation dispatched with every unit.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-t border-slate-100 text-[11px] text-slate-500 font-semibold flex items-center">
+                    <i class="fa-solid fa-file-circle-check text-teal-600 mr-1.5"></i>100% Routine Inspected Guarantee
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- SERVO STABILIZER ROUTINE LABORATORY TESTS (IS 9815 / IS 2026)         -->
+<!-- ===================================================================== -->
+<div id="stabilizer-tests" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="max-w-3xl space-y-3">
+            <div class="inline-flex items-center space-x-2 text-xs font-bold text-electric-cyan uppercase tracking-wider">
+                <span class="w-8 h-0.5 bg-electric-cyan"></span>
+                <span>SERVO VOLTAGE STABILIZER ROUTINE LABORATORY SUITE</span>
+            </div>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                6 Fundamental Routine Tests for Stabilizers (IS 9815 &amp; IS 2026)
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Conducted in our computerized testing bay at Ropar with calibrated digital analyzers traceable to National Physical Laboratory (NPL) standards.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/90 space-y-3 hover:border-electric-cyan hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-electric-cyan/20 text-electric-cyan flex items-center justify-center font-bold text-sm">01</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">Kelvin Bridge</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">Measurement of Winding Resistance</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Measured across all phases using a digital Kelvin double bridge / micro-ohmmeter. Confirms precise rectangular copper cross-section, verifies phase resistance balance within &plusmn; 1%, and provides reference baseline for 75&deg;C thermal loss calculations.
+                </p>
+            </div>
+
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/90 space-y-3 hover:border-electric-cyan hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-electric-cyan/20 text-electric-cyan flex items-center justify-center font-bold text-sm">02</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">Dynamic Testing</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">Voltage Regulation Accuracy &amp; Speed of Correction (IS 9815)</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Subjected to simulated input swings across lower limit (e.g. 300V) to upper limit (e.g. 480V). Confirms true RMS output holding steady within &plusmn; 1% (or &plusmn; 0.5% precision) with response correction speed up to 35 V/sec.
+                </p>
+            </div>
+
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/90 space-y-3 hover:border-electric-cyan hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-electric-cyan/20 text-electric-cyan flex items-center justify-center font-bold text-sm">03</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">70 kV HV Bench</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">Separate Source AC High Voltage Withstand</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Applies power-frequency high voltage (28 kV for 11kV HT class / 70 kV for 33kV class / 3 kV for 415V LT class) between windings and grounded steel enclosure for 60 seconds to prove insulation dielectric integrity without flashover.
+                </p>
+            </div>
+
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/90 space-y-3 hover:border-electric-cyan hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-electric-cyan/20 text-electric-cyan flex items-center justify-center font-bold text-sm">04</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">200 Hz Motor Gen</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">Induced Overvoltage Withstand (DVDF)</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Tested at double rated voltage at 100 Hz / 200 Hz frequency for 60 seconds. Stresses turn-to-turn insulation, roller contact track, and interlayer Nomex dielectric without saturating the magnetic silicon core.
+                </p>
+            </div>
+
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/90 space-y-3 hover:border-electric-cyan hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-electric-cyan/20 text-electric-cyan flex items-center justify-center font-bold text-sm">05</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">Microcontroller AVR</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">AVR Calibration &amp; Electronic Safety Trips</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Calibrates digital microcontroller AVR sensing circuits, under-voltage trip, over-voltage trip, phase-reversal sensing, single-phasing prevention, and electronic overload timer to safeguard connected plant loads.
+                </p>
+            </div>
+
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/90 space-y-3 hover:border-electric-cyan hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-electric-cyan/20 text-electric-cyan flex items-center justify-center font-bold text-sm">06</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">Loss Analyzer</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">No-Load Iron Losses &amp; Full-Load Impedance (%Z)</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Measures core magnetizing losses at rated voltage and circulates rated current under short-circuit conditions to measure I&sup2;R copper losses, corrected mathematically to 75&deg;C reference temperature.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- STABILIZER INSULATING OIL DIELECTRIC LABORATORY                      -->
+<!-- ===================================================================== -->
+<div id="oil-lab" class="py-20 bg-slate-50/80 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 sm:p-12 space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-8 space-y-4">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md text-xs font-bold bg-emerald-500/10 text-emerald-700 border border-emerald-500/20">
+                        <i class="fa-solid fa-droplet mr-1"></i>CALIBRATED OIL DIELECTRIC LABORATORY
+                    </div>
+                    
+                    <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-industrial-900">
+                        Servo Stabilizer Insulating Oil Dielectric BDV &amp; Moisture Testing
+                    </h3>
+                    
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        High-dielectric virgin mineral insulating oil serves as the primary dielectric barrier and the cooling medium in oil-cooled servo stabilizers. At Gauri Power, all oil complies with <b>IS 335 / IEC 60296</b>. Every batch is tested in our motorized spherical electrode test cell prior to vacuum filling.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase block">Breakdown Voltage (BDV)</span>
+                            <span class="font-mono font-black text-lg text-emerald-600">&gt; 60 kV</span>
+                            <span class="text-[11px] text-slate-500 block mt-0.5">IS 335 minimum is 30 kV</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase block">Moisture Content</span>
+                            <span class="font-mono font-black text-lg text-emerald-600">&lt; 15 PPM</span>
+                            <span class="text-[11px] text-slate-500 block mt-0.5">Karl Fischer titration test</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase block">Interfacial Tension</span>
+                            <span class="font-mono font-black text-lg text-emerald-600">&ge; 0.040 N/m</span>
+                            <span class="text-[11px] text-slate-500 block mt-0.5">High oxidation stability</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-industrial-900 pt-2">
+                        <span class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i>100% Virgin Uninhibited Mineral Oil</span>
+                        <span class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i>Deep Vacuum Degassing &amp; Filtration</span>
+                        <span class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i>Zero Recycled or Blended Oil Policy</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 flex flex-col items-center justify-center p-8 rounded-2xl bg-gradient-to-br from-industrial-900 to-slate-900 text-white text-center space-y-4 border border-slate-800 shadow-lg">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-3xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-black text-white font-mono">&gt; 60 kV</div>
+                        <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mt-1">Dielectric Strength</div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Double the Indian National Standard requirement, ensuring zero risk of dielectric puncture under high-temperature industrial operation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- PILLAR 02: VCB DEALERSHIP & PRE-DISPATCH BENCH QUALITY PROTOCOLS     -->
+<!-- ===================================================================== -->
+<div id="vcb-qa" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <div class="inline-flex items-center space-x-2 text-xs font-bold text-power-amber uppercase tracking-wider">
+                <span class="w-8 h-0.5 bg-power-amber"></span>
+                <span>AUTHORIZED VCB DEALERSHIP &amp; SUPPLY ASSURANCE</span>
+                <span class="w-8 h-0.5 bg-power-amber"></span>
+            </div>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                Vacuum Circuit Breaker (VCB) Pre-Dispatch Verification Bench
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                As an authorized dealer and switchgear partner for 11 kV &amp; 33 kV Vacuum Circuit Breakers, Gauri Power enforces a rigorous pre-dispatch testing bench to ensure every breaker delivers instantaneous arc quenching and mechanical reliability.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- VCB Gate 1 -->
+            <div class="bg-slate-50 rounded-2xl border-t-4 border-t-power-amber border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between space-y-5">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-power-amber bg-power-amber/10 px-2.5 py-1 rounded border border-power-amber/20">
+                            VCB Gate 01
+                        </span>
+                        <div class="w-10 h-10 rounded-xl bg-power-amber/15 text-power-amber flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-industrial-900">OEM Type-Test &amp; Seal Check</h3>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">CPRI / ERDA Verified Breakers</p>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Every breaker unit is inspected for OEM authentication, certified serial numbers, and type test validity:
+                    </p>
+
+                    <div class="space-y-2 border-t border-slate-200 pt-3 text-xs text-slate-700">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Type Test Compliance:</b> Full short-circuit breaking tests (up to 31.5 kA / 40 kA) certified by CPRI / ERDA.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>OEM Serial Traceability:</b> Direct verification against factory master database.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Factory Seal Integrity:</b> Tamper-proof mechanism seals confirmed intact prior to acceptance.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-t border-slate-200 text-[11px] text-slate-500 font-semibold flex items-center">
+                    <i class="fa-solid fa-shield-halved text-power-amber mr-1.5"></i>Genuine OEM Equipment Guarantee
+                </div>
+            </div>
+
+            <!-- VCB Gate 2 -->
+            <div class="bg-slate-50 rounded-2xl border-t-4 border-t-electric-cyan border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between space-y-5">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-electric-cyan bg-electric-cyan/10 px-2.5 py-1 rounded border border-electric-cyan/20">
+                            VCB Gate 02
+                        </span>
+                        <div class="w-10 h-10 rounded-xl bg-electric-cyan/15 text-electric-cyan flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-atom"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-industrial-900">Vacuum Bottle Integrity</h3>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">High-Voltage Dielectric Gap Test</p>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        The hermetically sealed ceramic vacuum interrupter is tested for perfect vacuum retention (&lt; 10&supmin;&sup5; mbar):
+                    </p>
+
+                    <div class="space-y-2 border-t border-slate-200 pt-3 text-xs text-slate-700">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>AC High Voltage across Gap:</b> 28 kV RMS for 11kV VCB / 70 kV RMS for 33kV VCB applied across open contacts.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Zero Puncture / Flashover:</b> Verifies absolute seal integrity of vacuum bottle and ceramic envelope.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Leak Rate Audit:</b> Guaranteed vacuum retention for over 30 years operational service life.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-t border-slate-200 text-[11px] text-slate-500 font-semibold flex items-center">
+                    <i class="fa-solid fa-vial text-electric-cyan mr-1.5"></i>Zero Vacuum Degradation Tolerance
+                </div>
+            </div>
+
+            <!-- VCB Gate 3 -->
+            <div class="bg-slate-50 rounded-2xl border-t-4 border-t-emerald-500 border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between space-y-5">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-600 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20">
+                            VCB Gate 03
+                        </span>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-industrial-900">Micro-Ohm Contact Resistance</h3>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">100A DC Ducter Injection Test</p>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Main current-carrying poles are measured under 100A DC to detect contact oxidation or misalignment:
+                    </p>
+
+                    <div class="space-y-2 border-t border-slate-200 pt-3 text-xs text-slate-700">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Low Contact Resistance:</b> Measured value strictly kept below <b>40 &mu;&Omega;</b> per breaker pole.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>No Localized Hotspots:</b> Prevents thermal runaway and terminal overheating under full load (630A&ndash;2000A).</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Contact Wipe &amp; Travel:</b> Breaker overtravel and contact wipe distances micrometer-calibrated.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-t border-slate-200 text-[11px] text-slate-500 font-semibold flex items-center">
+                    <i class="fa-solid fa-temperature-arrow-down text-emerald-600 mr-1.5"></i>Ultra-Low Joint Heating Guarantee
+                </div>
+            </div>
+
+            <!-- VCB Gate 4 -->
+            <div class="bg-slate-50 rounded-2xl border-t-4 border-t-teal-500 border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between space-y-5">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-600 bg-teal-500/10 px-2.5 py-1 rounded border border-teal-500/20">
+                            VCB Gate 04
+                        </span>
+                        <div class="w-10 h-10 rounded-xl bg-teal-500/15 text-teal-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-stopwatch"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-industrial-900">Timing &amp; Mechanical Endurance</h3>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">Millisecond Contact Simultaneity</p>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Digital breaker timing analyzer records operating velocities and synchronism between all 3 poles:
+                    </p>
+
+                    <div class="space-y-2 border-t border-slate-200 pt-3 text-xs text-slate-700">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Closing Time &lt; 50 ms:</b> Fast spring-assisted closing ensuring immediate circuit energization.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Opening Time &lt; 35 ms:</b> Ultra-fast tripping minimizing arc energy during heavy bus faults.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs mt-0.5 flex-shrink-0"></i>
+                            <span><b>Pole Discrepancy &lt; 2 ms:</b> Simultaneous contact touch preventing system unbalance and voltage transients.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-t border-slate-200 text-[11px] text-slate-500 font-semibold flex items-center">
+                    <i class="fa-solid fa-bolt-lightning text-teal-600 mr-1.5"></i>Class M2 Mechanical Duty Verified
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- VCB PRE-COMMISSIONING TESTS (IEC 62271-100 & IS 13118)               -->
+<!-- ===================================================================== -->
+<div id="vcb-tests" class="py-20 bg-slate-50/80 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="max-w-3xl space-y-3">
+            <div class="inline-flex items-center space-x-2 text-xs font-bold text-power-amber uppercase tracking-wider">
+                <span class="w-8 h-0.5 bg-power-amber"></span>
+                <span>HIGH VOLTAGE SWITCHGEAR VERIFICATION PROTOCOL</span>
+            </div>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                VCB Switchgear Pre-Commissioning Tests (IEC 62271-100)
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Prior to dispatch to client industrial plants and electrical substations, every 11kV &amp; 33kV VCB panel undergoes standardized functional verification:
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="p-6 bg-white rounded-2xl border border-slate-200/90 space-y-3 hover:border-power-amber hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-power-amber/20 text-power-amber flex items-center justify-center font-bold text-sm">A</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">Vacuum Hi-Pot</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">Vacuum Bottle Dielectric Integrity Test</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Applies rated power-frequency AC high voltage (28 kV for 11kV class / 70 kV for 33kV class) across open vacuum contacts for 60 seconds. Guarantees that the vacuum chamber has zero leakage and maintains rated arc extinguishing capacity.
+                </p>
+            </div>
+
+            <div class="p-6 bg-white rounded-2xl border border-slate-200/90 space-y-3 hover:border-power-amber hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-power-amber/20 text-power-amber flex items-center justify-center font-bold text-sm">B</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">Millisecond Timer</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">Operating Timing &amp; Contact Simultaneity</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Using a precision multi-channel timing analyzer, breaker closing time (&lt; 50 ms), opening time (&lt; 35 ms), close-open trip cycle, and contact pole synchronism (&lt; 2 ms discrepancy) are recorded and verified.
+                </p>
+            </div>
+
+            <div class="p-6 bg-white rounded-2xl border border-slate-200/90 space-y-3 hover:border-power-amber hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-power-amber/20 text-power-amber flex items-center justify-center font-bold text-sm">C</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">100A DC Ducter</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">Contact Resistance Measurement (&le; 40 &mu;&Omega;)</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    100A DC micro-ohmmeter injection across main copper-chromium vacuum contacts and primary tulip disconnecting contacts. Confirms contact resistance &le; 40 micro-ohms to prevent thermal hotspots under continuous operation.
+                </p>
+            </div>
+
+            <div class="p-6 bg-white rounded-2xl border border-slate-200/90 space-y-3 hover:border-power-amber hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-power-amber/20 text-power-amber flex items-center justify-center font-bold text-sm">D</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">Secondary Injection</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">Numerical Protection Relay Calibration</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Calibrates microprocessor protection relays (Overcurrent 50/51, Earth Fault 50N/51N, Instantaneous Trip) via secondary current injection kits to verify trip curves, pick-up thresholds, and breaker tripping response.
+                </p>
+            </div>
+
+            <div class="p-6 bg-white rounded-2xl border border-slate-200/90 space-y-3 hover:border-power-amber hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-power-amber/20 text-power-amber flex items-center justify-center font-bold text-sm">E</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">Interlock Bench</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">Mechanical Safety &amp; Anti-Pumping Scheme</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    100% functional testing of draw-out truck racking interlocks (Service / Test / Disconnected positions), door interlocks, earthing switch interlocking, spring charging motor operation, and electrical anti-pumping circuits.
+                </p>
+            </div>
+
+            <div class="p-6 bg-white rounded-2xl border border-slate-200/90 space-y-3 hover:border-power-amber hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                    <div class="w-9 h-9 rounded-xl bg-power-amber/20 text-power-amber flex items-center justify-center font-bold text-sm">F</div>
+                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">1 kV Megger</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-industrial-900">Auxiliary Circuit Insulation &amp; Wiring Audit</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    1000V DC Megger insulation resistance test between control wiring and earth. Verifies 2 kV power frequency dielectric withstand on all CT/PT secondary circuits, trip coils, close coils, and control terminal blocks.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- STANDARDS & CERTIFICATION COMPLIANCE MATRIX                           -->
+<!-- ===================================================================== -->
+<div id="standards-matrix" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span class="text-xs font-mono font-bold text-electric-cyan uppercase tracking-wider">
+                REGULATORY &amp; QUALITY STANDARDS COMPLIANCE
+            </span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                National &amp; International Standards Alignment
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Summary of statutory design, manufacturing, and testing standards strictly followed across our Servo Stabilizer and VCB switchgear divisions.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                    <thead>
+                        <tr class="bg-industrial-900 text-white border-b border-slate-800">
+                            <th class="py-4 px-6 font-bold uppercase tracking-wider w-1/4">Equipment / Division</th>
+                            <th class="py-4 px-6 font-bold uppercase tracking-wider w-1/4 text-electric-cyan">Standard / Code</th>
+                            <th class="py-4 px-6 font-bold uppercase tracking-wider w-1/2">Scope &amp; Testing Mandatory Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Servo Voltage Stabilizers</td>
+                            <td class="py-4 px-6 font-mono font-bold text-electric-cyan">IS 9815 / IS 2026</td>
+                            <td class="py-4 px-6 text-slate-600">
+                                Automatic servo-controlled voltage regulators specification: regulation accuracy (&plusmn;1%), speed of correction (up to 35 V/sec), efficiency (&gt;99%), HV withstand, and continuous rated temperature rise.
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Stabilizer Insulating Mineral Oil</td>
+                            <td class="py-4 px-6 font-mono font-bold text-emerald-600">IS 335 / IEC 60296</td>
+                            <td class="py-4 px-6 text-slate-600">
+                                Virgin mineral insulating oil specification: Breakdown voltage (BDV &gt; 60 kV), moisture content (&lt; 15 PPM), dielectric dissipation factor, interfacial tension (&ge; 0.040 N/m), and flash point (&gt; 140&deg;C).
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Vacuum Circuit Breakers (VCB)</td>
+                            <td class="py-4 px-6 font-mono font-bold text-power-amber">IEC 62271-100 / IS 13118</td>
+                            <td class="py-4 px-6 text-slate-600">
+                                High-voltage alternating current circuit breakers: Short-circuit making &amp; breaking capacity (up to 31.5 kA), short-time withstand (3 sec), Class M2 mechanical endurance (&gt; 10,000 operations), and dielectric insulation levels.
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Metal-Enclosed Switchgear Panels</td>
+                            <td class="py-4 px-6 font-mono font-bold text-power-amber">IEC 62271-200 / IS 3427</td>
+                            <td class="py-4 px-6 text-slate-600">
+                                AC metal-enclosed switchgear and controlgear for rated voltages above 1 kV up to 52 kV: Loss of Service Continuity (LSC2B), Internal Arc Classification (IAC AFLR), and IP4X/IP55 degree of enclosure protection.
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Quality Management System</td>
+                            <td class="py-4 px-6 font-mono font-bold text-teal-600">ISO 9001:2015</td>
+                            <td class="py-4 px-6 text-slate-600">
+                                Comprehensive certified quality management system covering design, procurement, manufacturing of servo stabilizers, assembly, pre-commissioning testing, and pan-India service logistics.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- WITNESS TESTING & FACTORY INSPECTION CTA                             -->
+<!-- ===================================================================== -->
+<div class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl p-8 sm:p-12 text-white border border-slate-700 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden" style="background: linear-gradient(135deg, #070F1E 0%, #0B192C 50%, #070F1E 100%);">
+            <!-- Ambient Glow -->
+            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-power-amber/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-12 -top-12 w-64 h-64 bg-electric-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="space-y-3 max-w-2xl text-center md:text-left relative z-10">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md text-xs font-bold bg-power-amber/20 text-power-amber border border-power-amber/40 shadow-sm">
+                    <i class="fa-solid fa-certificate mr-1"></i>CUSTOMER &amp; TPI WITNESS TESTING
+                </div>
+                <h3 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+                    Witness Live Routine Testing at Our Ropar Works
+                </h3>
+                <p class="text-slate-200 text-xs sm:text-sm leading-relaxed font-normal">
+                    We welcome customer electrical engineers and accredited third-party inspection agencies (Bureau Veritas, SGS, TUV, RITES, CEIL) to witness high-voltage dielectric, regulation, and timing tests of both servo stabilizers and VCB switchgear panels prior to dispatch.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto flex-shrink-0 relative z-10">
+                <a href="{{ url_for('public.contact') }}" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-gradient-to-r from-power-amber to-amber-400 hover:from-amber-400 hover:to-power-amber text-industrial-950 font-black text-xs uppercase tracking-wider shadow-lg transition-all text-center">
+                    <i class="fa-solid fa-calendar-check mr-2 text-industrial-950 text-sm"></i>Schedule Factory Witness
+                </a>
+                <a href="{{ url_for('quotation.new_rfq') }}" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider border border-slate-600 transition-colors text-center">
+                    Submit RFQ Sizing
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

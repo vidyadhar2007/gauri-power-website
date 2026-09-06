@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}My Official Quotations | Gauri Power{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+        <div>
+            <h1 class="font-heading text-3xl font-extrabold text-white">My Official Quotations</h1>
+            <p class="text-slate-300 text-xs mt-1">Review formal commercial quotes prepared and issued by Gauri Power's Sales Department.</p>
+        </div>
+    </div>
+</div>
+
+<div class="py-10 bg-slate-50 min-h-[80vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {% if quotations %}
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-industrial-900 text-white border-b border-slate-800">
+                            <th class="py-3.5 px-4 font-bold">Quotation No.</th>
+                            <th class="py-3.5 px-4 font-bold">RFQ Reference</th>
+                            <th class="py-3.5 px-4 font-bold">Total Amount (INR)</th>
+                            <th class="py-3.5 px-4 font-bold">Delivery Period</th>
+                            <th class="py-3.5 px-4 font-bold">Validity</th>
+                            <th class="py-3.5 px-4 font-bold">Status</th>
+                            <th class="py-3.5 px-4 font-bold text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        {% for q in quotations %}
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3.5 px-4 font-mono font-bold text-industrial-900">
+                                <a href="{{ url_for('portal.quotation_detail', quotation_number=q.quotation_number) }}" class="text-electric-cyan hover:underline">
+                                    {{ q.quotation_number }}
+                                </a>
+                            </td>
+                            <td class="py-3.5 px-4 font-mono text-slate-600">
+                                {{ q.request.request_number }}
+                            </td>
+                            <td class="py-3.5 px-4 font-bold text-industrial-900">
+                                INR {{ "{:,.2f}".format(q.total_amount) }}
+                            </td>
+                            <td class="py-3.5 px-4 text-slate-700">
+                                {{ q.delivery_timeline_weeks or 4 }} Weeks
+                            </td>
+                            <td class="py-3.5 px-4 text-slate-500">
+                                {{ q.validity_date.strftime('%d %b %Y') if q.validity_date else '30 Days' }}
+                            </td>
+                            <td class="py-3.5 px-4">
+                                <span class="px-2.5 py-1 rounded text-[11px] font-bold {% if q.status == 'Issued' %}bg-blue-100 text-blue-800{% elif q.status == 'Accepted' %}bg-emerald-100 text-emerald-800{% elif q.status == 'Revision Requested' %}bg-amber-100 text-amber-800{% else %}bg-slate-100 text-slate-700{% endif %}">
+                                    {{ q.status }}
+                                </span>
+                            </td>
+                            <td class="py-3.5 px-4 text-right space-x-2">
+                                <a href="{{ url_for('portal.download_quotation_pdf', quotation_number=q.quotation_number) }}" class="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs" title="Download Official PDF">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                </a>
+                                <a href="{{ url_for('portal.quotation_detail', quotation_number=q.quotation_number) }}" class="px-3 py-1.5 bg-industrial-900 text-white rounded-lg font-semibold hover:bg-industrial-800">
+                                    Review &rarr;
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 space-y-3">
+            <i class="fa-solid fa-file-signature text-4xl text-slate-400"></i>
+            <h3 class="font-heading text-lg font-bold text-industrial-900">No official quotations issued yet</h3>
+            <p class="text-xs text-slate-500">When our Sales Department completes review of your RFQ, your formal quotation will appear here.</p>
+            <a href="{{ url_for('quotation.new_rfq') }}" class="mt-2 inline-flex items-center px-4 py-2 bg-power-amber text-industrial-900 rounded-lg text-xs font-bold">
+                Submit an RFQ
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

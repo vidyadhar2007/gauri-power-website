@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}RFQ Management Queue | Gauri Power{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div>
+            <h1 class="font-heading text-3xl font-extrabold text-white">All Request For Quotations (RFQs)</h1>
+            <p class="text-slate-300 text-xs mt-1">Review specifications and issue official commercial proposals.</p>
+        </div>
+        <a href="{{ url_for('internal.dashboard') }}" class="text-xs text-slate-400 hover:text-white">&larr; Back to Dashboard</a>
+    </div>
+</div>
+
+<div class="py-10 bg-slate-50 min-h-[80vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-industrial-900 text-white">
+                            <th class="py-3.5 px-4 font-bold">Request Number</th>
+                            <th class="py-3.5 px-4 font-bold">Client / Company</th>
+                            <th class="py-3.5 px-4 font-bold">Capacity & Product</th>
+                            <th class="py-3.5 px-4 font-bold">Voltages</th>
+                            <th class="py-3.5 px-4 font-bold">Site Location</th>
+                            <th class="py-3.5 px-4 font-bold">Status</th>
+                            <th class="py-3.5 px-4 font-bold">Date</th>
+                            <th class="py-3.5 px-4 font-bold text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        {% for r in rfqs %}
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3.5 px-4 font-mono font-bold text-industrial-900">
+                                <a href="{{ url_for('internal.rfq_detail', request_number=r.request_number) }}" class="text-electric-cyan hover:underline">
+                                    {{ r.request_number }}
+                                </a>
+                            </td>
+                            <td class="py-3.5 px-4">
+                                <p class="font-bold text-slate-800">{{ r.contact_name }}</p>
+                                <p class="text-[11px] text-slate-500">{{ r.company_name }}</p>
+                            </td>
+                            <td class="py-3.5 px-4">
+                                <span class="font-bold text-electric-cyan">{{ r.capacity_kva }}</span>
+                                <span class="block text-[11px] text-slate-600">{{ r.product.name if r.product else 'Custom' }}</span>
+                            </td>
+                            <td class="py-3.5 px-4 text-slate-700">
+                                {{ r.input_voltage }} &rarr; {{ r.output_voltage }}
+                            </td>
+                            <td class="py-3.5 px-4 text-slate-600">
+                                {{ r.site_location }}, {{ r.state }}
+                            </td>
+                            <td class="py-3.5 px-4">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold {% if r.status == 'Quotation Issued' %}bg-emerald-100 text-emerald-800{% elif r.status == 'Under Technical Review' %}bg-sky-100 text-sky-800{% else %}bg-amber-100 text-amber-900{% endif %}">
+                                    {{ r.status }}
+                                </span>
+                            </td>
+                            <td class="py-3.5 px-4 text-slate-400">
+                                {{ r.created_at.strftime('%d %b %Y') }}
+                            </td>
+                            <td class="py-3.5 px-4 text-right">
+                                <a href="{{ url_for('internal.rfq_detail', request_number=r.request_number) }}" class="px-3 py-1.5 bg-industrial-900 text-white rounded-lg font-semibold hover:bg-industrial-800">
+                                    Review & Quote &rarr;
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block title %}Review RFQ {{ rfq.request_number }} | Sales Desk{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+        <div>
+            <div class="flex items-center space-x-2 text-xs">
+                <a href="{{ url_for('internal.rfq_list') }}" class="text-slate-400 hover:text-white">&larr; Back to RFQ Queue</a>
+                <span class="text-slate-600">•</span>
+                <span class="text-power-amber font-mono font-bold">{{ rfq.request_number }}</span>
+            </div>
+            <h1 class="font-heading text-3xl font-extrabold text-white mt-1">Technical Review Desk</h1>
+        </div>
+        <div class="flex items-center space-x-3">
+            <a href="{{ url_for('internal.prepare_quotation', request_number=rfq.request_number) }}" class="px-6 py-3 rounded-xl text-xs font-bold bg-power-amber text-industrial-900 hover:bg-amber-400 shadow-lg transition-transform transform hover:-translate-y-0.5">
+                <i class="fa-solid fa-file-invoice-dollar mr-1.5 text-base"></i>Prepare & Issue Official Quotation
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="py-10 bg-slate-50 min-h-[80vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left: Technical Inputs -->
+            <div class="lg:col-span-8 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <h2 class="font-heading text-xl font-bold text-industrial-900">Submitted Technical Specifications</h2>
+                    <p class="text-xs text-slate-500">Submitted by <b>{{ rfq.contact_name }}</b> ({{ rfq.email }} / {{ rfq.phone }})</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-slate-100 pt-4 text-xs">
+                    <div>
+                        <span class="text-slate-500 block">Equipment Model:</span>
+                        <p class="font-bold text-industrial-900">{{ rfq.product.name if rfq.product else 'Custom Engineered' }}</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Required Capacity:</span>
+                        <p class="font-bold text-electric-cyan text-sm">{{ rfq.capacity_kva }}</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Quantity:</span>
+                        <p class="font-bold text-industrial-900">{{ rfq.quantity }} Unit(s)</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Input Voltage:</span>
+                        <p class="font-bold text-industrial-900">{{ rfq.input_voltage }}</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Output Voltage:</span>
+                        <p class="font-bold text-industrial-900">{{ rfq.output_voltage }}</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Phase:</span>
+                        <p class="font-semibold text-slate-700">{{ rfq.phase }}</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Winding Material:</span>
+                        <p class="font-semibold text-slate-700">{{ rfq.winding_material }}</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Cooling Type:</span>
+                        <p class="font-semibold text-slate-700">{{ rfq.cooling_type }}</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Site Location:</span>
+                        <p class="font-semibold text-slate-700">{{ rfq.site_location }}, {{ rfq.state }}</p>
+                    </div>
+                </div>
+
+                {% if rfq.additional_notes %}
+                <div class="border-t border-slate-100 pt-4">
+                    <span class="text-xs text-slate-500 font-bold block mb-1">Customer Special Constraints:</span>
+                    <p class="text-xs text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200">{{ rfq.additional_notes }}</p>
+                </div>
+                {% endif %}
+
+                {% if rfq.file_attachment %}
+                <div class="border-t border-slate-100 pt-4 flex items-center justify-between bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-paperclip text-electric-cyan"></i>
+                        <span>Client Tender / SLD File: <b>{{ rfq.file_attachment }}</b></span>
+                    </div>
+                    <a href="{{ url_for('static', filename='uploads/' + rfq.file_attachment) }}" target="_blank" class="px-3 py-1 bg-industrial-900 text-white rounded-lg font-semibold">
+                        View Drawing
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Right: Status Control -->
+            <div class="lg:col-span-4 space-y-6">
+                <!-- Update Review Status -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-heading text-base font-bold text-industrial-900">Update Technical Status</h3>
+                    <p class="text-xs text-slate-500">Keep the customer informed of engineering evaluation progress.</p>
+                    
+                    <form method="POST" action="{{ url_for('internal.update_rfq_status', request_number=rfq.request_number) }}" class="space-y-3">
+                        <select name="status" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-power-amber bg-white">
+                            <option value="Pending Sales Review" {% if rfq.status == 'Pending Sales Review' %}selected{% endif %}>Pending Sales Review</option>
+                            <option value="Under Technical Review" {% if rfq.status == 'Under Technical Review' %}selected{% endif %}>Under Technical Review</option>
+                            <option value="Quotation Under Preparation" {% if rfq.status == 'Quotation Under Preparation' %}selected{% endif %}>Quotation Under Preparation</option>
+                            <option value="Quotation Issued" {% if rfq.status == 'Quotation Issued' %}selected{% endif %}>Quotation Issued</option>
+                            <option value="Closed" {% if rfq.status == 'Closed' %}selected{% endif %}>Closed / Rejected</option>
+                        </select>
+                        <button type="submit" class="w-full py-2.5 rounded-xl text-xs font-bold text-white bg-industrial-900 hover:bg-industrial-800">
+                            Update Status & Notify Client
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Quotation CTA Box -->
+                <div class="bg-gradient-to-br from-industrial-900 to-slate-900 text-white p-6 rounded-3xl shadow-lg space-y-3">
+                    <h4 class="font-heading text-base font-bold text-power-amber">Official Quotation Preparation</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Input copper cost, manufacturing base rate, freight, and payment schedule to formulate an authorized commercial quotation with letterhead.
+                    </p>
+                    <a href="{{ url_for('internal.prepare_quotation', request_number=rfq.request_number) }}" class="w-full inline-block text-center py-3 bg-power-amber text-industrial-900 rounded-xl font-bold text-xs hover:bg-amber-400">
+                        Launch Quotation Builder &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

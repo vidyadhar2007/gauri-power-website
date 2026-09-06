@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Notifications & Updates | Gauri Power{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-heading text-3xl font-extrabold text-white">Notifications & Alerts</h1>
+        <p class="text-slate-300 text-xs mt-1">Real-time status updates regarding your RFQ reviews, quotations, and manufacturing orders.</p>
+    </div>
+</div>
+
+<div class="py-10 bg-slate-50 min-h-[80vh]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        {% if notifications %}
+            {% for n in notifications %}
+            <div class="p-4 rounded-2xl border transition-all flex items-start space-x-3 {% if not n.is_read %}bg-white border-electric-cyan/60 shadow-md{% else %}bg-slate-50/80 border-slate-200{% endif %}">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 {% if not n.is_read %}bg-electric-cyan/10 text-electric-cyan{% else %}bg-slate-200 text-slate-500{% endif %}">
+                    <i class="fa-solid fa-bell text-sm"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xs font-bold text-industrial-900">{{ n.title }}</h4>
+                        <span class="text-[10px] text-slate-400">{{ n.created_at.strftime('%d %b, %I:%M %p') }}</span>
+                    </div>
+                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">{{ n.message }}</p>
+                    {% if n.link %}
+                    <a href="{{ n.link }}" class="inline-block mt-2 text-xs font-bold text-electric-cyan hover:underline">
+                        View Details &rarr;
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <div class="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 space-y-3">
+            <i class="fa-solid fa-bell-slash text-4xl text-slate-400"></i>
+            <h3 class="font-heading text-lg font-bold text-industrial-900">No notifications</h3>
+            <p class="text-xs text-slate-500">You're all caught up! New status alerts on your RFQs and orders will appear here.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

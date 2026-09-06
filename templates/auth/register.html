@@ -1,0 +1,334 @@
+{% extends 'base.html' %}
+{% block title %}Company Registration | Gauri Power B2B Portal{% endblock %}
+{% block meta_description %}Register your enterprise on the Gauri Power B2B portal to submit customized servo stabilizer and VCB switchgear RFQs, review commercial proposals, and track production.{% endblock %}
+
+{% block content %}
+<div class="min-h-[calc(100vh-5rem)] bg-slate-100 flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl w-full bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+        
+        <!-- Left Column: Industrial Trust & Portal Benefits (5 Cols on Desktop) -->
+        <div class="lg:col-span-5 bg-[#060D17] text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-between relative overflow-hidden select-none">
+            <!-- Ambient Lighting & Matrix Grid -->
+            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#00ADB5_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+            <div class="absolute -right-24 -top-24 w-80 h-80 bg-electric-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-24 -bottom-24 w-80 h-80 bg-power-amber/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 space-y-6">
+                <!-- Top Brand Badge -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-white px-3 py-1.5 rounded-xl shadow-md border border-slate-200 inline-block">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Gauri Power" class="h-8 w-auto object-contain">
+                    </div>
+                    <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-power-amber bg-power-amber/10 px-2.5 py-1 rounded-md border border-power-amber/30">
+                        B2B Enrollment
+                    </span>
+                </div>
+
+                <!-- Headline & Intro -->
+                <div class="space-y-2.5">
+                    <h1 class="font-heading text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+                        Register Your Company on <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-power-amber via-amber-300 to-yellow-200">Gauri Power Portal</span>
+                    </h1>
+                    <p class="text-slate-300 text-xs leading-relaxed font-normal">
+                        Connect directly with our electrical engineering desk to submit plant parameters, receive formal itemized quotations, and track production.
+                    </p>
+                </div>
+
+                <!-- 3 Portal Value Propositions -->
+                <div class="space-y-3 pt-2">
+                    <div class="flex items-start space-x-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800">
+                        <div class="w-8 h-8 rounded-xl bg-electric-cyan/15 text-electric-cyan flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-bold text-white">Itemized Engineering Proposals</h3>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                Download formal PDF quotations with guaranteed loss specifications, vector schematics, and commercial terms.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800">
+                        <div class="w-8 h-8 rounded-xl bg-power-amber/15 text-power-amber flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-industry"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-bold text-white">Live Works Production Milestones</h3>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                6-stage milestone tracking from core stacking and copper winding to routine and dielectric HV clearance.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-shield-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-bold text-white">5-Year Manufacturer Warranty</h3>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                All registered equipment receives priority on-site service and lifetime technical documentation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Works Trust Strip -->
+            <div class="pt-6 mt-6 border-t border-slate-800/90 relative z-10 text-[11px] text-slate-400 font-mono space-y-1.5">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-building-circle-check text-power-amber"></i>
+                    <span>Works &amp; Office: Ropar (Punjab)</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-phone text-electric-cyan"></i>
+                    <span>MD: +91-81789-80216 | Technical Head: +91-78149-43673</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Registration Form (7 Cols on Desktop) -->
+        <div class="lg:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6 bg-white">
+            <div class="space-y-6">
+                <!-- Form Header -->
+                <div class="space-y-1.5">
+                    <div class="inline-flex items-center space-x-1.5 text-[10px] font-mono font-black uppercase tracking-wider text-electric-cyan bg-electric-cyan/10 px-2.5 py-0.5 rounded border border-electric-cyan/20">
+                        <i class="fa-solid fa-user-plus text-[9px]"></i>
+                        <span>NEW COMPANY REGISTRATION</span>
+                    </div>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-black text-industrial-900 tracking-tight">
+                        Create Your Portal Account
+                    </h2>
+                    <p class="text-xs text-slate-500">
+                        Select your organization type and fill in your commercial details to activate instant portal access.
+                    </p>
+                </div>
+
+                {% set current_next = next_page or request.args.get('next', '') %}
+                {% if current_next and 'quotation' in current_next %}
+                <!-- Quotation Flow Banner -->
+                <div class="p-3.5 rounded-2xl bg-amber-500/10 border-2 border-power-amber/50 text-xs text-amber-950 flex items-start space-x-3 shadow-2xs">
+                    <div class="w-8 h-8 rounded-xl bg-power-amber text-industrial-950 flex items-center justify-center flex-shrink-0 font-bold text-sm">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-industrial-900 block">Register to Request Official Quotation:</span>
+                        <span class="text-slate-600">Once registered, you will proceed directly to configure your required voltage, kVA capacity, and drawing specifications.</span>
+                    </div>
+                </div>
+                {% endif %}
+
+                <form method="POST" action="{{ url_for('auth.register') }}" class="space-y-5">
+                    <input type="hidden" name="next" value="{{ next_page or request.args.get('next', '') }}">
+                    
+                    <!-- Account Role Selector Cards -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-2">Select Organization Type *</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="{% if role != 'dealer' %}border-2 border-industrial-900 bg-slate-50 shadow-xs{% else %}border border-slate-200 hover:border-slate-400{% endif %} rounded-xl p-3.5 flex items-center space-x-3 cursor-pointer transition-all" id="roleCustomerBox">
+                                <input type="radio" name="role" value="end_customer" {% if role != 'dealer' %}checked{% endif %} onchange="toggleDealerFields(false)" class="text-industrial-900 focus:ring-industrial-900">
+                                <div>
+                                    <span class="block text-xs font-bold text-industrial-900">End Customer</span>
+                                    <span class="block text-[10px] text-slate-500">Industrial Plant / Factory Owner</span>
+                                </div>
+                            </label>
+                            <label class="{% if role == 'dealer' %}border-2 border-industrial-900 bg-slate-50 shadow-xs{% else %}border border-slate-200 hover:border-slate-400{% endif %} rounded-xl p-3.5 flex items-center space-x-3 cursor-pointer transition-all" id="roleDealerBox">
+                                <input type="radio" name="role" value="dealer" {% if role == 'dealer' %}checked{% endif %} onchange="toggleDealerFields(true)" class="text-industrial-900 focus:ring-industrial-900">
+                                <div>
+                                    <span class="block text-xs font-bold text-industrial-900">Authorized Dealer</span>
+                                    <span class="block text-[10px] text-slate-500">Electrical Distributor / EPC Contractor</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Company Name & Representative Name (2 Columns) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Company / Enterprise Name *</label>
+                            <div class="relative">
+                                <input type="text" name="company_name" required value="{{ form_data.company_name or '' }}" placeholder="e.g. Northern Steels Ltd" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-electric-cyan bg-slate-50 focus:bg-white">
+                                <i class="fa-solid fa-building absolute left-3 top-3 text-slate-400 text-xs"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Contact Person Full Name *</label>
+                            <div class="relative">
+                                <input type="text" name="name" required value="{{ form_data.name or '' }}" placeholder="e.g. Rajesh Sharma" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-electric-cyan bg-slate-50 focus:bg-white">
+                                <i class="fa-solid fa-user absolute left-3 top-3 text-slate-400 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email & Phone (2 Columns) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Corporate Email Address *</label>
+                            <div class="relative">
+                                <input type="email" name="email" required value="{{ form_data.email or '' }}" placeholder="rajesh@company.com" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-electric-cyan bg-slate-50 focus:bg-white">
+                                <i class="fa-solid fa-envelope absolute left-3 top-3 text-slate-400 text-xs"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Mobile / WhatsApp Number *</label>
+                            <div class="relative">
+                                <input type="tel" name="phone" required value="{{ form_data.phone or '' }}" placeholder="+91 98160 12345" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-electric-cyan bg-slate-50 focus:bg-white">
+                                <i class="fa-solid fa-phone absolute left-3 top-3 text-slate-400 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plant / Office Address Details -->
+                    <div class="space-y-3 p-4 rounded-2xl bg-slate-50/80 border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-industrial-900 uppercase tracking-wider">
+                            <i class="fa-solid fa-location-dot text-electric-cyan"></i>
+                            <span>Plant / Works Location</span>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Street Address / Industrial Plot / Phase *</label>
+                            <input type="text" name="address_line" value="{{ form_data.address_line or '' }}" placeholder="Plot No. 48, Phase 7 Industrial Area" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-electric-cyan">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-700 mb-1">City / Town</label>
+                                <input type="text" name="city" value="{{ form_data.city or '' }}" placeholder="e.g. Mohali / Ludhiana" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-electric-cyan">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-700 mb-1">State / UT</label>
+                                <input type="text" name="state" value="{{ form_data.state or 'Punjab' }}" placeholder="Punjab" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-electric-cyan">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-700 mb-1">PIN / Postal Code</label>
+                                <input type="text" name="postal_code" value="{{ form_data.postal_code or '' }}" placeholder="160062" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-electric-cyan">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commercial GSTIN & Industry -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">GSTIN Number (Optional)</label>
+                            <div class="relative">
+                                <input type="text" name="gst_number" value="{{ form_data.gst_number or form_data.gstin or '' }}" placeholder="03AABCH1234F1Z5" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-electric-cyan bg-slate-50 focus:bg-white uppercase font-mono">
+                                <i class="fa-solid fa-file-invoice absolute left-3 top-3 text-slate-400 text-xs"></i>
+                            </div>
+                        </div>
+                        <div id="industryField">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Industry Sector</label>
+                            <select name="industry_type" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-electric-cyan bg-slate-50 focus:bg-white">
+                                <option value="Steel Rolling Mills & Foundries" {% if form_data.industry_type == 'Steel Rolling Mills & Foundries' %}selected{% endif %}>Steel Rolling Mills &amp; Foundries</option>
+                                <option value="Textile & Spinning Mills" {% if form_data.industry_type == 'Textile & Spinning Mills' %}selected{% endif %}>Textile &amp; Spinning Mills</option>
+                                <option value="Rice Mills & Agro Processing" {% if form_data.industry_type == 'Rice Mills & Agro Processing' %}selected{% endif %}>Rice Mills &amp; Agro Processing</option>
+                                <option value="Cold Storage & Food Processing" {% if form_data.industry_type == 'Cold Storage & Food Processing' %}selected{% endif %}>Cold Storage &amp; Food Processing</option>
+                                <option value="Chemical & Pharmaceutical" {% if form_data.industry_type == 'Chemical & Pharmaceutical' %}selected{% endif %}>Chemical &amp; Pharmaceutical</option>
+                                <option value="Engineering & CNC Machining" {% if form_data.industry_type == 'Engineering & CNC Machining' %}selected{% endif %}>Engineering &amp; CNC Machining</option>
+                                <option value="Commercial Infrastructure & IT" {% if form_data.industry_type == 'Commercial Infrastructure & IT' %}selected{% endif %}>Commercial Infrastructure &amp; IT</option>
+                                <option value="General Manufacturing" {% if not form_data.industry_type or form_data.industry_type == 'General Manufacturing' %}selected{% endif %}>General Manufacturing</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Dealer-Specific Fields (Toggled via JS) -->
+                    <div id="dealerFields" class="{% if role != 'dealer' %}hidden{% endif %} space-y-3.5 p-4 rounded-2xl bg-amber-500/10 border border-power-amber/40">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-industrial-900 uppercase tracking-wider">
+                            <i class="fa-solid fa-handshake text-power-amber"></i>
+                            <span>Dealer Distribution Credentials</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-700 mb-1">Authorized Territory / Region</label>
+                                <input type="text" name="territory" value="{{ form_data.territory or '' }}" placeholder="e.g. Punjab, Himachal Pradesh, Delhi NCR" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-electric-cyan">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-700 mb-1">Dealership Code (If Assigned)</label>
+                                <input type="text" name="dealership_code" value="{{ form_data.dealership_code or '' }}" placeholder="e.g. GPT-DLR-042" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-electric-cyan uppercase font-mono">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Password Inputs (2 Columns) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Create Password *</label>
+                            <div class="relative">
+                                <input type="password" id="registerPassword" name="password" required minlength="6" placeholder="Minimum 6 characters" class="w-full pl-9 pr-10 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-electric-cyan bg-slate-50 focus:bg-white">
+                                <i class="fa-solid fa-lock absolute left-3 top-3 text-slate-400 text-xs"></i>
+                                <button type="button" onclick="togglePass('registerPassword', 'eye1')" class="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 focus:outline-none">
+                                    <i id="eye1" class="fa-solid fa-eye text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Confirm Password *</label>
+                            <div class="relative">
+                                <input type="password" id="registerConfirmPassword" name="confirm_password" required minlength="6" placeholder="Re-enter password" class="w-full pl-9 pr-10 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-electric-cyan bg-slate-50 focus:bg-white">
+                                <i class="fa-solid fa-shield-check absolute left-3 top-3 text-slate-400 text-xs"></i>
+                                <button type="button" onclick="togglePass('registerConfirmPassword', 'eye2')" class="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 focus:outline-none">
+                                    <i id="eye2" class="fa-solid fa-eye text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-[11px] text-slate-500 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <i class="fa-solid fa-circle-info text-electric-cyan mr-1"></i>
+                        Registered enterprise profiles are verified against industrial requirements. Official PDF quotations and factory status updates are delivered directly to your portal dashboard.
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 px-4 rounded-xl text-xs font-black uppercase tracking-wider text-industrial-950 bg-gradient-to-r from-power-amber to-amber-400 hover:from-amber-400 hover:to-power-amber shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center space-x-2">
+                        <span>Register Company &amp; Continue</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </form>
+
+                <!-- Footer Links -->
+                <div class="text-center pt-4 border-t border-slate-100 space-y-2">
+                    <p class="text-xs text-slate-600">
+                        Already have a portal account? 
+                        <a href="{{ url_for('auth.login', next=next_page or request.args.get('next', '')) }}" class="font-bold text-electric-cyan hover:underline">Sign in to your account &rarr;</a>
+                    </p>
+                    <div>
+                        <a href="{{ url_for('auth.internal_login') }}" class="text-[11px] text-slate-400 hover:text-slate-600 inline-flex items-center justify-center space-x-1.5 py-1 px-3 rounded-lg hover:bg-slate-100 transition-colors">
+                            <i class="fa-solid fa-shield-halved text-[10px] text-power-amber"></i>
+                            <span>Authorized Personnel Sign-In (Sales Staff / Admin)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function toggleDealerFields(isDealer) {
+        const df = document.getElementById('dealerFields');
+        const cBox = document.getElementById('roleCustomerBox');
+        const dBox = document.getElementById('roleDealerBox');
+        if (isDealer) {
+            df.classList.remove('hidden');
+            dBox.className = "border-2 border-industrial-900 bg-slate-50 shadow-xs rounded-xl p-3.5 flex items-center space-x-3 cursor-pointer transition-all";
+            cBox.className = "border border-slate-200 hover:border-slate-400 rounded-xl p-3.5 flex items-center space-x-3 cursor-pointer transition-all";
+        } else {
+            df.classList.add('hidden');
+            cBox.className = "border-2 border-industrial-900 bg-slate-50 shadow-xs rounded-xl p-3.5 flex items-center space-x-3 cursor-pointer transition-all";
+            dBox.className = "border border-slate-200 hover:border-slate-400 rounded-xl p-3.5 flex items-center space-x-3 cursor-pointer transition-all";
+        }
+    }
+
+    function togglePass(inputId, iconId) {
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+</script>
+{% endblock %}

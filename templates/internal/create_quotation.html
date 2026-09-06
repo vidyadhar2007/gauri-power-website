@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block title %}Commercial Quotation Builder | Sales Desk{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+        <div>
+            <div class="flex items-center space-x-2 text-xs">
+                <a href="{{ url_for('internal.rfq_detail', request_number=rfq.request_number) }}" class="text-slate-400 hover:text-white">&larr; Back to RFQ {{ rfq.request_number }}</a>
+                <span class="text-slate-600">•</span>
+                <span class="text-power-amber font-semibold uppercase">Official Quotation Formulation</span>
+            </div>
+            <h1 class="font-heading text-3xl font-extrabold text-white mt-1">Formulate Commercial Quotation</h1>
+        </div>
+    </div>
+</div>
+
+<div class="py-10 bg-slate-50 min-h-[80vh]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <form method="POST" action="{{ url_for('internal.create_quotation', request_number=rfq.request_number) }}" class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-xl space-y-8">
+            
+            <!-- Reference Technical Summary -->
+            <div class="p-5 bg-industrial-50 rounded-2xl border border-slate-200 space-y-2">
+                <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Client & RFQ Specifications</span>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                    <div>
+                        <span class="text-slate-500 block">Customer:</span>
+                        <p class="font-bold text-industrial-900">{{ rfq.contact_name }} ({{ rfq.company_name }})</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Equipment:</span>
+                        <p class="font-bold text-industrial-900">{{ rfq.product.name if rfq.product else 'Custom' }}</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Capacity / Qty:</span>
+                        <p class="font-bold text-electric-cyan">{{ rfq.capacity_kva }} • {{ rfq.quantity }} Unit(s)</p>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block">Voltage:</span>
+                        <p class="font-semibold text-slate-700">{{ rfq.input_voltage }} &rarr; {{ rfq.output_voltage }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commercial Form Fields -->
+            <div class="space-y-6">
+                <h2 class="font-heading text-lg font-bold text-industrial-900 border-b border-slate-100 pb-2">Commercial Rates & Surcharges</h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Base Manufacturing Price (Per Unit INR) *</label>
+                        <div class="relative">
+                            <input type="number" step="0.01" id="base_price" name="base_price" required placeholder="e.g. 850000" oninput="calculateTotal()" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-300 text-xs font-bold text-industrial-900 focus:outline-none focus:border-power-amber">
+                            <span class="absolute left-3.5 top-2.5 text-xs text-slate-400 font-bold">₹</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Freight & Transit Insurance (Total INR)</label>
+                        <div class="relative">
+                            <input type="number" step="0.01" id="freight_charges" name="freight_charges" value="25000" oninput="calculateTotal()" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-power-amber">
+                            <span class="absolute left-3.5 top-2.5 text-xs text-slate-400 font-bold">₹</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Goods & Services Tax (GST %)</label>
+                        <input type="number" step="0.1" id="tax_rate" name="tax_rate" value="18.0" oninput="calculateTotal()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-900 focus:outline-none focus:border-power-amber bg-slate-50">
+                    </div>
+                </div>
+
+                <!-- Live Auto Calculation Display -->
+                <div class="p-6 bg-slate-900 rounded-2xl text-white space-y-3">
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>Subtotal (Base x {{ rfq.quantity }} + Freight):</span>
+                        <span id="subtotalDisplay" class="font-mono text-slate-200">INR 0.00</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>Applicable GST (<span id="taxRateDisplay">18</span>%):</span>
+                        <span id="taxDisplay" class="font-mono text-slate-200">INR 0.00</span>
+                    </div>
+                    <div class="border-t border-slate-700 pt-3 flex justify-between items-center text-sm font-bold">
+                        <span class="text-power-amber">Official Quotation Total (Grand Total):</span>
+                        <span id="totalDisplay" class="font-mono text-lg text-emerald-400">INR 0.00</span>
+                    </div>
+                </div>
+
+                <!-- Commercial Terms -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Delivery Timeline (Weeks) *</label>
+                        <input type="number" name="delivery_timeline_weeks" value="4" min="1" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-power-amber">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Warranty Term Stipulation *</label>
+                        <input type="text" name="warranty_terms" value="5 Years Warranty in India" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-power-amber">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Payment Terms *</label>
+                    <input type="text" name="payment_terms" value="30% advance with Purchase Order, 70% against proforma invoice before dispatch." required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-power-amber">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Internal Engineering / Commercial Notes</label>
+                    <textarea name="notes" rows="3" placeholder="Reference copper index date, test certificate clauses, or special payment milestones..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-power-amber"></textarea>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex justify-between items-center">
+                <a href="{{ url_for('internal.rfq_detail', request_number=rfq.request_number) }}" class="text-xs text-slate-500 hover:text-slate-800">
+                    Cancel & Return
+                </a>
+                <button type="submit" onclick="return confirm('Officially issue quotation to customer with these commercial terms?');" class="px-8 py-3.5 rounded-xl text-xs font-bold text-industrial-900 bg-gradient-to-r from-power-amber to-amber-400 hover:from-amber-400 hover:to-power-amber shadow-lg transition-transform transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-stamp mr-1.5"></i>Officially Issue Quotation to Customer
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function calculateTotal() {
+        const qty = {{ rfq.quantity }};
+        const base = parseFloat(document.getElementById('base_price').value) || 0;
+        const freight = parseFloat(document.getElementById('freight_charges').value) || 0;
+        const taxRate = parseFloat(document.getElementById('tax_rate').value) || 18.0;
+
+        const subtotal = (base * qty) + freight;
+        const tax = (subtotal * taxRate) / 100.0;
+        const grandTotal = subtotal + tax;
+
+        document.getElementById('subtotalDisplay').textContent = 'INR ' + subtotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        document.getElementById('taxDisplay').textContent = 'INR ' + tax.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        document.getElementById('taxRateDisplay').textContent = taxRate;
+        document.getElementById('totalDisplay').textContent = 'INR ' + grandTotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+    // Initial run
+    calculateTotal();
+</script>
+{% endblock %}

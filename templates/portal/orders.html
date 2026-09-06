@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %}Production Orders & Milestone Tracking | Gauri Power{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-heading text-3xl font-extrabold text-white">Production Orders & Milestone Tracking</h1>
+        <p class="text-slate-300 text-xs mt-1">Live 7-stage manufacturing progress at our Ropar manufacturing facility.</p>
+    </div>
+</div>
+
+<div class="py-10 bg-slate-50 min-h-[80vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        {% if orders %}
+            {% for o in orders %}
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-100 pb-4 gap-2">
+                    <div>
+                        <div class="flex items-center space-x-3">
+                            <span class="font-mono text-lg font-bold text-industrial-900">{{ o.order_number }}</span>
+                            <span class="px-2.5 py-0.5 rounded text-xs font-bold bg-indigo-100 text-indigo-800">
+                                {{ o.status }}
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-0.5">
+                            Customer PO: <b class="text-slate-800">{{ o.po_number or 'Confirmed' }}</b> • Quotation: <span class="font-mono">{{ o.quotation.quotation_number }}</span>
+                        </p>
+                    </div>
+                    <div class="text-left sm:text-right text-xs text-slate-500">
+                        <p>Total Contract: <b class="text-industrial-900 font-bold">INR {{ "{:,.2f}".format(o.total_amount) }}</b></p>
+                        <p>Est. Delivery: <b class="text-slate-700">{{ o.estimated_delivery or 'In Schedule' }}</b></p>
+                    </div>
+                </div>
+
+                <!-- 7-Stage Visual Production Stepper -->
+                <div class="space-y-2">
+                    <p class="text-xs font-bold text-industrial-900 uppercase tracking-wider">Manufacturing Progress Milestones</p>
+                    
+                    {% set stages = [
+                        ('Order Confirmed', 'fa-file-circle-check'),
+                        ('Engineering & Drawing Approval', 'fa-drafting-compass'),
+                        ('Raw Material Inward & Core Stacking', 'fa-layer-group'),
+                        ('Electrolytic Copper Coil Winding', 'fa-arrows-spin'),
+                        ('Core-Coil Assembly & Tanking', 'fa-screwdriver-wrench'),
+                        ('Routine & Dielectric HV Testing', 'fa-bolt-lightning'),
+                        ('Final Quality Inspection & Dispatched', 'fa-truck-fast')
+                    ] %}
+
+                    <!-- Stepper Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 pt-2">
+                        {% set found_current = false %}
+                        {% set active_idx = 0 %}
+                        {% for s_name, s_icon in stages %}
+                            {% if s_name == o.production_stage %}
+                                {% set active_idx = loop.index %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for s_name, s_icon in stages %}
+                            {% set is_past = loop.index < active_idx %}
+                            {% set is_current = loop.index == active_idx %}
+                            
+                            <div class="p-3 rounded-2xl border text-center flex flex-col items-center justify-between min-h-[110px] {% if is_past %}bg-emerald-50 border-emerald-300 text-emerald-900{% elif is_current %}bg-industrial-900 border-electric-cyan text-white shadow-lg{% else %}bg-slate-50 border-slate-200 text-slate-400{% endif %}">
+                                <span class="text-[10px] font-mono font-bold">0{{ loop.index }}</span>
+                                <i class="fa-solid {{ s_icon }} text-lg my-1 {% if is_past %}text-emerald-600{% elif is_current %}text-electric-cyan{% endif %}"></i>
+                                <span class="text-[10px] font-bold leading-tight line-clamp-2">{{ s_name }}</span>
+                                {% if is_past %}
+                                    <span class="text-[9px] font-bold text-emerald-600"><i class="fa-solid fa-check"></i> Completed</span>
+                                {% elif is_current %}
+                                    <span class="text-[9px] font-bold text-power-amber animate-pulse">In Progress</span>
+                                {% else %}
+                                    <span class="text-[9px] text-slate-400">Scheduled</span>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Order Technical Summary -->
+                <div class="p-4 bg-industrial-50 rounded-2xl border border-slate-200 text-xs text-slate-700 flex flex-wrap justify-between items-center gap-2">
+                    <span>Equipment: <b>{{ o.quotation.request.capacity_kva }}</b> ({{ o.quotation.request.input_voltage }} &rarr; {{ o.quotation.request.output_voltage }})</span>
+                    <span>Installation: <b>{{ o.quotation.request.site_location }}, {{ o.quotation.request.state }}</b></span>
+                    <a href="{{ url_for('portal.download_quotation_pdf', quotation_number=o.quotation.quotation_number) }}" class="text-electric-cyan font-bold hover:underline">
+                        Download Technical Contract PDF &rarr;
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <div class="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 space-y-3">
+            <i class="fa-solid fa-truck-ramp-box text-4xl text-slate-400"></i>
+            <h3 class="font-heading text-lg font-bold text-industrial-900">No active production orders</h3>
+            <p class="text-xs text-slate-500">When you accept an issued quotation, your production order and 7-stage manufacturing progress appear here.</p>
+            <a href="{{ url_for('portal.my_quotations') }}" class="mt-2 inline-flex items-center px-4 py-2 bg-industrial-900 text-white rounded-lg text-xs font-bold">
+                Review My Quotations
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

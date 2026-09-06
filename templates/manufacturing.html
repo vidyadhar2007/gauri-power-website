@@ -1,0 +1,640 @@
+{% extends 'base.html' %}
+{% block title %}Servo Stabilizer Manufacturing Works & Production Process | Gauri Power{% endblock %}
+{% block meta_description %}Comprehensive engineering walkthrough of Gauri Power's 7-stage Servo Voltage Stabilizer production at our Ropar (Punjab) works: CAD electromagnetic design, CRGO core stacking, heavy copper strip winding (>=24 mm²), vacuum oil impregnation, and 100% IS 9815 testing.{% endblock %}
+
+{% block content %}
+<!-- Premium Hero Banner -->
+<div class="relative bg-[#060D17] text-white py-16 sm:py-20 overflow-hidden">
+    <!-- Ambient Lighting & Grid -->
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#00ADB5_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none"></div>
+    <div class="absolute -right-40 -top-40 w-[35rem] h-[35rem] bg-electric-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-40 -bottom-40 w-[30rem] h-[30rem] bg-power-amber/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl space-y-4">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-bold text-electric-cyan uppercase tracking-widest shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-electric-cyan animate-ping"></span>
+                <span>Servo Stabilizer Production Works: Ropar (Punjab)</span>
+                <span>&bull;</span>
+                <span class="text-slate-300">ISO 9001:2015 &bull; IS 9815 Certified</span>
+            </div>
+
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+                Our 7-Stage Precision <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-power-amber via-amber-300 to-yellow-200">Servo Voltage Stabilizer Production</span>
+            </h1>
+
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+                Take an inside engineering walkthrough of our dedicated manufacturing works in Ropar, Punjab. Discover how Gauri Power produces heavy-duty industrial Automatic Servo Voltage Stabilizers up to 6,000 kVA—engineered with rectangular electrolytic copper strips (&ge; 24 mm&sup2;), vertical linear rolling graphite contacts, and prime CRGO step-lap cores for non-stop 24/7 industrial service.
+            </p>
+        </div>
+
+        <!-- Infrastructure Metrics Strip -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 pt-8 border-t border-slate-800">
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-electric-cyan font-mono">6,000 kVA</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">Max Single Stabilizer Built</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-power-amber font-mono">&ge; 24 mm&sup2;</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">Min Electrolytic Copper Strip Section</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-emerald-400 font-mono">8&ndash;10 Yrs</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">Rolling Carbon Assembly Lifespan</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-teal-300 font-mono">&lt; 0.1 mbar</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">Deep Vacuum Drying &amp; Oil Impregnation</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Interactive Stage Progress Navigator Bar (Sticky on Desktop) -->
+<div class="bg-industrial-900 border-b border-slate-800 sticky top-16 z-30 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center overflow-x-auto py-3 space-x-2 text-xs font-mono no-scrollbar">
+            <a href="#stage1" class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-electric-cyan/15 text-electric-cyan font-bold hover:bg-electric-cyan/25 transition-colors flex items-center">
+                <span class="w-5 h-5 rounded-full bg-electric-cyan text-industrial-950 flex items-center justify-center text-[10px] mr-1.5 font-black">1</span>
+                CAD Sizing
+            </a>
+            <a href="#stage2" class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-colors flex items-center">
+                <span class="w-5 h-5 rounded-full bg-slate-700 text-white flex items-center justify-center text-[10px] mr-1.5 font-black">2</span>
+                CRGO Stacking
+            </a>
+            <a href="#stage3" class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-colors flex items-center">
+                <span class="w-5 h-5 rounded-full bg-slate-700 text-white flex items-center justify-center text-[10px] mr-1.5 font-black">3</span>
+                Copper Winding
+            </a>
+            <a href="#stage4" class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-colors flex items-center">
+                <span class="w-5 h-5 rounded-full bg-slate-700 text-white flex items-center justify-center text-[10px] mr-1.5 font-black">4</span>
+                Tanking &amp; Radiators
+            </a>
+            <a href="#stage5" class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-colors flex items-center">
+                <span class="w-5 h-5 rounded-full bg-slate-700 text-white flex items-center justify-center text-[10px] mr-1.5 font-black">5</span>
+                Vacuum Impregnation
+            </a>
+            <a href="#stage6" class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-colors flex items-center">
+                <span class="w-5 h-5 rounded-full bg-slate-700 text-white flex items-center justify-center text-[10px] mr-1.5 font-black">6</span>
+                AVR &amp; HV Test Bay
+            </a>
+            <a href="#stage7" class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-colors flex items-center">
+                <span class="w-5 h-5 rounded-full bg-slate-700 text-white flex items-center justify-center text-[10px] mr-1.5 font-black">7</span>
+                PU Coating &amp; Dispatch
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- All 7 Stages Detailed Walkthrough -->
+<div class="py-20 bg-slate-50/80 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+        
+        <!-- STAGE 01 -->
+        <div id="stage1" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-6">
+            <div class="lg:col-span-6 space-y-5">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs font-mono font-black text-electric-cyan px-3 py-1 bg-electric-cyan/10 rounded-md border border-electric-cyan/20">
+                        STAGE 01 OF 07
+                    </span>
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Engineering Design &amp; Sizing Bay</span>
+                </div>
+
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                    Custom Voltage Window Modeling &amp; Buck-Boost Electromagnetic Design
+                </h2>
+
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Every Gauri Power industrial servo stabilizer begins with customized computerized modeling of the client's plant conditions. Rather than using generic off-the-shelf dimmers, our design engineers calculate exact turn-by-turn buck-boost voltage ratios, radial short-circuit forces, radiator convection surface requirements, and dynamic inrush currents matching your plant's equipment load profile.
+                </p>
+
+                <div class="space-y-2.5 text-xs text-slate-700">
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Flux Density Optimization:</b> Operating magnetic flux kept strictly below <b>1.65 Tesla</b>, preventing core saturation and current surges during extreme high voltage swings (up to 480V/500V).</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Buck-Boost Ratio Calculation:</b> High-capacity series transformer custom-proportioned to handle the exact symmetrical or asymmetrical input swing (e.g., 340V&ndash;460V, 300V&ndash;460V, or 280V&ndash;500V).</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Dynamic Short-Circuit Bracing:</b> Clamping structural channels engineered to withstand momentary line faults up to 25 times rated current without physical coil displacement.</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex items-center space-x-4 text-xs font-mono text-slate-500">
+                    <span><i class="fa-solid fa-microchip mr-1.5 text-electric-cyan"></i>3D CAD FEA Simulation</span>
+                    <span><i class="fa-solid fa-bolt mr-1.5 text-power-amber"></i>IS 9815 Standards Sizing</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group bg-slate-900 p-4">
+                    <img src="{{ url_for('static', filename='images/product_balanced_3500kva.jpg') }}" alt="Gauri Power 3500 kVA Balanced Heavy Servo Controller" class="w-full h-80 sm:h-96 object-contain group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-electric-cyan bg-slate-950/80 px-2 py-0.5 rounded border border-slate-700">
+                            Custom Engineered Heavy Unit
+                        </span>
+                        <div class="text-xs font-bold mt-1 text-slate-200">Heavy Duty 3500 kVA Stabilizer &bull; Ropar Works</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 02 -->
+        <div id="stage2" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-6">
+            <div class="lg:col-span-6 lg:order-2 space-y-5">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs font-mono font-black text-power-amber px-3 py-1 bg-power-amber/10 rounded-md border border-power-amber/20">
+                        STAGE 02 OF 07
+                    </span>
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Magnetic Core Stacking Bay</span>
+                </div>
+
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                    Prime CRGO Core Slitting with 45&deg; Mitred Step-Lap Joints
+                </h2>
+
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    The internal magnetic core forms the active inductive circuit of both the series buck-boost transformer and the vertical regulating auto-transformer column. Gauri Power strictly utilizes <b>100% prime-grade Cold Rolled Grain Oriented (CRGO) high-permeability silicon steel</b> (M4, 23ZH90, or laser-scribed grades). We have an absolute zero-tolerance policy against recycled scrap or local re-stamped sheet.
+                </p>
+
+                <div class="space-y-2.5 text-xs text-slate-700">
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>45&deg; Step-Lap Mitred Stacking:</b> Minimizes air gaps at corner joints, slashing idle magnetizing current and reducing acoustic humming below 50 dB.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Non-Magnetic Structural Clamping:</b> High-tensile tie rods equipped with insulating bakelite collars eliminate stray eddy-current loops and prevent heating.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Epoxy Edge Bonding:</b> Core limbs receive an anti-corrosive high-temperature epoxy coating to protect against vibration, dust, and humidity.</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex items-center space-x-4 text-xs font-mono text-slate-500">
+                    <span><i class="fa-solid fa-layer-group mr-1.5 text-power-amber"></i>Prime M4 Grade</span>
+                    <span><i class="fa-solid fa-volume-xmark mr-1.5 text-emerald-600"></i>Zero Scrap Guarantee</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 lg:order-1">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group bg-slate-900 p-4">
+                    <img src="{{ url_for('static', filename='images/product_avr_550kva.jpg') }}" alt="CRGO Core and Regulator Stacking" class="w-full h-80 sm:h-96 object-contain group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-power-amber bg-slate-950/80 px-2 py-0.5 rounded border border-slate-700">
+                            Unbalanced 550 kVA Assembly
+                        </span>
+                        <div class="text-xs font-bold mt-1 text-slate-200">Step-Lap High Permeability Assembly</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 03 -->
+        <div id="stage3" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-6">
+            <div class="lg:col-span-6 space-y-5">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs font-mono font-black text-electric-cyan px-3 py-1 bg-electric-cyan/10 rounded-md border border-electric-cyan/20">
+                        STAGE 03 OF 07
+                    </span>
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Heavy Copper Winding &amp; Roller Bay</span>
+                </div>
+
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                    Rectangular Copper Strip Winding (&ge; 24 mm&sup2;) with Graphite Rolling Contacts
+                </h2>
+
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    This is the hallmark of Gauri Power engineering excellence. The regulating columns are precision-wound with <b>99.9% pure electrolytic grade rectangular copper strips</b> with a minimum cross-sectional area of <b>24 mm&sup2;</b> (expanding up to 180 mm&sup2; for 3000&ndash;6000 kVA units). A precision linear contact track is CNC-machined along the edge of the winding to accommodate self-lubricating graphite carbon rollers.
+                </p>
+
+                <!-- Comparison Callout -->
+                <div class="p-4 rounded-xl bg-slate-100 border border-slate-200 space-y-2 text-xs">
+                    <div class="font-bold text-industrial-900 flex items-center">
+                        <i class="fa-solid fa-code-compare text-power-amber mr-2 text-sm"></i>
+                        The Gauri Power Linear Strip Advantage:
+                    </div>
+                    <p class="text-slate-600 leading-relaxed">
+                        <b>Conventional Market Dimmers:</b> Wound with thin round enameled wire (&le; 4 mm&sup2;) using tiny carbon pencil points that slide under friction. They groove the copper within 12&ndash;18 months, cause severe sparking, and burn out during motor startup inrush.<br>
+                        <b>Gauri Power Rolling Technology:</b> Massive rectangular copper strips (&ge; 24 mm&sup2;) with rotating graphite carbon rollers. Rollers distribute current over a continuous contact zone, lasting <b>8 to 10 years</b> with virtually zero track wear and over 99% efficiency.
+                    </p>
+                </div>
+
+                <div class="space-y-2 text-xs text-slate-700">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-xs flex-shrink-0"></i>
+                        <span>Class F / Class H thermally upgraded Nomex &amp; fiberglass interlayer insulation</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-xs flex-shrink-0"></i>
+                        <span>High-frequency silver alloy brazed joint terminations for zero joint resistance</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group bg-slate-900 p-4">
+                    <img src="{{ url_for('static', filename='images/tech_carbon_roller.jpg') }}" alt="Graphite Roller Drive and Copper Strip" class="w-full h-80 sm:h-96 object-contain group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-electric-cyan bg-slate-950/80 px-2 py-0.5 rounded border border-slate-700">
+                            Zero Wear Mechanism
+                        </span>
+                        <div class="text-xs font-bold mt-1 text-slate-200">Continuous Rolling Contact &bull; 8-10 Year Lifespan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 04 -->
+        <div id="stage4" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-6">
+            <div class="lg:col-span-6 lg:order-2 space-y-5">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs font-mono font-black text-power-amber px-3 py-1 bg-power-amber/10 rounded-md border border-power-amber/20">
+                        STAGE 04 OF 07
+                    </span>
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Mechanical Assembly &amp; Tanking Bay</span>
+                </div>
+
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                    Rigid Core-Coil Assembly, Clamping &amp; Heavy-Gauge Tank Fabrication
+                </h2>
+
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    The active series buck-boost transformer and regulating auto-transformer column are mounted together on heavy structural ISMC steel channels. Calibrated torque wrenches tighten all tie rods and busbar connections. The assembly is lowered into custom-fabricated heavy-gauge mild steel tanks engineered with external corrugated cooling radiator fins to ensure optimum natural oil convection.
+                </p>
+
+                <div class="space-y-2.5 text-xs text-slate-700">
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Heavy Structural Base:</b> Channel frame designed with bi-directional heavy-duty steel castor wheels for effortless industrial positioning.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Laser-Welded Radiator Banks:</b> Seamless radiator panels maximizing heat dissipation, keeping oil top temperature rise well within 45&deg;C.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Conservator Tank &amp; Dehydrating Breather:</b> Allows oil expansion while silica gel removes 100% of airborne moisture during thermal breathing.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>24-Hour Hydraulic Pressure Test:</b> Every tank is tested at 0.5 kg/cm&sup2; pressure for 24 hours to guarantee absolute leak-proof integrity.</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex items-center space-x-4 text-xs font-mono text-slate-500">
+                    <span><i class="fa-solid fa-shield-halved mr-1.5 text-power-amber"></i>Zero Leakage Guarantee</span>
+                    <span><i class="fa-solid fa-gauge-high mr-1.5 text-electric-cyan"></i>Pressure Tested Tanks</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 lg:order-1">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group bg-slate-900 p-4">
+                    <img src="{{ url_for('static', filename='images/product_avr_300kva.jpg') }}" alt="Gauri Power 300 kVA Balanced Industrial Voltage Controller" class="w-full h-80 sm:h-96 object-contain group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-power-amber bg-slate-950/80 px-2 py-0.5 rounded border border-slate-700">
+                            Robust Tank Construction
+                        </span>
+                        <div class="text-xs font-bold mt-1 text-slate-200">Heavy MS Sheet &bull; Seamless Radiators</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 05 -->
+        <div id="stage5" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-6">
+            <div class="lg:col-span-6 space-y-5">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs font-mono font-black text-electric-cyan px-3 py-1 bg-electric-cyan/10 rounded-md border border-electric-cyan/20">
+                        STAGE 05 OF 07
+                    </span>
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Thermostatic Baking &amp; Oil Bay</span>
+                </div>
+
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                    Thermostatic Vacuum Baking (105&deg;C) &amp; De-Aerated Mineral Oil Impregnation
+                </h2>
+
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Moisture is the single greatest cause of dielectric breakdown in industrial voltage stabilizers. The complete core-coil assembly is placed in our vacuum drying oven and baked at a thermostatically controlled temperature of <b>105&deg;C</b> under deep vacuum (&lt; 0.1 mbar) until moisture is completely extracted from the insulation fibers. Virgin transformer-grade mineral oil is then filled directly under vacuum.
+                </p>
+
+                <div class="space-y-2.5 text-xs text-slate-700">
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Deep Vacuum Moisture Extraction:</b> Purges residual humidity from cellulose pressboard pores, elevating insulation resistance (&ge; 1000 M&Omega;).</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Micro-Bubble Elimination:</b> Filling oil under vacuum prevents trapped air pockets between winding layers, eliminating partial discharge and corona.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Virgin Mineral Oil BDV > 60 kV:</b> Tested in-house as per IS 335 / IEC 60296 with moisture content verified under 15 PPM.</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex items-center space-x-4 text-xs font-mono text-slate-500">
+                    <span><i class="fa-solid fa-temperature-arrow-up mr-1.5 text-electric-cyan"></i>105&deg;C Baking Cycle</span>
+                    <span><i class="fa-solid fa-droplet mr-1.5 text-emerald-600"></i>IS 335 Compliant Oil</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group bg-slate-900 p-4">
+                    <img src="{{ url_for('static', filename='images/tech_regulator_close.jpg') }}" alt="High Vacuum Oil Impregnation Process" class="w-full h-80 sm:h-96 object-contain group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-electric-cyan bg-slate-950/80 px-2 py-0.5 rounded border border-slate-700">
+                            Vacuum Impregnated
+                        </span>
+                        <div class="text-xs font-bold mt-1 text-slate-200">Moisture-Free Dielectric Isolation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 06 -->
+        <div id="stage6" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-6">
+            <div class="lg:col-span-6 lg:order-2 space-y-5">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs font-mono font-black text-power-amber px-3 py-1 bg-power-amber/10 rounded-md border border-power-amber/20">
+                        STAGE 06 OF 07
+                    </span>
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Electronics Calibration &amp; Testing Bay</span>
+                </div>
+
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                    Microcontroller AVR Card Calibration &amp; 100% In-House Routine Testing (IS 9815)
+                </h2>
+
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Prior to dispatch approval, the stabilizer's digital microcontroller Automatic Voltage Regulator (AVR) card is integrated and calibrated. Every unit undergoes 100% routine electrical and performance tests in our computerized test bay in strict compliance with <b>IS 9815</b> and <b>IS 2026</b>.
+                </p>
+
+                <div class="space-y-2.5 text-xs text-slate-700">
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Regulation Accuracy &amp; Speed Test:</b> Verified under simulated fluctuating supply to hold output steady within <b>&plusmn; 1%</b> (or &plusmn; 0.5% precision) with response correction speed up to 35 V/sec.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Electronic Safety Cut-Off Checks:</b> Multi-parameter verification of under-voltage trip, over-voltage trip, phase-reversal sensing, single-phasing prevention, and electronic overload timer.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Separate Source High Voltage Withstand:</b> 28 kV / 70 kV power frequency dielectric withstand test applied for 60 seconds without breakdown.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Induced Overvoltage (DVDF):</b> Tested at double rated voltage at 100 Hz / 200 Hz frequency to guarantee turn-to-turn and layer insulation strength.</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex items-center space-x-4 text-xs font-mono text-slate-500">
+                    <span><i class="fa-solid fa-microchip mr-1.5 text-power-amber"></i>Digital AVR Calibration</span>
+                    <span><i class="fa-solid fa-file-invoice mr-1.5 text-emerald-600"></i>Factory Test Certificate (FTC)</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 lg:order-1">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group bg-slate-900 p-4">
+                    <img src="{{ url_for('static', filename='images/product_servo_stabilizer_large.jpg') }}" alt="Servo Stabilizer High Voltage Testing" class="w-full h-80 sm:h-96 object-contain group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-power-amber bg-slate-950/80 px-2 py-0.5 rounded border border-slate-700">
+                            Calibrated High Voltage Lab
+                        </span>
+                        <div class="text-xs font-bold mt-1 text-slate-200">Joint Customer Witness Testing Supported</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 07 -->
+        <div id="stage7" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-6">
+            <div class="lg:col-span-6 space-y-5">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs font-mono font-black text-electric-cyan px-3 py-1 bg-electric-cyan/10 rounded-md border border-electric-cyan/20">
+                        STAGE 07 OF 07
+                    </span>
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Surface Finishing &amp; Logistics Bay</span>
+                </div>
+
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                    7-Tank Chemical Pre-Treatment, Polyurethane Enamel &amp; Freight Dispatch
+                </h2>
+
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Industrial stabilizers must endure harsh ambient conditions—ranging from high humidity in coastal states to acidic fumes in chemical plants and abrasive dust in rolling mills. All steel tanks undergo a 7-tank chemical de-greasing, de-rusting, and zinc-phosphating sequence before receiving dual coats of zinc-chromate primer and tough polyurethane (PU) topcoat enamel.
+                </p>
+
+                <div class="space-y-2.5 text-xs text-slate-700">
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>7-Tank Chemical Phosphating:</b> Creates an insoluble zinc-phosphate crystal layer on bare steel, preventing paint flaking and corrosion.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Industrial PU Topcoat (RAL 7032 / 631):</b> High gloss, chemical-resistant finish cured for maximum hardness and UV resistance.</span>
+                    </div>
+                    <div class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span><b>Heavy Crated Packaging &amp; Pan-India Transit:</b> Bolted to wooden skids, moisture-wrapped, and loaded via overhead crane for direct transit to client factory sites.</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex items-center space-x-4 text-xs font-mono text-slate-500">
+                    <span><i class="fa-solid fa-truck mr-1.5 text-electric-cyan"></i>Safe Pan-India Transit</span>
+                    <span><i class="fa-solid fa-paint-roller mr-1.5 text-power-amber"></i>Anti-Corrosive PU Coating</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group bg-slate-900 p-4">
+                    <img src="{{ url_for('static', filename='images/hero_servo_stabilizer_3d.jpg') }}" alt="Finished Industrial Servo Voltage Stabilizers" class="w-full h-80 sm:h-96 object-contain group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-electric-cyan bg-slate-950/80 px-2 py-0.5 rounded border border-slate-700">
+                            Dispatch Ready
+                        </span>
+                        <div class="text-xs font-bold mt-1 text-slate-200">Serialized &bull; Accompanied by Official Test Reports</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Technical Comparison Table: Gauri Power Linear Strip vs Conventional Makes -->
+<div class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span class="text-xs font-mono font-bold text-electric-cyan uppercase tracking-wider">
+                ENGINEERING SPECIFICATION COMPARISON
+            </span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                Gauri Power Linear Rolling Strip vs. Conventional Market Makes
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Why industrial plants with heavy motors, foundries, and continuous process lines invest in Gauri Power heavy-duty stabilizers.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                    <thead>
+                        <tr class="bg-industrial-900 text-white border-b border-slate-800">
+                            <th class="py-4 px-6 font-bold uppercase tracking-wider w-1/4">Technical Parameter</th>
+                            <th class="py-4 px-6 font-bold uppercase tracking-wider text-power-amber w-3/8">
+                                <i class="fa-solid fa-circle-check mr-1.5 text-power-amber"></i>Gauri Power Heavy Strip Stabilizers
+                            </th>
+                            <th class="py-4 px-6 font-bold uppercase tracking-wider text-slate-400 w-3/8">
+                                Conventional Toroidal Dimmer Makes
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Conductor Cross-Section</td>
+                            <td class="py-4 px-6 font-bold text-emerald-700 bg-emerald-50/50">
+                                Rectangular electrolytic copper strip (&ge; 24 mm&sup2; up to 180 mm&sup2;)
+                            </td>
+                            <td class="py-4 px-6 text-slate-500">
+                                Thin round enameled wire (&le; 4 mm&sup2;)
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Contact Mechanism</td>
+                            <td class="py-4 px-6 font-bold text-emerald-700 bg-emerald-50/50">
+                                Rotating graphite carbon roller assembly (rolling contact)
+                            </td>
+                            <td class="py-4 px-6 text-slate-500">
+                                Friction sliding carbon pencil / brush point
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Contact Lifespan</td>
+                            <td class="py-4 px-6 font-bold text-emerald-700 bg-emerald-50/50">
+                                8 to 10 Years maintenance-free operation
+                            </td>
+                            <td class="py-4 px-6 text-slate-500">
+                                12 to 18 Months (causes copper grooving and sparking)
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Motor Startup Inrush Withstand</td>
+                            <td class="py-4 px-6 font-bold text-emerald-700 bg-emerald-50/50">
+                                Up to 1500% inrush without thermal rise or damage
+                            </td>
+                            <td class="py-4 px-6 text-slate-500">
+                                Flashes over and burns out under high inductive motor starts
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Operating Efficiency</td>
+                            <td class="py-4 px-6 font-bold text-emerald-700 bg-emerald-50/50">
+                                &gt; 99% (Ultra-low 0.5% to 1.2% total losses)
+                            </td>
+                            <td class="py-4 px-6 text-slate-500">
+                                92% to 95% (High recurring electrical energy losses)
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Capacity Building Capability</td>
+                            <td class="py-4 px-6 font-bold text-emerald-700 bg-emerald-50/50">
+                                Single column ratings up to 6,000 kVA (LT &amp; HT 11kV/33kV)
+                            </td>
+                            <td class="py-4 px-6 text-slate-500">
+                                Limited to ~200 kVA per dimmer unit
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-industrial-900">Waveform Distortion</td>
+                            <td class="py-4 px-6 font-bold text-emerald-700 bg-emerald-50/50">
+                                Virtually Nil (Zero harmonic injection into plant grid)
+                            </td>
+                            <td class="py-4 px-6 text-slate-500">
+                                Potential clipping and waveform distortion under load
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Plant Infrastructure Grid -->
+<div class="py-20 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span class="text-xs font-mono font-bold text-electric-cyan uppercase tracking-wider">
+                REGISTERED PRODUCTION INFRASTRUCTURE
+            </span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                Centralized Stabilizer Manufacturing Works
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Operating our specialized manufacturing bays, vacuum autoclaves, and computerized high-voltage testing lab at Ropar, Punjab.
+            </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+            <div class="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 space-y-5 hover:border-power-amber transition-all shadow-md">
+                <div class="flex items-center justify-between">
+                    <div class="w-14 h-14 rounded-2xl bg-power-amber/15 text-power-amber flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <span class="text-[10px] font-mono font-bold text-power-amber bg-power-amber/10 px-3 py-1 rounded-md border border-power-amber/20">
+                        Manufacturing Works &bull; Ropar (Punjab)
+                    </span>
+                </div>
+                <h3 class="font-heading text-2xl font-bold text-industrial-900">Heavy Stabilizer Production Plant &amp; Test Bay</h3>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Equipped with motorized linear copper strip winding bays, CRGO slitting and mitred step-lap stacking lines, vacuum baking ovens, virgin mineral oil filtration plants, 70 kV dielectric routine test benches, and heavy overhead cranes with direct dispatch docks.
+                </p>
+                <div class="pt-2 text-xs sm:text-sm text-slate-700 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                    <span class="font-bold text-industrial-900">Facility Address:</span> Vill. Nanakpura, Opp J.J. Valley, Ropar - 140001, Punjab, India
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bottom Call to Action Banner -->
+<div class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl p-8 sm:p-12 text-white border border-slate-700 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden" style="background: linear-gradient(135deg, #070F1E 0%, #0B192C 50%, #070F1E 100%);">
+            <!-- Ambient Glow -->
+            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-power-amber/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-12 -top-12 w-64 h-64 bg-electric-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="space-y-3 max-w-2xl text-center md:text-left relative z-10">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md text-xs font-bold bg-power-amber/20 text-power-amber border border-power-amber/40 shadow-sm">
+                    <i class="fa-solid fa-handshake mr-1"></i>VISIT OUR WORKS
+                </div>
+                <h3 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+                    Schedule a Factory Tour or Witness Routine Testing
+                </h3>
+                <p class="text-slate-200 text-xs sm:text-sm leading-relaxed font-normal">
+                    We welcome prospective corporate clients, electrical engineers, and third-party inspectors to tour our manufacturing works in Ropar, Punjab to witness live servo stabilizer winding, vacuum oil impregnation, and computerized high-voltage testing.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto flex-shrink-0 relative z-10">
+                <a href="{{ url_for('public.contact') }}" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-gradient-to-r from-power-amber to-amber-400 hover:from-amber-400 hover:to-power-amber text-industrial-950 font-black text-xs uppercase tracking-wider shadow-lg transition-all text-center">
+                    <i class="fa-solid fa-calendar-check mr-2 text-industrial-950 text-sm"></i>Request Factory Visit
+                </a>
+                <a href="{{ url_for('quotation.new_rfq') }}" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider border border-slate-600 transition-colors text-center">
+                    Submit Stabilizer RFQ
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

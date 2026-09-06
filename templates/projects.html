@@ -1,0 +1,654 @@
+{% extends 'base.html' %}
+{% block title %}Representative Projects & Industrial Installations | Gauri Power{% endblock %}
+{% block meta_description %}Explore Gauri Power representative industrial installations: 3500 kVA heavy servo stabilizers for steel foundries, 2500 kVA linear regulators for rice mills, and 11kV/33kV VCB switchgear panels across India.{% endblock %}
+
+{% block content %}
+<!-- Premium Hero Banner -->
+<div class="relative bg-[#060D17] text-white py-16 sm:py-20 overflow-hidden">
+    <!-- Ambient Lighting & Grid -->
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#00ADB5_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none"></div>
+    <div class="absolute -right-40 -top-40 w-[35rem] h-[35rem] bg-electric-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-40 -bottom-40 w-[30rem] h-[30rem] bg-power-amber/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl space-y-4">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-bold text-electric-cyan uppercase tracking-widest shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-electric-cyan animate-ping"></span>
+                <span>Field-Proven Industrial Track Record</span>
+                <span>&bull;</span>
+                <span class="text-slate-300">Over 2,500 Installations</span>
+            </div>
+
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+                Representative Installations &amp; <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-power-amber via-amber-300 to-yellow-200">Industrial Case Studies</span>
+            </h1>
+
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+                From 24/7 continuous steel foundries in Punjab to cleanroom pharmaceutical manufacturing complexes across North India, discover how Gauri Power delivers precision voltage stabilization and dependable high-voltage VCB circuit breaker protection.
+            </p>
+        </div>
+
+        <!-- Metric Statistics Strip -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 pt-8 border-t border-slate-800">
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-electric-cyan font-mono">2,500+</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">Heavy Industrial Units Deployed</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-power-amber font-mono">6,000 kVA</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">Max Single Capacity Built</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-emerald-400 font-mono">18+ States</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">Supplied Across Pan-India</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="text-3xl font-black text-teal-300 font-mono">>99.4%</div>
+                <div class="text-xs text-slate-400 mt-0.5 font-medium">Documented Grid Uptime</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Projects Showcase Workspace -->
+<div class="py-20 bg-slate-50/80 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Interactive Category Filter Bar -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-200">
+            <div>
+                <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-industrial-900">
+                    Featured Industrial Implementations
+                </h2>
+                <p class="text-slate-500 text-xs sm:text-sm mt-1">
+                    Select an industry sector to filter representative engineering deployments.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap gap-2" id="projectFilterGroup">
+                <button type="button" data-filter="all" class="project-filter-btn active px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-industrial-900 text-white shadow-sm">
+                    All Sectors
+                </button>
+                <button type="button" data-filter="foundry" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs">
+                    Steel &amp; Foundries
+                </button>
+                <button type="button" data-filter="agro" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs">
+                    Rice &amp; Agro Mills
+                </button>
+                <button type="button" data-filter="textile" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs">
+                    Textile &amp; Spinning
+                </button>
+                <button type="button" data-filter="pharma" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs">
+                    Pharma &amp; Cleanroom
+                </button>
+                <button type="button" data-filter="infrastructure" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs">
+                    Infrastructure &amp; Chem
+                </button>
+            </div>
+        </div>
+
+        <!-- 8 Detailed Project Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+            
+            <!-- Project 1: Steel Foundry -->
+            <div class="project-card bg-white rounded-2xl border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group" data-category="foundry">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="{{ url_for('static', filename='images/industry_foundries.jpg') }}" alt="Steel Foundry Installation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-power-amber text-industrial-950 shadow">
+                                Steel &amp; Foundries
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <div class="text-[11px] font-mono text-electric-cyan flex items-center">
+                                <i class="fa-solid fa-location-dot mr-1"></i>Mandi Gobindgarh, Punjab
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3 class="font-heading text-lg font-bold text-industrial-900 group-hover:text-electric-cyan transition-colors">
+                                3500 kVA Balanced Automatic Servo Controller
+                            </h3>
+                            <span class="inline-block text-[11px] font-mono font-bold text-power-amber">Continuous Duty Induction Furnaces</span>
+                        </div>
+
+                        <!-- Challenge & Solution Breakdown -->
+                        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 leading-relaxed">
+                            <div>
+                                <span class="font-bold text-industrial-900">Grid Challenge:</span>
+                                Heavy induction furnace loads experiencing extreme grid swings from 340V to 480V, triggering frequent breaker trips and coil burning.
+                            </div>
+                            <div class="pt-1 border-t border-slate-200/80">
+                                <span class="font-bold text-industrial-900">Gauri Power Solution:</span>
+                                Installed linear copper strip regulator with motorized graphite carbon roller drive, holding a steady 415V &plusmn; 1% under continuous inrush.
+                            </div>
+                        </div>
+
+                        <!-- Result Pill -->
+                        <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center space-x-2 text-[11px] text-emerald-800 font-semibold">
+                            <i class="fa-solid fa-circle-check text-emerald-600 flex-shrink-0"></i>
+                            <span>12% Energy Saved &bull; Zero Tripping &bull; 24/7 Duty</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="font-mono font-semibold">Rating: 3500 kVA</span>
+                    <a href="{{ url_for('quotation.new_rfq') }}?capacity=3500+kVA" class="font-bold text-electric-cyan hover:underline flex items-center">
+                        Request Sizing <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2: Mega Rice Mill -->
+            <div class="project-card bg-white rounded-2xl border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group" data-category="agro">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="{{ url_for('static', filename='images/industry_rice.jpg') }}" alt="Mega Rice Mill Installation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-emerald-500 text-white shadow">
+                                Rice &amp; Agro Mills
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <div class="text-[11px] font-mono text-electric-cyan flex items-center">
+                                <i class="fa-solid fa-location-dot mr-1"></i>Karnal, Haryana
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3 class="font-heading text-lg font-bold text-industrial-900 group-hover:text-electric-cyan transition-colors">
+                                2500 kVA Balanced Rolling Contact Servo Voltage Stabilizer
+                            </h3>
+                            <span class="inline-block text-[11px] font-mono font-bold text-emerald-600">Automated Milling &amp; Color Sorter Grid</span>
+                        </div>
+
+                        <!-- Challenge & Solution Breakdown -->
+                        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 leading-relaxed">
+                            <div>
+                                <span class="font-bold text-industrial-900">Grid Challenge:</span>
+                                24/7 automated optical color sorters sensitive to &plusmn;3% voltage drifts, which caused false rice rejection and pneumatic valve failures.
+                            </div>
+                            <div class="pt-1 border-t border-slate-200/80">
+                                <span class="font-bold text-industrial-900">Gauri Power Solution:</span>
+                                Heavy linear rolling contact servo stabilizer delivering precise 415V &plusmn; 0.5% regulation with micro-controller phase balancing.
+                            </div>
+                        </div>
+
+                        <!-- Result Pill -->
+                        <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center space-x-2 text-[11px] text-emerald-800 font-semibold">
+                            <i class="fa-solid fa-circle-check text-emerald-600 flex-shrink-0"></i>
+                            <span>Zero Optical Sorter Faults &bull; High Reliability</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="font-mono font-semibold">Rating: 2500 kVA</span>
+                    <a href="{{ url_for('quotation.new_rfq') }}?capacity=2500+kVA" class="font-bold text-electric-cyan hover:underline flex items-center">
+                        Request Sizing <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3: Textile & High Speed Spinning -->
+            <div class="project-card bg-white rounded-2xl border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group" data-category="textile">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="{{ url_for('static', filename='images/industry_textile.jpg') }}" alt="Textile Spinning Mill" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-indigo-600 text-white shadow">
+                                Textile &amp; Spinning
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <div class="text-[11px] font-mono text-electric-cyan flex items-center">
+                                <i class="fa-solid fa-location-dot mr-1"></i>Bhilwara, Rajasthan
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3 class="font-heading text-lg font-bold text-industrial-900 group-hover:text-electric-cyan transition-colors">
+                                3000 kVA HT Servo Voltage Stabilizer (11 kV)
+                            </h3>
+                            <span class="inline-block text-[11px] font-mono font-bold text-indigo-600">Synthetic Yarn Spindle Drive Line</span>
+                        </div>
+
+                        <!-- Challenge & Solution Breakdown -->
+                        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 leading-relaxed">
+                            <div>
+                                <span class="font-bold text-industrial-900">Grid Challenge:</span>
+                                11kV grid voltage spikes and unbalance causing high-speed spindle motor bearings and electronic inverters to burn out repeatedly.
+                            </div>
+                            <div class="pt-1 border-t border-slate-200/80">
+                                <span class="font-bold text-industrial-900">Gauri Power Solution:</span>
+                                Outdoor oil-cooled 11kV HT servo voltage controller with independent phase regulation and high dielectric withstand.
+                            </div>
+                        </div>
+
+                        <!-- Result Pill -->
+                        <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center space-x-2 text-[11px] text-emerald-800 font-semibold">
+                            <i class="fa-solid fa-circle-check text-emerald-600 flex-shrink-0"></i>
+                            <span>100% Inverter Protection &bull; Zero Spindle Losses</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="font-mono font-semibold">Rating: 3000 kVA (11 kV)</span>
+                    <a href="{{ url_for('quotation.new_rfq') }}?capacity=3000+kVA" class="font-bold text-electric-cyan hover:underline flex items-center">
+                        Request Sizing <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 4: Pharmaceutical Formulations -->
+            <div class="project-card bg-white rounded-2xl border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group" data-category="pharma">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="{{ url_for('static', filename='images/product_indoor_vcb_panel.jpg') }}" alt="Indoor VCB Switchgear Panel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-teal-600 text-white shadow">
+                                Pharma &amp; Switchgear
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <div class="text-[11px] font-mono text-electric-cyan flex items-center">
+                                <i class="fa-solid fa-location-dot mr-1"></i>Baddi Industrial Estate, HP
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3 class="font-heading text-lg font-bold text-industrial-900 group-hover:text-electric-cyan transition-colors">
+                                11 kV Indoor Vacuum Circuit Breaker (VCB) Switchgear Panel
+                            </h3>
+                            <span class="inline-block text-[11px] font-mono font-bold text-teal-600">Pharma Substation Protection &amp; Incomer Control</span>
+                        </div>
+
+                        <!-- Challenge & Solution Breakdown -->
+                        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 leading-relaxed">
+                            <div>
+                                <span class="font-bold text-industrial-900">Grid Challenge:</span>
+                                Sterile formulation plant cleanroom required high breaking capacity (26.3 kA) and ultra-fast fault clearing (&lt; 45 ms) without oil fire hazards.
+                            </div>
+                            <div class="pt-1 border-t border-slate-200/80">
+                                <span class="font-bold text-industrial-900">Gauri Power Solution:</span>
+                                Supplied 11 kV draw-out indoor VCB panel with numerical micro-processor protection relay, motorized spring charging, and safety interlocks.
+                            </div>
+                        </div>
+
+                        <!-- Result Pill -->
+                        <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center space-x-2 text-[11px] text-emerald-800 font-semibold">
+                            <i class="fa-solid fa-circle-check text-emerald-600 flex-shrink-0"></i>
+                            <span>&lt; 45ms Fast Clearance &bull; Class M2 Mechanical &bull; Zero Fire Risk</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="font-mono font-semibold">Rating: 11 kV / 1250A (26.3 kA)</span>
+                    <a href="{{ url_for('quotation.new_rfq') }}?capacity=1250+kVA" class="font-bold text-electric-cyan hover:underline flex items-center">
+                        Request Sizing <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 5: Chemical & Heavy Electroplating -->
+            <div class="project-card bg-white rounded-2xl border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group" data-category="infrastructure">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="{{ url_for('static', filename='images/industry_chemical.jpg') }}" alt="Chemical Facility" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-purple-600 text-white shadow">
+                                Chemical &amp; Galvanizing
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <div class="text-[11px] font-mono text-electric-cyan flex items-center">
+                                <i class="fa-solid fa-location-dot mr-1"></i>Ankleshwar, Gujarat
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3 class="font-heading text-lg font-bold text-industrial-900 group-hover:text-electric-cyan transition-colors">
+                                1000 kVA Industrial Electroplating Rectifier (10,000A DC)
+                            </h3>
+                            <span class="inline-block text-[11px] font-mono font-bold text-purple-600">Continuous Hard Chrome &amp; Zinc Electroplating</span>
+                        </div>
+
+                        <!-- Challenge & Solution Breakdown -->
+                        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 leading-relaxed">
+                            <div>
+                                <span class="font-bold text-industrial-900">Grid Challenge:</span>
+                                Harsh corrosive chemical atmosphere causing corrosion of regular electrical panels and DC voltage ripple defects on finished steel sheets.
+                            </div>
+                            <div class="pt-1 border-t border-slate-200/80">
+                                <span class="font-bold text-industrial-900">Gauri Power Solution:</span>
+                                Hermetically sealed oil-cooled electroplating rectifier with thyristor step-less DC regulation (0-24V DC, 10,000A) and anti-corrosive epoxy coat.
+                            </div>
+                        </div>
+
+                        <!-- Result Pill -->
+                        <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center space-x-2 text-[11px] text-emerald-800 font-semibold">
+                            <i class="fa-solid fa-circle-check text-emerald-600 flex-shrink-0"></i>
+                            <span>Continuous 10,000A Output &bull; Superior Coating Uniformity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="font-mono font-semibold">Output: 10,000 Amps DC</span>
+                    <a href="{{ url_for('quotation.new_rfq') }}?capacity=1000+kVA" class="font-bold text-electric-cyan hover:underline flex items-center">
+                        Request Sizing <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 6: Municipal Infrastructure / Water Treatment -->
+            <div class="project-card bg-white rounded-2xl border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group" data-category="infrastructure">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="{{ url_for('static', filename='images/product_indoor_33kv_vcb.jpg') }}" alt="33 kV Indoor Metal-Clad VCB Switchgear" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-cyan-600 text-white shadow">
+                                33 kV Indoor VCB
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <div class="text-[11px] font-mono text-electric-cyan flex items-center">
+                                <i class="fa-solid fa-location-dot mr-1"></i>Ludhiana, Punjab
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3 class="font-heading text-lg font-bold text-industrial-900 group-hover:text-electric-cyan transition-colors">
+                                33 kV Indoor Metal-Clad Draw-Out Vacuum Circuit Breaker Panel
+                            </h3>
+                            <span class="inline-block text-[11px] font-mono font-bold text-cyan-600">Main Substation Incomer &amp; Pumping Feeder Protection</span>
+                        </div>
+
+                        <!-- Challenge & Solution Breakdown -->
+                        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 leading-relaxed">
+                            <div>
+                                <span class="font-bold text-industrial-900">Grid Challenge:</span>
+                                High prospective short-circuit fault currents (up to 31.5 kA) on municipal water feeder requiring robust metal-clad vacuum fault interruption.
+                            </div>
+                            <div class="pt-1 border-t border-slate-200/80">
+                                <span class="font-bold text-industrial-900">Gauri Power Solution:</span>
+                                33 kV indoor draw-out VCB switchgear panel featuring hermetic ceramic vacuum interrupters, motorized spring charging, and remote SCADA telemetry.
+                            </div>
+                        </div>
+
+                        <!-- Result Pill -->
+                        <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center space-x-2 text-[11px] text-emerald-800 font-semibold">
+                            <i class="fa-solid fa-circle-check text-emerald-600 flex-shrink-0"></i>
+                            <span>IAC AFLR Certified &bull; 31.5 kA Breaking &bull; Remote SCADA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="font-mono font-semibold">Rating: 33 kV / 1600A (31.5 kA)</span>
+                    <a href="{{ url_for('quotation.new_rfq') }}?capacity=1600+kVA" class="font-bold text-electric-cyan hover:underline flex items-center">
+                        Request Sizing <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 7: Cement & Heavy Minerals -->
+            <div class="project-card bg-white rounded-2xl border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group" data-category="foundry">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="{{ url_for('static', filename='images/industry_cement.jpg') }}" alt="Cement & Minerals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-stone-700 text-white shadow">
+                                Cement &amp; Mining
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <div class="text-[11px] font-mono text-electric-cyan flex items-center">
+                                <i class="fa-solid fa-location-dot mr-1"></i>Solan, Himachal Pradesh
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3 class="font-heading text-lg font-bold text-industrial-900 group-hover:text-electric-cyan transition-colors">
+                                4000 kVA Balanced Heavy Duty Servo Stabilizer
+                            </h3>
+                            <span class="inline-block text-[11px] font-mono font-bold text-stone-600">Raw Ball Mill &amp; Rotary Kiln Drives</span>
+                        </div>
+
+                        <!-- Challenge & Solution Breakdown -->
+                        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 leading-relaxed">
+                            <div>
+                                <span class="font-bold text-industrial-900">Grid Challenge:</span>
+                                Heavy motor starting currents exceeding 400% full load during ball mill startup, dragging feeder voltage down and resetting DCS control systems.
+                            </div>
+                            <div class="pt-1 border-t border-slate-200/80">
+                                <span class="font-bold text-industrial-900">Gauri Power Solution:</span>
+                                Heavy-section copper strip wound regulator with reinforced carbon roller carriage designed for 1500% inrush capability.
+                            </div>
+                        </div>
+
+                        <!-- Result Pill -->
+                        <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center space-x-2 text-[11px] text-emerald-800 font-semibold">
+                            <i class="fa-solid fa-circle-check text-emerald-600 flex-shrink-0"></i>
+                            <span>Zero Kiln Downtime &bull; 1500% Inrush Withstand</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="font-mono font-semibold">Rating: 4000 kVA</span>
+                    <a href="{{ url_for('quotation.new_rfq') }}?capacity=4000+kVA" class="font-bold text-electric-cyan hover:underline flex items-center">
+                        Request Sizing <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 8: Paper & Corrugated Packaging -->
+            <div class="project-card bg-white rounded-2xl border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group" data-category="agro">
+                <div>
+                    <div class="relative h-52 overflow-hidden bg-slate-900">
+                        <img src="{{ url_for('static', filename='images/industry_paper.jpg') }}" alt="Paper & Pulp Facility" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-amber-700 text-white shadow">
+                                Paper &amp; Packaging
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white">
+                            <div class="text-[11px] font-mono text-electric-cyan flex items-center">
+                                <i class="fa-solid fa-location-dot mr-1"></i>Muzaffarnagar, Uttar Pradesh
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3 class="font-heading text-lg font-bold text-industrial-900 group-hover:text-electric-cyan transition-colors">
+                                2000 kVA Linear Roller Heavy-Duty Servo Voltage Stabilizer
+                            </h3>
+                            <span class="inline-block text-[11px] font-mono font-bold text-amber-700">High-Speed Paper Machine Drive Lines</span>
+                        </div>
+
+                        <!-- Challenge & Solution Breakdown -->
+                        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 leading-relaxed">
+                            <div>
+                                <span class="font-bold text-industrial-900">Grid Challenge:</span>
+                                Frequent paper web breakages caused by small 5V fluctuations on sectional variable-frequency drives (VFDs), resulting in huge daily ton wastage.
+                            </div>
+                            <div class="pt-1 border-t border-slate-200/80">
+                                <span class="font-bold text-industrial-900">Gauri Power Solution:</span>
+                                Heavy-duty oil-cooled linear roller servo voltage stabilizer maintaining continuous 415V &plusmn; 0.5% under high dynamic speed changes, eliminating motor drive trips.
+                            </div>
+                        </div>
+
+                        <!-- Result Pill -->
+                        <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center space-x-2 text-[11px] text-emerald-800 font-semibold">
+                            <i class="fa-solid fa-circle-check text-emerald-600 flex-shrink-0"></i>
+                            <span>95% Reduction in Web Breakage &bull; High Daily Output</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="font-mono font-semibold">Rating: 2000 kVA</span>
+                    <a href="{{ url_for('quotation.new_rfq') }}?capacity=2000+kVA" class="font-bold text-electric-cyan hover:underline flex items-center">
+                        Request Sizing <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Sector Engineering Capabilities Grid -->
+<div class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span class="text-xs font-mono font-bold text-electric-cyan uppercase tracking-wider">
+                PAN-INDIA SECTOR CAPABILITIES
+            </span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-industrial-900 tracking-tight">
+                Engineering Designed for Extreme Plant Conditions
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Whether subjected to high-temperature furnace atmospheres, corrosive chemical fumes, or 24/7 continuous duty agro milling, Gauri Power equipment is built with heavy safety margins.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 hover:border-electric-cyan transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-electric-cyan/15 text-electric-cyan flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                </div>
+                <h4 class="font-heading font-bold text-base text-industrial-900">Steel &amp; Foundries</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Withstands intense inductive surges and continuous thermal gradients near molten metal furnaces.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 hover:border-power-amber transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-power-amber/15 text-power-amber flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                </div>
+                <h4 class="font-heading font-bold text-base text-industrial-900">Agro &amp; Mega Mills</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Guarantees continuous 24/7 operation during peak paddy harvesting seasons with zero breakdown.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 hover:border-emerald-500 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-capsules"></i>
+                </div>
+                <h4 class="font-heading font-bold text-base text-industrial-900">Pharma Cleanrooms</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Precision servo voltage stabilizers and indoor VCB switchgear complying with WHO-GMP and industrial standards.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 hover:border-teal-500 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-teal-500/15 text-teal-600 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-city"></i>
+                </div>
+                <h4 class="font-heading font-bold text-base text-industrial-900">Infrastructure &amp; Utilities</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Indoor draw-out VCB switchgear, compact RMU panels, and high-power rectifiers for infrastructure.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bottom Call to Action Banner -->
+<div class="py-16 bg-slate-100/80 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl p-8 sm:p-12 text-white border border-slate-700 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden" style="background: linear-gradient(135deg, #070F1E 0%, #0B192C 50%, #070F1E 100%);">
+            <!-- Ambient Glow -->
+            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-power-amber/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-12 -top-12 w-64 h-64 bg-electric-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="space-y-3 max-w-2xl text-center md:text-left relative z-10">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md text-xs font-bold bg-power-amber/20 text-power-amber border border-power-amber/40 shadow-sm">
+                    <i class="fa-solid fa-bolt mr-1"></i>CUSTOM INDUSTRIAL ENGINEERING
+                </div>
+                <h3 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+                    Planning a New Substation or Facing Grid Fluctuations?
+                </h3>
+                <p class="text-slate-200 text-xs sm:text-sm leading-relaxed font-normal">
+                    Speak directly with our senior electrical design engineers or submit single-line diagrams to receive a customized technical specification and formal commercial quotation.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto flex-shrink-0 relative z-10">
+                <a href="{{ url_for('quotation.new_rfq') }}" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-gradient-to-r from-power-amber to-amber-400 hover:from-amber-400 hover:to-power-amber text-industrial-950 font-black text-xs uppercase tracking-wider shadow-lg transition-all text-center">
+                    <i class="fa-solid fa-file-signature mr-2 text-industrial-950 text-sm"></i>Submit RFQ Specifications
+                </a>
+                <a href="tel:{{ company_phones[0] }}" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider border border-slate-600 transition-colors text-center">
+                    <i class="fa-solid fa-phone mr-2 text-electric-cyan"></i>Call Sales Desk
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Client-side Interactive Filter Script -->
+<script>
+    (function() {
+        const filterBtns = document.querySelectorAll('.project-filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-industrial-900', 'text-white', 'shadow-sm', 'active');
+                    b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+                });
+                btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+                btn.classList.add('bg-industrial-900', 'text-white', 'shadow-sm', 'active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'flex';
+                        card.classList.add('animate-fadeIn');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    })();
+</script>
+{% endblock %}

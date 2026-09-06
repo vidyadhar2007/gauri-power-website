@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }} | Gauri Power{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="text-xs text-slate-400 mb-4 flex items-center space-x-2">
+            <a href="{{ url_for('public.home') }}" class="hover:text-white">Home</a>
+            <span>/</span>
+            <a href="{{ url_for('public.products') }}" class="hover:text-white">Products</a>
+            <span>/</span>
+            <span class="text-electric-cyan font-semibold">{{ product.category }}</span>
+        </nav>
+        <div class="mb-2">
+            {% if 'stabilizer' in product.slug.lower() or 'stabilizer' in product.category.lower() %}
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                <i class="fa-solid fa-industry mr-1.5 text-xs"></i>Manufactured by Gauri Power (Works: Ropar, Punjab)
+            </span>
+            {% else %}
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-cyan-300 border border-blue-500/40">
+                <i class="fa-solid fa-handshake mr-1.5 text-xs"></i>Authorized Industrial Dealer &amp; Solution Provider
+            </span>
+            {% endif %}
+        </div>
+        <h1 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">{{ product.name }}</h1>
+        <p class="text-slate-300 text-sm mt-2 max-w-3xl">{{ product.short_description }}</p>
+    </div>
+</div>
+
+<div class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left Column: Image & Salient Features -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-center">
+                    <img src="{{ url_for('static', filename=product.image_url) }}" alt="{{ product.name }}" class="max-h-96 w-auto object-contain">
+                </div>
+
+                <div class="p-6 bg-industrial-50 rounded-2xl border border-slate-200 space-y-4">
+                    <h3 class="font-heading text-base font-bold text-industrial-900 border-b border-slate-200 pb-2">
+                        Salient Engineering Features
+                    </h3>
+                    <ul class="space-y-2.5 text-xs text-slate-700">
+                        {% for feat in product.salient_features %}
+                        <li class="flex items-start space-x-2.5">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5"></i>
+                            <span>{{ feat }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="p-6 bg-gradient-to-br from-industrial-900 to-slate-900 rounded-2xl text-white space-y-4">
+                    <h3 class="font-heading text-lg font-bold text-power-amber">Request Official Quotation (RFQ)</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Need this equipment tailored to your plant voltages, VCB breaking capacity, or custom servo regulation window? Submit an RFQ to our Sales Department.
+                    </p>
+                    <a href="{{ url_for('quotation.new_rfq', product=product.slug) }}" class="w-full inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-industrial-900 bg-gradient-to-r from-power-amber to-amber-400 hover:from-amber-400 hover:to-power-amber rounded-xl shadow-lg transition-transform transform hover:-translate-y-0.5 text-center">
+                        <i class="fa-solid fa-bolt mr-2 text-industrial-900"></i>GET QUOTATION FOR THIS MODEL
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Column: Full Details & Tech Specs -->
+            <div class="lg:col-span-7 space-y-8">
+                <div>
+                    <h2 class="font-heading text-2xl font-bold text-industrial-900 mb-3">Product Overview</h2>
+                    <p class="text-sm text-slate-600 leading-relaxed">{{ product.full_description }}</p>
+                </div>
+
+                <!-- KPI Specs Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="p-4 bg-industrial-50 rounded-xl border border-slate-200">
+                        <span class="text-xs text-slate-500 font-medium">Capacity</span>
+                        <p class="text-sm font-bold text-industrial-900 mt-1">{{ product.capacity_range }}</p>
+                    </div>
+                    <div class="p-4 bg-industrial-50 rounded-xl border border-slate-200">
+                        <span class="text-xs text-slate-500 font-medium">Efficiency</span>
+                        <p class="text-sm font-bold text-emerald-600 mt-1">{{ product.efficiency }}</p>
+                    </div>
+                    <div class="p-4 bg-industrial-50 rounded-xl border border-slate-200">
+                        <span class="text-xs text-slate-500 font-medium">Duty Cycle</span>
+                        <p class="text-sm font-bold text-industrial-900 mt-1">{{ product.duty_cycle }}</p>
+                    </div>
+                    <div class="p-4 bg-industrial-50 rounded-xl border border-slate-200">
+                        <span class="text-xs text-slate-500 font-medium">Warranty</span>
+                        <p class="text-sm font-bold text-power-amber mt-1">{{ product.warranty }}</p>
+                    </div>
+                </div>
+
+                <!-- Technical Specifications Table -->
+                <div class="space-y-4">
+                    <h3 class="font-heading text-xl font-bold text-industrial-900">Technical Specifications</h3>
+                    <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <tbody>
+                                {% for key, val in product.technical_specs.items() %}
+                                <tr class="{% if loop.index % 2 == 0 %}bg-slate-50{% else %}bg-white{% endif %} border-b border-slate-100">
+                                    <td class="py-3 px-4 font-bold text-industrial-900 w-1/3 border-r border-slate-100">{{ key }}</td>
+                                    <td class="py-3 px-4 text-slate-700">{{ val }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Applications -->
+                {% if product.applications %}
+                <div class="space-y-4">
+                    <h3 class="font-heading text-xl font-bold text-industrial-900">Target Applications & Industries</h3>
+                    <div class="flex flex-wrap gap-2">
+                        {% for app in product.applications %}
+                        <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200">
+                            <i class="fa-solid fa-industry text-electric-cyan mr-1.5 text-[10px]"></i>{{ app }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        {% if related_products %}
+        <div class="border-t border-slate-200 mt-16 pt-12 space-y-6">
+            <h2 class="font-heading text-2xl font-bold text-industrial-900">Related Stabilizers &amp; VCB Switchgear</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {% for rp in related_products %}
+                <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
+                    <img src="{{ url_for('static', filename=rp.image_url) }}" alt="{{ rp.name }}" class="h-20 w-20 object-contain bg-slate-50 p-2 rounded-lg">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-industrial-900 truncate">{{ rp.name }}</h4>
+                        <p class="text-[11px] text-slate-500 mt-0.5">{{ rp.capacity_range }}</p>
+                        <a href="{{ url_for('public.product_detail', slug=rp.slug) }}" class="inline-block mt-2 text-xs font-bold text-electric-cyan hover:underline">
+                            View Details &rarr;
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

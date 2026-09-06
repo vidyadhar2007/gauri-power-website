@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block title %}Sales Department Desk | Gauri Power{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <div class="flex items-center space-x-2 text-xs">
+                <span class="px-2.5 py-0.5 rounded-full font-bold bg-amber-900/90 text-power-amber border border-amber-700">
+                    AUTHORIZED SALES DESK
+                </span>
+                <span class="text-slate-400">|</span>
+                <span class="text-slate-300">{{ current_user.email }}</span>
+            </div>
+            <h1 class="font-heading text-3xl font-extrabold text-white mt-1">Sales & Engineering Review Portal</h1>
+        </div>
+        <div class="flex items-center space-x-3">
+            <a href="{{ url_for('internal.rfq_list') }}" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-power-amber text-industrial-900 hover:bg-amber-400">
+                <i class="fa-solid fa-inbox mr-1.5"></i>Manage RFQs ({{ pending_rfqs_count }} Pending)
+            </a>
+            <a href="{{ url_for('internal.order_list') }}" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-industrial-800 text-white hover:bg-slate-700 border border-slate-700">
+                <i class="fa-solid fa-truck-ramp-box mr-1.5"></i>Production Desk
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="py-10 bg-slate-50 min-h-[80vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-amber-50 text-power-amber flex items-center justify-center text-xl flex-shrink-0">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                    <span class="text-xs text-slate-500 font-semibold">Pending Review</span>
+                    <p class="text-2xl font-extrabold text-industrial-900 font-heading">{{ pending_rfqs_count }}</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl flex-shrink-0">
+                    <i class="fa-solid fa-file-signature"></i>
+                </div>
+                <div>
+                    <span class="text-xs text-slate-500 font-semibold">Total RFQs</span>
+                    <p class="text-2xl font-extrabold text-industrial-900 font-heading">{{ total_rfqs_count }}</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl flex-shrink-0">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                </div>
+                <div>
+                    <span class="text-xs text-slate-500 font-semibold">Quotations Issued</span>
+                    <p class="text-2xl font-extrabold text-industrial-900 font-heading">{{ total_quotations_count }}</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl flex-shrink-0">
+                    <i class="fa-solid fa-industry"></i>
+                </div>
+                <div>
+                    <span class="text-xs text-slate-500 font-semibold">Active Production</span>
+                    <p class="text-2xl font-extrabold text-industrial-900 font-heading">{{ active_orders_count }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RFQs Needing Technical Attention -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                <div>
+                    <h2 class="font-heading text-lg font-bold text-industrial-900">Incoming Requests For Quotation (RFQ)</h2>
+                    <p class="text-xs text-slate-500">Review incoming parameters, mark under review, and calculate formal quotation pricing.</p>
+                </div>
+                <a href="{{ url_for('internal.rfq_list') }}" class="text-xs font-bold text-electric-cyan hover:underline">
+                    View Complete Queue &rarr;
+                </a>
+            </div>
+
+            {% if recent_rfqs %}
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-industrial-900 text-white">
+                            <th class="py-3 px-4 font-bold">RFQ No.</th>
+                            <th class="py-3 px-4 font-bold">Client / Company</th>
+                            <th class="py-3 px-4 font-bold">Capacity & Equipment</th>
+                            <th class="py-3 px-4 font-bold">Voltages</th>
+                            <th class="py-3 px-4 font-bold">Status</th>
+                            <th class="py-3 px-4 font-bold">Date</th>
+                            <th class="py-3 px-4 font-bold text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        {% for r in recent_rfqs %}
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3 px-4 font-mono font-bold text-industrial-900">{{ r.request_number }}</td>
+                            <td class="py-3 px-4">
+                                <span class="font-bold text-slate-800">{{ r.contact_name }}</span>
+                                <span class="block text-[11px] text-slate-500">{{ r.company_name }}</span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="font-bold text-electric-cyan">{{ r.capacity_kva }}</span>
+                                <span class="block text-[11px] text-slate-600">{{ r.product.name if r.product else 'Custom' }}</span>
+                            </td>
+                            <td class="py-3 px-4 text-slate-700">
+                                {{ r.input_voltage }} &rarr; {{ r.output_voltage }}
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-bold {% if r.status == 'Quotation Issued' %}bg-emerald-100 text-emerald-800{% elif r.status == 'Under Technical Review' %}bg-sky-100 text-sky-800{% else %}bg-amber-100 text-amber-900{% endif %}">
+                                    {{ r.status }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 text-slate-400">{{ r.created_at.strftime('%d %b %Y') }}</td>
+                            <td class="py-3 px-4 text-right space-x-1">
+                                <a href="{{ url_for('internal.rfq_detail', request_number=r.request_number) }}" class="px-3 py-1.5 bg-industrial-900 text-white rounded-lg font-semibold hover:bg-industrial-800">
+                                    Review & Quote &rarr;
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-center py-8 text-slate-400 text-xs">No pending RFQs in the queue.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

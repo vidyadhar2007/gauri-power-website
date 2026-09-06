@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Production Order Desk | Gauri Power{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div>
+            <h1 class="font-heading text-3xl font-extrabold text-white">Production Order Desk & Stage Dispatcher</h1>
+            <p class="text-slate-300 text-xs mt-1">Advance customer orders through the 7 manufacturing milestones.</p>
+        </div>
+        <a href="{{ url_for('internal.dashboard') }}" class="text-xs text-slate-400 hover:text-white">&larr; Back to Dashboard</a>
+    </div>
+</div>
+
+<div class="py-10 bg-slate-50 min-h-[80vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        {% if orders %}
+            {% for o in orders %}
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-100 pb-4 gap-2">
+                    <div>
+                        <div class="flex items-center space-x-3">
+                            <span class="font-mono text-lg font-bold text-industrial-900">{{ o.order_number }}</span>
+                            <span class="px-2.5 py-0.5 rounded text-xs font-bold bg-indigo-100 text-indigo-800">
+                                {{ o.status }}
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-600 mt-1">
+                            Client: <b>{{ o.user.name }}</b> ({{ o.user.company_name or 'Direct' }}) • PO: <span class="font-semibold">{{ o.po_number or 'Confirmed' }}</span>
+                        </p>
+                    </div>
+                    <div class="text-left sm:text-right text-xs">
+                        <p>Total Contract: <b class="text-industrial-900 font-bold">INR {{ "{:,.2f}".format(o.total_amount) }}</b></p>
+                        <p class="text-slate-500">Current Stage: <b class="text-power-amber">{{ o.production_stage }}</b></p>
+                    </div>
+                </div>
+
+                <!-- Stage Updater Form -->
+                <div class="bg-industrial-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="text-xs">
+                        <span class="font-bold text-industrial-900 block">Manufacturing Milestone Control:</span>
+                        <span class="text-slate-500">Selecting 'Final Quality Inspection & Dispatched' or 'Delivered' automatically generates the official Tax Invoice.</span>
+                    </div>
+
+                    <form method="POST" action="{{ url_for('internal.update_order_stage', order_number=o.order_number) }}" class="flex items-center space-x-2">
+                        <select name="production_stage" class="px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-power-amber">
+                            <option value="Order Confirmed" {% if o.production_stage == 'Order Confirmed' %}selected{% endif %}>1. Order Confirmed</option>
+                            <option value="Engineering & Drawing Approval" {% if o.production_stage == 'Engineering & Drawing Approval' %}selected{% endif %}>2. Engineering & Drawing Approval</option>
+                            <option value="Raw Material Inward & Core Stacking" {% if o.production_stage == 'Raw Material Inward & Core Stacking' %}selected{% endif %}>3. Raw Material Inward & Core Stacking</option>
+                            <option value="Electrolytic Copper Coil Winding" {% if o.production_stage == 'Electrolytic Copper Coil Winding' %}selected{% endif %}>4. Electrolytic Copper Coil Winding</option>
+                            <option value="Core-Coil Assembly & Tanking" {% if o.production_stage == 'Core-Coil Assembly & Tanking' %}selected{% endif %}>5. Core-Coil Assembly & Tanking</option>
+                            <option value="Routine & Dielectric HV Testing" {% if o.production_stage == 'Routine & Dielectric HV Testing' %}selected{% endif %}>6. Routine & Dielectric HV Testing</option>
+                            <option value="Final Quality Inspection & Dispatched" {% if o.production_stage == 'Final Quality Inspection & Dispatched' %}selected{% endif %}>7. Final Quality Inspection & Dispatched</option>
+                            <option value="Delivered" {% if o.production_stage == 'Delivered' %}selected{% endif %}>8. Delivered to Site</option>
+                        </select>
+                        <button type="submit" class="px-4 py-2 bg-industrial-900 text-white rounded-xl text-xs font-bold hover:bg-industrial-800">
+                            Update Stage
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <div class="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 space-y-3">
+            <i class="fa-solid fa-truck-ramp-box text-4xl text-slate-400"></i>
+            <h3 class="font-heading text-lg font-bold text-industrial-900">No active production orders</h3>
+            <p class="text-xs text-slate-500">When customers accept formal quotations, their orders appear here for manufacturing tracking.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

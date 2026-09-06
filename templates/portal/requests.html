@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}My Quotation Requests (RFQs) | Gauri Power{% endblock %}
+{% block content %}
+<div class="bg-industrial-900 text-white py-10 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+        <div>
+            <h1 class="font-heading text-3xl font-extrabold text-white">My Quotation Requests (RFQs)</h1>
+            <p class="text-slate-300 text-xs mt-1">Track all equipment specifications submitted to our Sales Department.</p>
+        </div>
+        <a href="{{ url_for('quotation.new_rfq') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-power-amber text-industrial-900 hover:bg-amber-400">
+            <i class="fa-solid fa-plus mr-1"></i>New Technical RFQ
+        </a>
+    </div>
+</div>
+
+<div class="py-10 bg-slate-50 min-h-[80vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {% if requests %}
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-industrial-900 text-white border-b border-slate-800">
+                            <th class="py-3.5 px-4 font-bold">Request Number</th>
+                            <th class="py-3.5 px-4 font-bold">Equipment & Capacity</th>
+                            <th class="py-3.5 px-4 font-bold">Voltage Ratings</th>
+                            <th class="py-3.5 px-4 font-bold">Site Location</th>
+                            <th class="py-3.5 px-4 font-bold">Status</th>
+                            <th class="py-3.5 px-4 font-bold">Submitted Date</th>
+                            <th class="py-3.5 px-4 font-bold text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        {% for r in requests %}
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3.5 px-4 font-mono font-bold text-industrial-900">
+                                <a href="{{ url_for('portal.request_detail', request_number=r.request_number) }}" class="text-electric-cyan hover:underline">
+                                    {{ r.request_number }}
+                                </a>
+                            </td>
+                            <td class="py-3.5 px-4 font-medium text-slate-800">
+                                {{ r.product.name if r.product else 'Custom Unit' }}
+                                <span class="block text-[11px] font-bold text-industrial-900">{{ r.capacity_kva }}</span>
+                            </td>
+                            <td class="py-3.5 px-4 text-slate-600">
+                                In: {{ r.input_voltage }}<br>Out: {{ r.output_voltage }}
+                            </td>
+                            <td class="py-3.5 px-4 text-slate-600">
+                                {{ r.site_location }}, {{ r.state }}
+                            </td>
+                            <td class="py-3.5 px-4">
+                                <span class="px-2.5 py-1 rounded text-[11px] font-bold {% if r.status == 'Quotation Issued' %}bg-emerald-100 text-emerald-800{% elif r.status == 'Under Technical Review' %}bg-sky-100 text-sky-800{% elif r.status == 'Quotation Under Preparation' %}bg-indigo-100 text-indigo-800{% else %}bg-amber-100 text-amber-900{% endif %}">
+                                    {{ r.status }}
+                                </span>
+                            </td>
+                            <td class="py-3.5 px-4 text-slate-500">
+                                {{ r.created_at.strftime('%d %b %Y') }}
+                            </td>
+                            <td class="py-3.5 px-4 text-right">
+                                <a href="{{ url_for('portal.request_detail', request_number=r.request_number) }}" class="px-3 py-1.5 bg-industrial-900 text-white rounded-lg font-semibold hover:bg-industrial-800">
+                                    View &rarr;
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 space-y-3">
+            <i class="fa-solid fa-file-invoice text-4xl text-slate-400"></i>
+            <h3 class="font-heading text-lg font-bold text-industrial-900">No quotation requests found</h3>
+            <p class="text-xs text-slate-500">You haven't submitted any technical equipment specifications yet.</p>
+            <a href="{{ url_for('quotation.new_rfq') }}" class="mt-2 inline-flex items-center px-4 py-2 bg-power-amber text-industrial-900 rounded-lg text-xs font-bold">
+                Submit Your First RFQ
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
