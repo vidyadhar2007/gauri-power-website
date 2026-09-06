@@ -5,10 +5,10 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'gauri-power-secret-key-2026-industrial')
     
-    is_vercel = os.environ.get('VERCEL') is not None
+    is_vercel = os.environ.get('VERCEL') is not None or os.environ.get('VERCEL_ENV') is not None
     if is_vercel:
-        default_db = 'sqlite:////tmp/instance/gauripower.db'
-        default_upload = '/tmp/uploads'
+        default_db = 'sqlite:////tmp/gauripower.db'
+        default_upload = '/tmp'
     else:
         default_db = 'sqlite:///' + os.path.join(BASE_DIR, 'instance', 'gauripower.db')
         default_upload = os.path.join(BASE_DIR, 'static', 'uploads')
